@@ -6,28 +6,29 @@
   <title>Specialist Technical College</title>
   <style>
     :root {
-      --stc-blue: #002b5c;
+      --stc-blue: #001C3F;
       --stc-white: #ffffff;
-      --stc-light: #cfd8dc;
+      --stc-light: #A3B9D2;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--stc-blue);
+      background-color: var(--stc-blue); background-image: none;
       color: var(--stc-white);
       line-height: 1.6;
     }
     header {
       background-color: var(--stc-blue);
       padding: 30px;
+      text-align: center;
       border-bottom: 2px solid var(--stc-light);
     }
     nav a {
       display: inline-block;
       margin: 10px;
       padding: 12px 24px;
-      background-color: #04366f;
-      border: 2px solid var(--stc-light);
+      background-color: var(--stc-blue);
+      border: none;
       border-radius: 8px;
       text-decoration: none;
       color: var(--stc-light);
@@ -49,7 +50,7 @@
       justify-content: center;
     }
     .box {
-      background-color: #04366f;
+      background-color: var(--stc-blue);
       padding: 25px;
       border-radius: 10px;
       flex: 1 1 280px;
@@ -77,15 +78,24 @@
       margin-bottom: 30px;
     }
     .hero {
+      text-align: center;
       background: url('images/Banner.png') no-repeat center center/cover;
-      padding: 100px 20px;
+      color: var(--stc-white);
+      padding: 250px 20px;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
   <header>
     <div style="display: flex; align-items: center; justify-content: space-between;">
-      <img src="images/STC Logo Blue Original.png" alt="STC Logo" height="60" style="margin-right: 20px;">
+      <img src="images/STC Logo Blue Original.png" alt="STC Logo" height="90" style="margin-right: 20px;">
       <nav style="display: flex; flex-direction: column; gap: 5px;">
         <div>
           <a href="#home">Home</a>
@@ -94,10 +104,10 @@
         </div>
         <div>
           <a href="#campuses">Campuses</a>
-          <a href="#apply">Apply Now</a>
+          <a href="#apply" style="background-color: #c62828; color: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(198,40,40,0.6); font-size: 1.2rem;">Apply Now</a>
           <a href="#contact">Contact</a>
         </div>
-      </nav>
+    </nav>
     </div>
   </header>
 
