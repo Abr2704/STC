@@ -77,12 +77,8 @@
       font-size: 2rem;
       margin-bottom: 30px;
     }
-    .hero {
-      text-align: center;
-      background: url('images/Banner.png') no-repeat center center/cover;
-      color: var(--stc-white);
-      padding: 250px 20px;
-    }
+    $1
+  position: relative;
     .hero h2 {
       font-size: 3rem;
       margin: 0;
@@ -94,7 +90,35 @@
       0% { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
-  </style>
+      .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(1,33,81,0.6) 50%, rgba(1,33,81,0.1) 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translateY(-50%);
+      color: white;
+      max-width: 40%;
+      text-align: left;
+    }
+
+    .hero-content h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+    }
+
 </head>
 <body>
   <div style="background-color: #c62828; color: white; font-weight: bold; padding: 10px 0; overflow: hidden; white-space: nowrap;">
@@ -115,7 +139,11 @@
     </div>
   </header>
 
-  <section id="home" class="hero"></section>
+  <section id="home" class="hero">
+    $1
+      <a href="#courses" style="display: inline-block; margin-top: 20px; background-color: #00c853; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4);">View Courses</a>
+    </div>
+  </section>
 
   <section id="courses">
     <h2>Our Courses</h2>
