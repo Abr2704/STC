@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specialist Technical College</title>
+  <style>
+    :root {
+      --stc-blue: #002b5c;
+      --stc-white: #ffffff;
+      --stc-light: #cfd8dc;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--stc-blue);
+      color: var(--stc-white);
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--stc-blue);
+      padding: 30px;
+      text-align: center;
+      border-bottom: 2px solid var(--stc-light);
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: var(--stc-light);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      color: var(--stc-white);
+    }
+    section {
+      padding: 60px 40px;
+    }
+    .campuses, .courses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+    .box {
+      background-color: #04366f;
+      padding: 25px;
+      border-radius: 10px;
+      flex: 1 1 280px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .box:hover {
+      transform: translateY(-5px);
+    }
+    .box img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    footer {
+      background-color: var(--stc-blue);
+      text-align: center;
+      padding: 30px;
+      color: var(--stc-light);
+      border-top: 2px solid var(--stc-light);
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .hero {
+      text-align: center;
+      background: url('images/Banner.png') no-repeat center center/cover;
+      color: var(--stc-white);
+      padding: 100px 20px;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/STC Logo Blue Original.png" alt="STC Logo" height="80">
+    <h1>Specialist Technical College</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#courses">Courses</a>
+      <a href="#campuses">Campuses</a>
+      <a href="#apply">Apply Now</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>British Education. Global Recognition.</h2>
+    <p>Edukimi Britanik. Njohje Globale.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="max-width:800px;margin:auto;text-align:center;">STC provides advanced education in IT and Cybersecurity, with Active Directory integration across student systems. We aim to deliver real-world skills with international standards.</p>
+  </section>
+
+  <section id="courses">
+    <h2>Our Courses</h2>
+    <div class="courses">
+      <div class="box">
+        <img src="https://source.unsplash.com/400x250/?classroom,technology" alt="Level 3">
+        <h3>Level 3 Diploma</h3>
+        <p>Foundational IT skills, Health & Social Care, and Business for further study or work.</p>
+      </div>
+      <div class="box">
+        <img src="https://source.unsplash.com/400x250/?cybersecurity,students" alt="Level 4">
+        <h3>Level 4 HNC</h3>
+        <p>Cybersecurity, Networking, Software Development with practical project-based learning.</p>
+      </div>
+      <div class="box">
+        <img src="https://source.unsplash.com/400x250/?computer,laboratory" alt="Level 5">
+        <h3>Level 5 HND</h3>
+        <p>Advanced Cybersecurity and Computing qualifications with UK-recognised certifications.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="campuses">
+    <h2>Our Campuses</h2>
+    <div class="campuses">
+      <div class="box">📍 Sparkbrook, Birmingham</div>
+      <div class="box">📍 Small Heath, Birmingham</div>
+      <div class="box">📍 Walsall, UK</div>
+      <div class="box">📍 Pristina, Kosovo</div>
+    </div>
+  </section>
+
+  <section id="apply">
+    <h2>Apply Now</h2>
+    <p style="text-align:center;">Interested in joining STC? Contact us below or visit one of our campuses for details on intake dates and course registration.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p style="text-align:center;">Email: info@specialist.college | UK: +44 121 364 0000 | Kosovo: +383 45 398 558</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Specialist Technical College. All rights reserved.
+  </footer>
+</body>
+</html>
