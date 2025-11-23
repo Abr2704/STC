@@ -1,196 +1,177 @@
+<%@ Page Language="C#" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+<head runat="server">
+  <meta charset="UTF-8" />
   <title>360Education © - The No.1 Educational Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    /* ===== RESET ===== */
+    * { margin:0; padding:0; box-sizing:border-box; }
     html, body {
-      height: 100%;
+      height:100%;
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #cfd7e6; /* matching the light bluish grey background */
-      color: #000; /* black text */
+      background-color:#C0650A; /* outer orange-brown */
+      color:#000000;
     }
 
-    /* Outer wrapper */
+    /* ===== MAIN WRAPPER ===== */
     .wrapper {
-      width: 960px;
-      margin: 20px auto;
-      background-color: #ffffff;
-      border: 1px solid #999999;
+      width: 1200px;       /* close to the screenshot width */
+      margin: 0 auto;
+      background-color:#FFFFFF;
     }
 
-    /* Header */
+    /* ===== HEADER (BLACK IMAGE AREA) ===== */
     .header {
-      background-color: #1a4c8f; /* deep blue */
-      color: #ffffff;
-      padding: 20px 10px 10px;
-      text-align: center;
+      background-color:#000000;  /* header image is effectively black */
+      height:150px;              /* adjust if you swap in the real image */
+      position:relative;
+      color:#FFFFFF;
     }
-    .header h1 {
-      font-size: 32px;
-      margin-bottom: 4px;
+    .header-title {
+      position:absolute;
+      right:40px;
+      bottom:25px;
+      text-align:right;
     }
-    .header h2 {
-      font-size: 16px;
-      font-weight: normal;
-      margin-top: 0;
+    .header-title h1 {
+      font-size:32px;
+      font-weight:normal;
     }
-
-    /* Banner area */
-    .banner {
-      background-color: #e5ecf7; /* pale blue */
-      padding: 10px;
-      border-top: 1px solid #99b3d8;
-      border-bottom: 1px solid #99b3d8;
-      text-align: center;
-    }
-    .banner span {
-      font-size: 13px;
-      color: #333333;
+    .header-title h2 {
+      font-size:18px;
+      font-weight:bold;
     }
 
-    /* Navigation */
-    .nav {
-      background-color: #003366; /* very dark blue/nav blue */
-      border-top: 2px solid #000000;
-      border-bottom: 2px solid #000000;
+    /* ===== NAVIGATION BAR ===== */
+    .nav-bar {
+      background-color:#333333;      /* dark grey bar */
+      border-bottom:4px solid #C0650A; /* orange line under bar */
     }
-    .nav ul {
-      list-style: none;
-      text-align: center;
-      overflow: auto;
-      white-space: nowrap;
+    .nav-bar ul {
+      list-style:none;
+      white-space:nowrap;
     }
-    .nav li {
-      display: inline-block;
-      padding: 8px 12px;
+    .nav-bar li {
+      display:inline-block;
     }
-    .nav a {
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 13px;
-      padding: 4px 6px;
+    .nav-bar a {
+      display:block;
+      padding:8px 16px;
+      font-size:14px;
+      font-weight:bold;
+      text-decoration:none;
+      color:#FFFFFF;
+      border-right:1px solid #C0650A;   /* orange divider between buttons */
+      background-color:#333333;
     }
-    .nav a:hover,
-    .nav a.active {
-      background-color: #ffff66; /* yellow highlight */
-      color: #000000;
-      padding: 6px 10px;
-      border-radius: 2px;
-      text-decoration: none;
+    .nav-bar a:last-child {
+      border-right:none;
+    }
+    .nav-bar a.active {
+      background-color:#E6FAE7;        /* light active tab */
+      color:#000000;
     }
 
-    /* Content */
+    /* ===== CONTENT AREA ===== */
     .content {
-      padding: 15px 20px 25px;
-      font-size: 14px;
+      padding:20px 40px 40px;
+      background-color:#FFFFFF;
     }
+
+    /* Top horizontal rules */
     .content hr {
-      border: none;
-      border-top: 1px solid #999999;
-      margin: 10px 0;
+      border:0;
+      border-top:1px solid #CCCCCC;
+      margin:10px 0;
     }
-    .notice {
-      font-style: italic;
-      text-align: center;
-      margin: 10px 0;
+
+    /* Welcome strip */
+    .welcome-strip {
+      background-color:#C64610; /* reddish orange strip */
+      color:#FFFFFF;
+      text-align:center;
+      padding:5px 10px;
+      font-weight:bold;
+      font-size:14px;
     }
-    .welcome {
-      margin: 15px 0;
-    }
-    .welcome strong {
-      display: block;
-      margin-bottom: 4px;
-    }
+
     .details-title {
-      font-weight: bold;
-      margin: 12px 0 6px;
-      text-decoration: underline;
+      margin:20px 0 10px;
+      font-weight:bold;
+      font-size:16px;
     }
 
-    /* Footer */
-    .footer {
-      background-color: #f0f0f0;
-      border-top: 1px solid #999999;
-      padding: 10px 20px 15px;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-    .footer .footer-title {
-      font-weight: bold;
-      margin-bottom: 4px;
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      .wrapper {
-        width: 100%;
-        margin: 10px;
-      }
-      .nav li {
-        padding: 6px 8px;
-      }
+    /* ===== FOOTER STRIP ===== */
+    .footer-bar {
+      background-color:#000000;
+      color:#FFFFFF;
+      text-align:center;
+      padding:6px 10px;
+      font-size:12px;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="header">
-      <h1>360Education ©</h1>
-      <h2>The No.1 Educational Website</h2>
-    </div>
+  <form id="form1" runat="server">
+    <div class="wrapper">
 
-    <div class="banner">
-      <span>Online support for students, teachers and parents across the curriculum.</span>
-    </div>
-
-    <nav class="nav">
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">English</a></li>
-        <li><a href="#">Maths</a></li>
-        <li><a href="#">Science</a></li>
-        <li><a href="#">ICT</a></li>
-        <li><a href="#">History</a></li>
-        <li><a href="#">Geography</a></li>
-        <li><a href="#">Citizenship</a></li>
-        <li><a href="#">Art</a></li>
-        <li><a href="#">MFL</a></li>
-        <li><a href="#">Religious Education</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
-
-    <div class="content">
-      <hr />
-      <p class="notice">Please enable JavaScript to view this page content properly.</p>
-      <hr />
-      <div class="welcome">
-        <strong>Welcome to 360Education.</strong>
-        <p>This online education site was created to provide simple, clear resources for learners of all ages. Use the subject links above to explore activities, notes and revision materials in each area of the curriculum.</p>
-        <p>Additional content and features are added periodically, so please check back for the latest updates and improvements.</p>
+      <!-- HEADER IMAGE AREA -->
+      <div class="header">
+        <!-- if you still have the original header image, replace this with <img> -->
+        <div class="header-title">
+          <h1>360Education ©</h1>
+          <h2>The No.1 Educational Website</h2>
+        </div>
       </div>
-      <p class="details-title">Website Control Details:</p>
-      <p>Site Identifier: ABC101.</p>
-      <p>Server: Unique MicroHTML web server platform.</p>
-      <p>Location: Birmingham, United Kingdom.</p>
-      <p>Beta Name: UaliEducation.</p>
-      <p>Date of Creation: January 2008 (approximate).</p>
-      <p>Last Major Update: 23/03/2011 (isolated maintenance).</p>
-      <p>Registered and protected by Usman Ali.</p>
-    </div>
 
-    <div class="footer">
-      <div class="footer-title">Website Control Details (Summary)</div>
-      <p>360Education © – Independently developed and maintained learning resource. All content is monitored and managed by the site owner. Unauthorised copying or redistribution is not permitted.</p>
-      <p>For enquiries regarding the website, resources or permissions, please use the <a href="#">Contact Us</a> link in the navigation bar.</p>
+      <!-- NAVIGATION -->
+      <div class="nav-bar">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">English</a></li>
+          <li><a href="#">Maths</a></li>
+          <li><a href="#">Science</a></li>
+          <li><a href="#">ICT</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Geography</a></li>
+          <li><a href="#">Citizenship</a></li>
+          <li><a href="#">Art</a></li>
+          <li><a href="#">MFL</a></li>
+          <li><a href="#">Religious Education</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="content">
+        <hr />
+        <div class="welcome-strip">
+          Welcome to 360Education! You have reached the main home page.
+        </div>
+        <hr />
+
+        <!-- placeholder for the gradient box / Ruffle content -->
+        <p style="margin:30px 0;">
+          <!-- here would be your Flash / Ruffle content or an image -->
+        </p>
+
+        <div class="details-title">Website Control Details:</div>
+        <p><strong>Site Identifier:</strong> ABC101.</p>
+        <p><strong>Server:</strong> Unique MicroHTML Web Server.</p>
+        <p><strong>Location:</strong> Birmingham, UK.</p>
+        <p><strong>Beta Name:</strong> UaliEducation.</p>
+        <p><strong>Date of Creation:</strong> Jan, 2008 (Approx.).</p>
+        <p><strong>Last Update:</strong> 23/03/2011 (In Isolation).</p>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer-bar">
+        Registered and Protected By Usman Ali
+      </div>
+
     </div>
-  </div>
+  </form>
 </body>
 </html>
