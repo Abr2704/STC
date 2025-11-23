@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admissions - Specialist Technical College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e4e8f0;
+      color: #333;
+      line-height: 1.5;
+    }
+    a { color: #0057a3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page-wrapper {
+      max-width: 980px; margin: 20px auto; background: #ffffff;
+      border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.15); overflow: hidden;
+    }
+    .site-header {
+      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
+      color: #ffffff; padding: 20px;
+    }
+    .site-title { font-size: 26px; font-weight: bold; margin-bottom: 4px; }
+    .site-subtitle { font-size: 14px; opacity: 0.9; }
+    .main-nav {
+      background: #0c3f74;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 3px solid #f7c948;
+    }
+    .main-nav ul { display: flex; flex-wrap: wrap; list-style: none; }
+    .main-nav li { border-right: 1px solid rgba(255,255,255,0.1); }
+    .main-nav a {
+      display: block; padding: 10px 16px; font-size: 14px;
+      color: #ffffff; font-weight: bold;
+    }
+    .main-nav a:hover, .main-nav a.active {
+      background: #f7c948; color: #0c3f74;
+    }
+    .content-wrapper { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+    .box {
+      background: #f7f9fc; border: 1px solid #d4dce8;
+      border-radius: 4px; padding: 15px 20px; margin-bottom: 5px;
+    }
+    .box h1, .box h2, .box h3 {
+      color: #0c3f74; margin-bottom: 8px;
+    }
+    .box h1 { font-size: 22px; }
+    .box h2 { font-size: 19px; margin-top: 5px; }
+    .box h3 { font-size: 16px; margin-top: 5px; }
+    .box ul { list-style: disc; padding-left: 20px; margin-top: 5px; }
+    .site-footer {
+      background: #f4f4f4; border-top: 1px solid #d9d9d9;
+      padding: 10px 20px; font-size: 12px; color: #555;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="site-title">Specialist Technical College</div>
+      <div class="site-subtitle">British Technical College in Kosovo</div>
+    </header>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About the College</a></li>
+        <li><a href="computing.html">Computing &amp; IT</a></li>
+        <li><a href="health.html">Health &amp; Social Care</a></li>
+        <li><a href="electronics.html">Electronics</a></li>
+        <li><a href="admissions.html" class="active">Admissions</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-wrapper">
+
+      <div class="box">
+        <h1>Admissions</h1>
+        <p>
+          Specialist Technical College welcomes applications from learners who
+          are motivated to develop their technical and professional skills within
+          a British-style college environment in Kosovo.
+        </p>
+        <p>
+          This page provides a general overview of how to apply. Prospective
+          learners are encouraged to contact the college for individual advice.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Entry Requirements</h2>
+        <p>
+          Entry requirements vary by programme and level, but may include:
+        </p>
+        <ul>
+          <li>Completion of compulsory schooling or equivalent for entry to Level 3 programmes.</li>
+          <li>Evidence of suitable prior study or experience for Levels 4 and 5.</li>
+          <li>Basic competency in English, sufficient to engage with teaching and assessment.</li>
+        </ul>
+        <p>
+          Detailed entry requirements for each programme are available from the
+          Admissions team.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>How to Apply</h2>
+        <ol>
+          <li>Review the information on the relevant subject page (e.g. Computing &amp; IT).</li>
+          <li>Contact the college to discuss your goals and suitability for the programme.</li>
+          <li>Complete an application form (available as a PDF or from the Admissions team).</li>
+          <li>Submit supporting documents as requested (e.g. certificates, ID).</li>
+          <li>Attend an interview or guidance meeting if required.</li>
+        </ol>
+      </div>
+
+      <div class="box">
+        <h2>Fees and Payment</h2>
+        <p>
+          Programme fees are published on the relevant subject pages where
+          applicable. For example, Computing &amp; IT currently lists:
+        </p>
+        <ul>
+          <li>Level 3 Computing &amp; IT – €600 per academic year</li>
+          <li>Level 4 Computing &amp; IT – €1,400 per academic year</li>
+          <li>Level 5 Computing &amp; IT – €1,400 per academic year</li>
+        </ul>
+        <p>
+          Information about payment schedules and any additional costs (such as
+          materials) is available from the Admissions team.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Advice and Guidance</h2>
+        <p>
+          Choosing the right level and pathway is important. The college offers
+          information, advice and guidance to help applicants select an
+          appropriate course and to understand progression opportunities.
+        </p>
+        <p>
+          To arrange a guidance conversation, please contact:
+          <br />
+          Email: <a href="mailto:info@specialist.college">info@specialist.college</a>
+        </p>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>
