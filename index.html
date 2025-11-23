@@ -36,27 +36,12 @@
       overflow: hidden;
     }
 
+    /* HEADER (Logo removed as requested) */
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
+      padding: 20px;
     }
-
-    .logo-box {
-      width: 90px;
-      height: 90px;
-      border-radius: 4px;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 20px;
-      overflow: hidden;
-    }
-
-    .header-text { flex: 1; }
 
     .site-title {
       font-size: 26px;
@@ -174,37 +159,16 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-
-    @media (max-width: 640px) {
-      .site-header { flex-direction: column; align-items: flex-start; }
-
-      .logo-box { margin-bottom: 10px; }
-
-      .main-nav ul { flex-direction: column; }
-
-      .main-nav li {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-    }
   </style>
 </head>
+
 <body>
   <div class="page-wrapper">
 
-    <!-- HEADER WITH LOGO INSERTED -->
+    <!-- CLEAN HEADER -->
     <header class="site-header">
-      <div class="logo-box">
-        <img src="/mnt/data/A_vector-based_digital_graphic_design_of_a_logo_fe.png"
-             alt="Specialist Technical College Logo"
-             style="width: 100%; height: 100%; object-fit: contain;">
-      </div>
-      <div class="header-text">
-        <div class="site-title">Specialist Technical College</div>
-        <div class="site-subtitle">
-          Vocational & Technical Education for Tomorrow's Workforce
-        </div>
-      </div>
+      <div class="site-title">Specialist Technical College</div>
+      <div class="site-subtitle">Vocational & Technical Education for Tomorrow's Workforce</div>
     </header>
 
     <!-- NAVIGATION -->
@@ -214,15 +178,16 @@
         <li><a href="#">About the College</a></li>
         <li><a href="#">Computing &amp; IT</a></li>
         <li><a href="#">Health &amp; Social Care</a></li>
-        <li><a href="#">Student Support</a></li>
+        <li><a href="#">Electronics</a></li>
         <li><a href="#">Admissions</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>
     </nav>
 
-    <!-- CONTENT AREA -->
+    <!-- CONTENT -->
     <div class="content-wrapper">
 
+      <!-- MAIN CONTENT -->
       <main class="main-content">
         <div class="box highlight">
           <h2>Welcome to Specialist Technical College</h2>
@@ -237,17 +202,18 @@
 
           <h3>Now Enrolling for September Intake</h3>
           <p>
-            Applications are open for Computing &amp; IT and Health &amp; Social Care
-            courses. Visit the Admissions page to apply online.
+            Applications are open for Computing &amp; IT, Health &amp; Social Care,
+            and Electronics courses. Visit the Admissions page to apply online.
           </p>
 
           <h3>Support for Learners</h3>
           <p>
-            Our Student Support team provides guidance on careers, finance and wellbeing.
+            Our team provides guidance on careers, finance and wellbeing.
           </p>
         </div>
       </main>
 
+      <!-- SIDEBAR -->
       <aside class="sidebar">
 
         <div class="box">
@@ -256,18 +222,18 @@
             <a href="#">Course Guide (PDF)</a>
             <a href="#">Apply Online</a>
             <a href="#">Open Events</a>
-            <a href="#">Student Support</a>
+            <a href="#">Electronics</a>
             <a href="#">Contact Us</a>
           </div>
         </div>
 
         <div class="box">
-          <h2>For Students</h2>
+          <h2>Electronics</h2>
           <ul>
-            <li>Hands-on workshops and labs</li>
-            <li>Industry-standard equipment</li>
-            <li>Career planning and guidance</li>
-            <li>Progression pathways</li>
+            <li>Circuit design & soldering workshops</li>
+            <li>Microcontroller programming (Arduino / PIC)</li>
+            <li>Digital logic & embedded systems</li>
+            <li>Electronics lab practicals</li>
           </ul>
         </div>
 
@@ -277,10 +243,4 @@
 
     <!-- FOOTER -->
     <footer class="site-footer">
-      <div>&copy; Specialist Technical College. All rights reserved.</div>
-      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-    </footer>
-
-  </div>
-</body>
-</html>
+      <div>&copy; Special
