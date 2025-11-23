@@ -24,6 +24,7 @@
     }
     .site-title { font-size: 26px; font-weight: bold; margin-bottom: 4px; }
     .site-subtitle { font-size: 14px; opacity: 0.9; }
+
     .main-nav {
       background: #0c3f74;
       border-top: 1px solid rgba(255,255,255,0.2);
@@ -38,7 +39,9 @@
     .main-nav a:hover, .main-nav a.active {
       background: #f7c948; color: #0c3f74;
     }
+
     .content-wrapper { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+
     .box {
       background: #f7f9fc; border: 1px solid #d4dce8;
       border-radius: 4px; padding: 15px 20px; margin-bottom: 5px;
@@ -48,25 +51,28 @@
     }
     .box h1 { font-size: 22px; }
     .box h2 { font-size: 18px; margin-top: 5px; }
-    .contact-details p { margin-bottom: 4px; }
+
+    .contact-details p { margin-bottom: 6px; }
+
     .contact-form label {
-      display: block; margin-top: 8px; font-size: 14px;
+      display: block; margin-top: 12px; font-size: 14px; font-weight: bold;
     }
     .contact-form input,
     .contact-form textarea {
-      width: 100%; padding: 8px; margin-top: 4px;
+      width: 100%; padding: 10px; margin-top: 4px;
       border: 1px solid #d4dce8; border-radius: 3px;
       font-family: inherit; font-size: 14px;
     }
     .contact-form button {
-      margin-top: 10px; padding: 8px 16px;
+      margin-top: 14px; padding: 10px 16px;
       border: none; border-radius: 3px;
       background: #0c3f74; color: #ffffff;
-      font-weight: bold; cursor: pointer;
+      font-weight: bold; cursor: pointer; font-size: 15px;
     }
     .contact-form button:hover {
       background: #f7c948; color: #0c3f74;
     }
+
     .site-footer {
       background: #f4f4f4; border-top: 1px solid #d9d9d9;
       padding: 10px 20px; font-size: 12px; color: #555;
@@ -77,11 +83,13 @@
 <body>
   <div class="page-wrapper">
 
+    <!-- HEADER -->
     <header class="site-header">
       <div class="site-title">Specialist Technical College</div>
       <div class="site-subtitle">British Technical College in Kosovo</div>
     </header>
 
+    <!-- NAVIGATION -->
     <nav class="main-nav">
       <ul>
         <li><a href="/">Home</a></li>
@@ -94,54 +102,60 @@
       </ul>
     </nav>
 
+    <!-- CONTENT -->
     <div class="content-wrapper">
 
       <div class="box">
         <h1>Contact Us</h1>
         <p>
-          For enquiries about programmes, admissions or partnerships, please use
-          the details below or send us a message using the enquiry form.
+          For enquiries about programmes, admissions or partnerships, you can contact us directly
+          using the details below or send a message through our enquiry form.
         </p>
       </div>
 
       <div class="box">
         <h2>Contact Details</h2>
         <div class="contact-details">
-          <p><strong>Email:</strong> <a href="mailto:info@specialist.college">info@specialist.college</a></p>
-          <p><strong>Business WhatsApp:</strong> 
+          <p><strong>Email:</strong>
+            <a href="mailto:info@specialist.college">info@specialist.college</a>
+          </p>
+
+          <p><strong>Business WhatsApp:</strong>
             <a href="https://wa.me/38345398558">+383 45 398 558</a>
           </p>
-          <p><strong>Landline:</strong> 
+
+          <p><strong>Landline:</strong>
             <a href="tel:+38338600535">+383 386 00 535</a>
           </p>
         </div>
       </div>
 
       <div class="box">
-        <h2>Enquiry Form</h2>
-        <p>
-          This form can be connected to your preferred form-handling service so that
-          enquiries are delivered directly to your email address.
-        </p>
-        <form class="contact-form" 
-              action="https://formspree.io/f/YOUR_FORM_ID_HERE" 
-              method="POST">
-          <input type="hidden" name="_subject" value="New enquiry from specialist.college" />
+        <h2>Send Us a Message</h2>
+        <p>Please complete the form below. All enquiries will be sent directly to our email.</p>
 
-          <label for="name">Name</label>
+        <!-- CONTACT FORM -->
+        <form class="contact-form" 
+              action="https://formsubmit.co/info@specialist.college"
+              method="POST">
+
+          <!-- disable captcha -->
+          <input type="hidden" name="_captcha" value="false">
+
+          <!-- optional redirect page -->
+          <!-- <input type="hidden" name="_next" value="https://specialist.college/thank-you.html"> -->
+
+          <label for="name">Full Name</label>
           <input id="name" name="name" type="text" required />
 
-          <label for="email">Email</label>
+          <label for="email">Email Address</label>
           <input id="email" name="email" type="email" required />
 
           <label for="subject">Subject</label>
           <input id="subject" name="subject" type="text" />
 
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <!-- Optional redirect after submit -->
-          <!-- <input type="hidden" name="_redirect" value="https://specialist.college/thank-you.html" /> -->
+          <textarea id="message" name="message" rows="6" required></textarea>
 
           <button type="submit">Send Enquiry</button>
         </form>
@@ -149,6 +163,7 @@
 
     </div>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div>&copy; Specialist Technical College. All rights reserved.</div>
       <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
