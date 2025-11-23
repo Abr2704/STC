@@ -84,13 +84,13 @@
 
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About the College</a></li>
-        <li><a href="computing.html">Computing &amp; IT</a></li>
-        <li><a href="health.html">Health &amp; Social Care</a></li>
-        <li><a href="electronics.html">Electronics</a></li>
-        <li><a href="admissions.html">Admissions</a></li>
-        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about.html">About the College</a></li>
+        <li><a href="/computing/">Computing &amp; IT</a></li>
+        <li><a href="/health/">Health &amp; Social Care</a></li>
+        <li><a href="/electronics/">Electronics</a></li>
+        <li><a href="/admissions/">Admissions</a></li>
+        <li><a href="/contact/" class="active">Contact Us</a></li>
       </ul>
     </nav>
 
@@ -108,19 +108,26 @@
         <h2>Contact Details</h2>
         <div class="contact-details">
           <p><strong>Email:</strong> <a href="mailto:info@specialist.college">info@specialist.college</a></p>
-          <!-- You can update these when you have them -->
-          <p><strong>Phone:</strong> +383 (0) XX XXX XXX</p>
-          <p><strong>Location:</strong> Kosovo (full address to be added)</p>
+          <p><strong>Business WhatsApp:</strong> 
+            <a href="https://wa.me/38345398558">+383 45 398 558</a>
+          </p>
+          <p><strong>Landline:</strong> 
+            <a href="tel:+38338600535">+383 386 00 535</a>
+          </p>
         </div>
       </div>
 
       <div class="box">
         <h2>Enquiry Form</h2>
         <p>
-          This simple form can be integrated with your chosen email or form-handling
-          service by your web developer.
+          This form can be connected to your preferred form-handling service so that
+          enquiries are delivered directly to your email address.
         </p>
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" 
+              action="https://formspree.io/f/YOUR_FORM_ID_HERE" 
+              method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from specialist.college" />
+
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required />
 
@@ -132,6 +139,9 @@
 
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
+
+          <!-- Optional redirect after submit -->
+          <!-- <input type="hidden" name="_redirect" value="https://specialist.college/thank-you.html" /> -->
 
           <button type="submit">Send Enquiry</button>
         </form>
