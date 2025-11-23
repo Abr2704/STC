@@ -5,7 +5,6 @@
   <title>Specialist Technical College - Inspiring Future Technicians</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* ====== RESET / BASE ====== */
     * {
       margin: 0;
       padding: 0;
@@ -28,7 +27,6 @@
       text-decoration: underline;
     }
 
-    /* ====== LAYOUT ====== */
     .page-wrapper {
       max-width: 980px;
       margin: 20px auto;
@@ -38,7 +36,6 @@
       overflow: hidden;
     }
 
-    /* ====== HEADER ====== */
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
@@ -52,19 +49,14 @@
       height: 90px;
       border-radius: 4px;
       background: #ffffff;
-      color: #0c3f74;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-right: 20px;
-      font-weight: bold;
-      font-size: 18px;
-      text-align: center;
+      overflow: hidden;
     }
 
-    .header-text {
-      flex: 1;
-    }
+    .header-text { flex: 1; }
 
     .site-title {
       font-size: 26px;
@@ -77,7 +69,6 @@
       opacity: 0.9;
     }
 
-    /* ====== NAVIGATION ====== */
     .main-nav {
       background: #0c3f74;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -106,10 +97,8 @@
     .main-nav a.active {
       background: #f7c948;
       color: #0c3f74;
-      text-decoration: none;
     }
 
-    /* ====== CONTENT AREA ====== */
     .content-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -172,10 +161,8 @@
       background: #f7c948;
       border-color: #f7c948;
       color: #0c3f74;
-      text-decoration: none;
     }
 
-    /* ====== FOOTER ====== */
     .site-footer {
       background: #f4f4f4;
       border-top: 1px solid #d9d9d9;
@@ -183,25 +170,17 @@
       font-size: 12px;
       color: #555;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 10px;
     }
 
-    /* ====== RESPONSIVE ====== */
     @media (max-width: 640px) {
-      .site-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .site-header { flex-direction: column; align-items: flex-start; }
 
-      .logo-box {
-        margin-bottom: 10px;
-      }
+      .logo-box { margin-bottom: 10px; }
 
-      .main-nav ul {
-        flex-direction: column;
-      }
+      .main-nav ul { flex-direction: column; }
 
       .main-nav li {
         border-right: none;
@@ -212,48 +191,44 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- ===== HEADER ===== -->
+
+    <!-- HEADER WITH LOGO INSERTED -->
     <header class="site-header">
       <div class="logo-box">
-        Specialist<br />Tech<br />College
+        <img src="/mnt/data/A_vector-based_digital_graphic_design_of_a_logo_fe.png"
+             alt="Specialist Technical College Logo"
+             style="width: 100%; height: 100%; object-fit: contain;">
       </div>
       <div class="header-text">
         <div class="site-title">Specialist Technical College</div>
         <div class="site-subtitle">
-          Vocational &amp; Technical Education for Tomorrow's Workforce
+          Vocational & Technical Education for Tomorrow's Workforce
         </div>
       </div>
     </header>
 
-    <!-- ===== NAVIGATION ===== -->
+    <!-- NAVIGATION -->
     <nav class="main-nav">
       <ul>
         <li><a href="#" class="active">Home</a></li>
         <li><a href="#">About the College</a></li>
-        <li><a href="#">Engineering</a></li>
         <li><a href="#">Computing &amp; IT</a></li>
-        <li><a href="#">Construction &amp; Built Environment</a></li>
         <li><a href="#">Health &amp; Social Care</a></li>
-        <li><a href="#">Apprenticeships</a></li>
         <li><a href="#">Student Support</a></li>
-        <li><a href="#">Employers</a></li>
         <li><a href="#">Admissions</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>
     </nav>
 
-    <!-- ===== CONTENT ===== -->
+    <!-- CONTENT AREA -->
     <div class="content-wrapper">
-      <!-- MAIN CONTENT -->
+
       <main class="main-content">
         <div class="box highlight">
           <h2>Welcome to Specialist Technical College</h2>
           <p>
             Specialist Technical College offers high-quality vocational and technical
-            programmes designed with employers, for learners. Whether you are starting
-            your first qualification, upskilling for a new role or supporting staff
-            development in your organisation, we provide practical, industry-focused
-            learning that leads to real opportunities.
+            programmes designed to prepare learners for modern industries.
           </p>
         </div>
 
@@ -262,38 +237,27 @@
 
           <h3>Now Enrolling for September Intake</h3>
           <p>
-            Applications are open for full-time and part-time courses in Engineering,
-            Computing &amp; IT, Construction and Health &amp; Social Care. Visit the
-            Admissions page to apply online or book an information session with our team.
-          </p>
-
-          <h3>Apprenticeship Opportunities with Local Employers</h3>
-          <p>
-            We are working in partnership with regional employers to offer apprenticeship
-            routes at Levels 2–4. Learners can earn while they learn and gain real workplace
-            experience alongside their technical qualifications.
+            Applications are open for Computing &amp; IT and Health &amp; Social Care
+            courses. Visit the Admissions page to apply online.
           </p>
 
           <h3>Support for Learners</h3>
           <p>
-            Our Student Support team provides advice on careers, progression, finance and
-            wellbeing. One-to-one guidance and small group workshops are available
-            throughout the academic year.
+            Our Student Support team provides guidance on careers, finance and wellbeing.
           </p>
         </div>
       </main>
 
-      <!-- SIDEBAR -->
       <aside class="sidebar">
+
         <div class="box">
           <h2>Quick Links</h2>
           <div class="subject-links">
             <a href="#">Course Guide (PDF)</a>
             <a href="#">Apply Online</a>
             <a href="#">Open Events</a>
-            <a href="#">Apprenticeships</a>
-            <a href="#">Employer Partnerships</a>
             <a href="#">Student Support</a>
+            <a href="#">Contact Us</a>
           </div>
         </div>
 
@@ -301,33 +265,22 @@
           <h2>For Students</h2>
           <ul>
             <li>Hands-on workshops and labs</li>
-            <li>Industry-standard equipment and facilities</li>
-            <li>Work placements and employer projects</li>
-            <li>Careers, advice and progression planning</li>
+            <li>Industry-standard equipment</li>
+            <li>Career planning and guidance</li>
+            <li>Progression pathways</li>
           </ul>
         </div>
 
-        <div class="box">
-          <h2>For Employers</h2>
-          <ul>
-            <li>Bespoke training and upskilling programmes</li>
-            <li>Apprenticeship recruitment and support</li>
-            <li>Access to emerging talent and student projects</li>
-            <li>Opportunities to collaborate on curriculum design</li>
-          </ul>
-        </div>
       </aside>
+
     </div>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="site-footer">
-      <div>
-        &copy; Specialist Technical College. All rights reserved.
-      </div>
-      <div>
-        Email: <a href="mailto:info@specialisttechnicalcollege.ac.uk">info@specialisttechnicalcollege.ac.uk</a>
-      </div>
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
     </footer>
+
   </div>
 </body>
 </html>
