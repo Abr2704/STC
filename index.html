@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Specialist Technical College</title>
+  <meta name="description" content="Specialist Technical College (STC) offers accredited UK IT and Cyber Security qualifications from Level 3 to Level 5, with campuses in Birmingham, Walsall, and Pristina.">
   <style>
     :root {
       --stc-blue: #012151;
       --stc-white: #ffffff;
       --stc-light: #A3B9D2;
+      --stc-accent: #c62828;
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,200 +24,253 @@
       color: var(--stc-white);
       line-height: 1.6;
     }
+
     header {
       background-color: var(--stc-blue);
       padding: 30px;
-      text-align: center;
       border-bottom: 2px solid var(--stc-light);
     }
+
+    header > div {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     nav a {
       display: inline-block;
-      margin: 10px;
+      margin: 5px 0;
       padding: 12px 24px;
       background-color: var(--stc-light);
-      border: none;
       border-radius: 8px;
       text-decoration: none;
       color: var(--stc-blue);
       font-weight: bold;
       font-size: 1.1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     }
+
     nav a:hover {
-      background-color: #c62828;
+      background-color: var(--stc-accent);
       color: #fff;
+      transform: translateY(-1px);
     }
+
+    nav a.cta {
+      background-color: var(--stc-accent);
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(198,40,40,0.6);
+      font-size: 1.2rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     section {
-      padding: 60px 40px;
+      padding: 60px 20px;
     }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-wrapper {
+      display: flex;
+      gap: 40px;
+      padding: 40px 20px 20px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .hero-text ul {
+      margin-top: 1em;
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
+    .hero-text li {
+      margin-bottom: 0.5em;
+    }
+
     .campuses, .courses {
       display: flex;
       flex-wrap: wrap;
       gap: 25px;
       justify-content: center;
     }
+
     .box {
       background-color: var(--stc-blue);
       padding: 25px;
       border-radius: 10px;
       flex: 1 1 280px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      transition: transform 0.3s, outline 0.3s;
     }
-  .box:hover {
-  transform: translateY(-5px); /* The "jump" effect */
-  outline: 2px solid #c62828; /* Red outline matching the ticker */
+
+    .box:hover {
+      transform: translateY(-5px);
+      outline: 2px solid var(--stc-accent);
     }
+
+    .courses .box a {
+      display: block;
+      text-decoration: none;
+      color: var(--stc-white);
+      height: 100%;
+    }
+
     .box img {
       max-width: 100%;
       border-radius: 8px;
       margin-bottom: 15px;
     }
+
+    .apply-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .apply-form form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .apply-form label {
+      display: block;
+      font-weight: 500;
+    }
+
+    .apply-form select,
+    .apply-form input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row > label {
+      flex: 1;
+    }
+
+    .apply-form button {
+      background-color: var(--stc-accent);
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      align-self: flex-start;
+    }
+
+    .apply-form button:hover {
+      opacity: 0.9;
+    }
+
     footer {
       background-color: var(--stc-blue);
       text-align: center;
       padding: 30px;
       color: var(--stc-light);
       border-top: 2px solid var(--stc-light);
+      margin-top: 20px;
     }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
+
+    .ticker-bar {
+      background-color: var(--stc-accent);
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
     }
+
+    .ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 28s linear infinite;
+    }
+
     @keyframes ticker {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
+
+    @media (max-width: 768px) {
+      header > div {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-wrapper {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      nav a {
+        font-size: 1rem;
+        padding: 10px 18px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div style="background-color: #c62828; color: white; font-weight: bold; padding: 10px 0; overflow: hidden; white-space: nowrap;">
-    <div style="display: inline-block; padding-left: 100%; animation: ticker 28s linear infinite;">
+  <div class="ticker-bar">
+    <div class="ticker-content">
       🎓 Admissions now open for September 2026 intake. | Secure your place today! | WhatsApp now for tailored advice +44 121 364 0000
     </div>
   </div>
 
   <header>
-    <div style="display: flex; align-items: center; justify-content: space-between;">
-      <img src="images/STC Logo Blue Original.png" alt="STC Logo" height="160" style="margin-right: 20px;">
-      <nav style="display: flex; gap: 20px; align-items: center;">
+    <div>
+      <img src="images/STC Logo Blue Original.png" alt="Specialist Technical College logo" height="160">
+      <nav aria-label="Main navigation">
         <a href="#home">🏠 Home</a>
         <a href="#courses">🖥️ Courses</a>
         <a href="#campuses">🌍 Campuses</a>
-        <a href="#apply" style="background-color: #c62828; color: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(198,40,40,0.6); font-size: 1.2rem;">Apply Now</a>
-        <a href="#contact">☎️ Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <div style="display: flex; gap: 40px; padding: 40px;">
-  <div style="flex: 1;">
-    <img src="images/Banner.png" style="width: 100%; border-radius: 10px;" alt="STC Banner">
-  </div>
-  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-    <p style="font-size: 1.1rem; line-height: 1.8;">
-      STC offers learners accredited UK qualifications leading to a full Bachelors degrees at British and Irish Universities.
-    </p>
-    <ul style="margin-top: 1em; list-style: none; padding: 0; font-size: 1.1rem;">
-      <li>✅ Specialised Cyber Security Syllabus</li>
-      <li>✅ Practical Opportunities</li>
-      <li>✅ Four Campuses</li>
-    </ul>
-  </div>
-</div>
-
-<section id="courses">
-  <h2>Our Courses</h2>
-  <div class="courses">
-    <div class="box">
-      <a href="level-3.html" style="text-decoration: none; color: var(--stc-white);">
-        <h3>Level 3 Diploma</h3>
-        <p><strong>Equivalent to A-Level</strong></p>
-        <p>Foundational IT skills, Health & Social Care, and Business for further study or work.</p>
-      </a>
-    </div>
-    <div class="box">
-      <a href="level-4.html" style="text-decoration: none; color: var(--stc-white);">
-        <h3>Level 4 HNC</h3>
-        <p><strong>Equivalent to the first year of the BSc (Hons) Degree</strong></p>
-        <p>Cybersecurity, Networking, Software Development with practical project-based learning.</p>
-      </a>
-    </div>
-    <div class="box">
-      <a href="level-5.html" style="text-decoration: none; color: var(--stc-white);">
-        <h3>Level 5 HND</h3>
-        <p><strong>Equivalent to the second year of the BSc (Hons) Degree</strong></p>
-        <p>Advanced Cybersecurity and Computing qualifications with UK-recognised certifications.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-
-
-<section id="campuses">
-  <h2>Our Campuses</h2>
-  <div class="campuses">
-    <div class="box">📍 Sparkbrook, Birmingham</div>
-    <div class="box">📍 Small Heath, Birmingham</div>
-    <div class="box">📍 Walsall, UK</div>
-    <div class="box">📍 Pristina, Kosovo</div>
-  </div>
-</section>
-
-<section id="apply">
-  <h2>Apply Now</h2>
-  <p style="text-align:center;">Interested in joining STC? Complete the form below to begin your application.</p>
-  <div style="max-width: 800px; margin: 0 auto;">
-    <form style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;" action="https://formsubmit.co/info@specialist.college" method="POST">
-      <label>Course Interested In:
-        <select name="course" required style="width: 100%; padding: 10px; border-radius: 6px;">
-          <option value="">-- Select a Course --</option>
-          <option value="Level 3">Level 3 Diploma in IT</option>
-          <option value="Level 4">Level 4 HNC in Cybersecurity</option>
-          <option value="Level 5">Level 5 HND in Computing</option>
-        </select>
-      </label>
-      <label>Learner Name: <input type="text" name="name" required style="width: 100%; padding: 10px; border-radius: 6px;"></label>
-      <div style="display: flex; gap: 15px;">
-        <label style="flex: 1;">Email Address:
-          <input type="email" name="email" required style="width: 100%; padding: 10px; border-radius: 6px;">
-        </label>
-        <label style="flex: 1;">Phone Number:
-          <input type="tel" name="phone" required style="width: 100%; padding: 10px; border-radius: 6px;">
-        </label>
-      </div>
-      <button type="submit" style="background-color: #c62828; color: white; padding: 12px 24px; font-size: 1.1rem; border: none; border-radius: 6px; cursor: pointer;">Submit Application</button>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://specialist.college/thank-you.html">
-    </form>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>About Us & Contact</h2>
-  <p style="max-width:800px;margin:auto;text-align:center;">STC provides advanced education in IT and Cybersecurity, with Active Directory integration across student systems. We aim to deliver real-world skills with international standards.</p><br>
-  <h2>Contact Us</h2>
-  <p style="text-align:center;">
-    Email: info@specialist.college
-  </p>
-  <p style="text-align:center;">
-    UK: +44 121 364 0000 <a href="https://wa.me/441213640000" style="margin-left: 10px; color: #25D366; text-decoration: none; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="height: 18px; vertical-align: middle; margin-right: 5px;">WhatsApp</a>
-    | Kosovo (WhatsApp Only): +383 45 398 558 <a href="https://wa.me/38345398558" style="margin-left: 10px; color: #25D366; text-decoration: none; font-weight: bold;"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="height: 18px; vertical-align: middle; margin-right: 5px;">WhatsApp</a>
-  </p>
-  <p style="text-align:center;">
-    Landline Kosovo: 038-600-535
-  </p>
-  <p style="text-align:center;">
-    Visit us on <a href="https://www.facebook.com/profile.php?id=61575712853323" style="color: #3b5998; text-decoration: none; font-weight: bold;" target="_blank">
-      <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook" style="height: 18px; vertical-align: middle; margin-right: 5px;">Facebook</a>
-  </p>
-</section>
-
-<footer>
-  &copy; 2025 Specialist Technical College. All rights reserved.
-</footer>
-</body>
-</html>
+        <a href="#appl
