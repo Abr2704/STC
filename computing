@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Computing & IT - Specialist Technical College</title>
+  <title>Computing &amp; IT - Specialist Technical College</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -18,14 +14,8 @@
       line-height: 1.5;
     }
 
-    a {
-      color: #0057a3;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #0057a3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .page-wrapper {
       max-width: 980px;
@@ -55,7 +45,7 @@
 
     .main-nav {
       background: #0c3f74;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: 1px solid rgba(255,255,255,0.2);
       border-bottom: 3px solid #f7c948;
     }
 
@@ -66,7 +56,7 @@
     }
 
     .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
 
     .main-nav a {
@@ -104,19 +94,9 @@
       margin-bottom: 8px;
     }
 
-    .box h1 {
-      font-size: 22px;
-    }
-
-    .box h2 {
-      font-size: 19px;
-      margin-top: 5px;
-    }
-
-    .box h3 {
-      font-size: 16px;
-      margin-top: 5px;
-    }
+    .box h1 { font-size: 22px; }
+    .box h2 { font-size: 19px; margin-top: 5px; }
+    .box h3 { font-size: 16px; margin-top: 5px; }
 
     .box ul {
       list-style: disc;
@@ -155,7 +135,7 @@
     <!-- HEADER -->
     <header class="site-header">
       <div class="site-title">Specialist Technical College</div>
-      <div class="site-subtitle">British College in the Heart of Kosovo</div>
+      <div class="site-subtitle">British Technical College in Kosovo</div>
     </header>
 
     <!-- NAVIGATION -->
@@ -164,10 +144,10 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About the College</a></li>
         <li><a href="computing.html" class="active">Computing &amp; IT</a></li>
-        <li><a href="#">Health &amp; Social Care</a></li>
-        <li><a href="#">Electronics</a></li>
-        <li><a href="#">Admissions</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="health.html">Health &amp; Social Care</a></li>
+        <li><a href="electronics.html">Electronics</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
 
