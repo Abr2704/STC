@@ -1,177 +1,406 @@
 <%@ Page Language="C#" %>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <meta charset="UTF-8" />
-  <title>360Education © - The No.1 Educational Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    /* ===== RESET ===== */
+  <title>360Education|The Online Education Website</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <!-- All styling is now local -->
+  <style type="text/css">
+    /* ===== GLOBAL ===== */
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body {
-      height:100%;
+
+    body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color:#C0650A; /* outer orange-brown */
-      color:#000000;
+      background-color: #C0650A;   /* orange-brown outer background */
+      color: #000000;
     }
 
-    /* ===== MAIN WRAPPER ===== */
-    .wrapper {
-      width: 1200px;       /* close to the screenshot width */
+    a { color: #ffffff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    /* ===== MASTER FRAME ===== */
+    .MS_MasterFrame {
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .MSC_SiteWidth {
+      width: 1000px;         /* central white area width */
       margin: 0 auto;
-      background-color:#FFFFFF;
     }
 
-    /* ===== HEADER (BLACK IMAGE AREA) ===== */
-    .header {
-      background-color:#000000;  /* header image is effectively black */
-      height:150px;              /* adjust if you swap in the real image */
-      position:relative;
-      color:#FFFFFF;
-    }
-    .header-title {
-      position:absolute;
-      right:40px;
-      bottom:25px;
-      text-align:right;
-    }
-    .header-title h1 {
-      font-size:32px;
+    .MS_MasterHeader  { background-color:#000000; }
+    .MS_MasterBody    { background-color:#FFFFFF; }
+    .MS_MasterFooter  { background-color:#000000; color:#FFFFFF; }
+
+    .BG_Dark { background-color:#000000; }
+
+    /* thin white separators under header */
+    .BG_Base { background-color:#FFFFFF; }
+
+    /* ===== HEADER (3-piece graphic + title) ===== */
+    .header-table { margin-bottom:-2px; clear:left; }
+
+    .MSC_HeaderText       { margin: 0; }
+    .MSC_HeaderDescription{ margin: 0; }
+
+    .MSC_HeaderText span {
       font-weight:normal;
-    }
-    .header-title h2 {
-      font-size:18px;
-      font-weight:bold;
+      font-size:18pt;
+      color:#ffffff;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
     }
 
-    /* ===== NAVIGATION BAR ===== */
-    .nav-bar {
-      background-color:#333333;      /* dark grey bar */
-      border-bottom:4px solid #C0650A; /* orange line under bar */
+    .MSC_HeaderDescription span {
+      font-weight:bold;
+      font-size:12pt;
+      color:#ffffff;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
     }
-    .nav-bar ul {
-      list-style:none;
-      white-space:nowrap;
+
+    /* ===== PRIMARY NAVIGATION ===== */
+    .MS_MasterPrimaryNav {
+      background-color:#4D4B48;       /* dark grey bar */
+      border-bottom:4px solid #C0650A;/* orange line under nav */
     }
-    .nav-bar li {
-      display:inline-block;
+
+    .MSC_PrimaryNavFrame {
+      margin:0 auto;
+      border-collapse:collapse;
     }
-    .nav-bar a {
+
+    .MSC_PrimaryNavLinkFrame,
+    .MSC_PrimaryNavLinkFrame-On {
+      background-color:#4D4B48;
+    }
+
+    .MSC_PrimaryNavLeftSpace,
+    .MSC_PrimaryNavRightSpace,
+    .MSC_TopNavEnd {
+      width:3px;
+      background-color:#4D4B48;
+    }
+
+    .MSC_PrimaryNavLink,
+    .MSC_PrimaryNavLink-On {
       display:block;
-      padding:8px 16px;
-      font-size:14px;
+      padding:6px 14px;
+      font-size:13px;
       font-weight:bold;
-      text-decoration:none;
-      color:#FFFFFF;
-      border-right:1px solid #C0650A;   /* orange divider between buttons */
-      background-color:#333333;
+      border-right:1px solid #C0650A;
+      border-left:1px solid #C0650A;
+      text-align:center;
+      background-color:#4D4B48;
     }
-    .nav-bar a:last-child {
-      border-right:none;
-    }
-    .nav-bar a.active {
-      background-color:#E6FAE7;        /* light active tab */
+
+    .MSC_PrimaryNavLink { color:#FFFFFF; }
+    .MSC_PrimaryNavLink-On {
       color:#000000;
+      background-color:#F0F2EB; /* light tab for active page */
     }
 
-    /* ===== CONTENT AREA ===== */
-    .content {
-      padding:20px 40px 40px;
+    .MSC_PrimaryNavLinkFrame-On {
+      background-color:#F0F2EB;
+    }
+
+    /* ===== BODY / CONTENT ===== */
+    .MSC_Body {
+      width:1000px;
+      margin:0 auto;
       background-color:#FFFFFF;
+      padding:20px 20px 40px;
+      font-size:13px;
     }
 
-    /* Top horizontal rules */
-    .content hr {
+    .MS_WH_ZoneRow {
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .MS_WH_ZoneSpacing { width:1%; }
+
+    .MS_WH_ZoneContent { width:98%; }
+
+    .MSC_Body hr {
       border:0;
       border-top:1px solid #CCCCCC;
       margin:10px 0;
     }
 
-    /* Welcome strip */
-    .welcome-strip {
-      background-color:#C64610; /* reddish orange strip */
+    /* ===== MARQUEE STRIP ===== */
+    .welcome-marquee {
+      width:800px;
+      height:20px;
       color:#FFFFFF;
-      text-align:center;
-      padding:5px 10px;
-      font-weight:bold;
-      font-size:14px;
+      font-size:15px;
+      font-family:Arial, Helvetica, sans-serif;
+      background-color:#D44703;   /* the orange-red strip */
+      border:1px solid #000000;
+      margin:0 auto;
     }
 
+    /* ===== WEBSITE CONTROL DETAILS ===== */
     .details-title {
-      margin:20px 0 10px;
       font-weight:bold;
-      font-size:16px;
+      margin-top:20px;
+      margin-bottom:5px;
     }
 
-    /* ===== FOOTER STRIP ===== */
-    .footer-bar {
-      background-color:#000000;
-      color:#FFFFFF;
+    /* ===== FOOTER ===== */
+    .MSC_FooterFrame {
+      padding:6px 0;
       text-align:center;
-      padding:6px 10px;
-      font-size:12px;
+    }
+
+    .MSC_FooterText span {
+      font-weight:normal;
+      font-size:10pt;
+      color:#FFFFFF;
+      font-family:Arial, Helvetica, sans-serif;
     }
   </style>
 </head>
+
 <body>
-  <form id="form1" runat="server">
-    <div class="wrapper">
+  <form id="aspnetForm" runat="server">
 
-      <!-- HEADER IMAGE AREA -->
-      <div class="header">
-        <!-- if you still have the original header image, replace this with <img> -->
-        <div class="header-title">
-          <h1>360Education ©</h1>
-          <h2>The No.1 Educational Website</h2>
-        </div>
-      </div>
+    <table cellspacing="0" cellpadding="0" border="0" class="MS_MasterFrame">
+      <tr>
+        <td id="IWS_WH_Elem_GlobalLinks" class="MS_MasterGlobalLinks">
+          <!-- (empty in original) -->
+        </td>
+      </tr>
 
-      <!-- NAVIGATION -->
-      <div class="nav-bar">
-        <ul>
-          <li><a href="#" class="active">Home</a></li>
-          <li><a href="#">English</a></li>
-          <li><a href="#">Maths</a></li>
-          <li><a href="#">Science</a></li>
-          <li><a href="#">ICT</a></li>
-          <li><a href="#">History</a></li>
-          <li><a href="#">Geography</a></li>
-          <li><a href="#">Citizenship</a></li>
-          <li><a href="#">Art</a></li>
-          <li><a href="#">MFL</a></li>
-          <li><a href="#">Religious Education</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
+      <!-- ===== HEADER ===== -->
+      <tr>
+        <td id="IWS_WH_Elem_Header" class="MS_MasterHeader">
+          <table cellspacing="0" cellpadding="0" border="0"
+                 width="780" class="MSC_SiteWidth header-table">
+            <tr>
+              <td class="BG_Dark" align="left">
+                <img src="headerImagesOriginal/General/1_Halloween_g20.jpg" alt="" />
+              </td>
+              <td class="BG_Dark" width="100%" align="left"
+                  style="background-repeat:repeat-x;"
+                  background="headerImagesOriginal/General/2_Halloween_g20.jpg">
+                <table cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td>
+                      <img src="images/english - reader.gif" height="50" alt="" />
+                    </td>
+                    <td>
+                      <h2 id="IWS_WH_Elem_SiteTitle"
+                          class="MSC_HeaderText F_Light">
+                        <span>360Education ©</span>
+                      </h2>
+                      <h5 id="IWS_WH_Elem_SiteDescription"
+                          class="MSC_HeaderDescription F_VeryLight">
+                        <span>The No.1 Educational Website</span>
+                      </h5>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <img src="headerImagesOriginal/General/3_Halloween_g20.jpg" alt="" />
+              </td>
+            </tr>
+          </table>
 
-      <!-- MAIN CONTENT -->
-      <div class="content">
-        <hr />
-        <div class="welcome-strip">
-          Welcome to 360Education! You have reached the main home page.
-        </div>
-        <hr />
+          <table cellspacing="0" cellpadding="0" width="100%" border="0"
+                 class="BG_Base MSC_SiteWidth">
+            <tr><td colspan="2" height="2" bgcolor="#ffffff"></td></tr>
+            <tr><td colspan="2" height="2" bgcolor="#ffffff"></td></tr>
+          </table>
+        </td>
+      </tr>
 
-        <!-- placeholder for the gradient box / Ruffle content -->
-        <p style="margin:30px 0;">
-          <!-- here would be your Flash / Ruffle content or an image -->
-        </p>
+      <!-- ===== TOP NAV ===== -->
+      <tr>
+        <td id="IWS_WH_Elem_TopNav" class="MS_MasterPrimaryNav">
+          <table cellpadding="0" cellspacing="0" class="MSC_PrimaryNavFrame">
+            <tr>
+              <td class="MSC_PrimaryNavLinkFrame-On">
+                <a href="default.aspx" class="MSC_PrimaryNavLink-On">Home</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
 
-        <div class="details-title">Website Control Details:</div>
-        <p><strong>Site Identifier:</strong> ABC101.</p>
-        <p><strong>Server:</strong> Unique MicroHTML Web Server.</p>
-        <p><strong>Location:</strong> Birmingham, UK.</p>
-        <p><strong>Beta Name:</strong> UaliEducation.</p>
-        <p><strong>Date of Creation:</strong> Jan, 2008 (Approx.).</p>
-        <p><strong>Last Update:</strong> 23/03/2011 (In Isolation).</p>
-      </div>
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="English.aspx" class="MSC_PrimaryNavLink">English</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
 
-      <!-- FOOTER -->
-      <div class="footer-bar">
-        Registered and Protected By Usman Ali
-      </div>
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="Maths.aspx" class="MSC_PrimaryNavLink">Maths</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
 
-    </div>
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="Science.aspx" class="MSC_PrimaryNavLink">Science</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="IT.aspx" class="MSC_PrimaryNavLink">ICT</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="History.aspx" class="MSC_PrimaryNavLink">History</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="Geography.aspx" class="MSC_PrimaryNavLink">Geography</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="Citizenship.aspx" class="MSC_PrimaryNavLink">Citizenship</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="Art.aspx" class="MSC_PrimaryNavLink">Art</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="MFL.aspx" class="MSC_PrimaryNavLink">MFL</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="RE.aspx" class="MSC_PrimaryNavLink">Religious Education</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+
+              <td class="MSC_PrimaryNavLinkFrame">
+                <a href="contact.aspx" class="MSC_PrimaryNavLink">Contact Us</a>
+              </td>
+              <td class="MSC_PrimaryNavLeftSpace">&nbsp;</td>
+              <td class="MSC_PrimaryNavRightSpace">&nbsp;</td>
+              <td class="MSC_TopNavEnd">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- ===== BODY ===== -->
+      <tr>
+        <td>
+          <table cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+            <tr>
+              <td id="IWS_WH_Elem_LeftNav" nowrap="true"
+                  class="MS_MasterLeftNav" style="width:0px">
+                <!-- no left nav in this template -->
+              </td>
+
+              <td class="MS_MasterBody">
+                <div id="IWS_WH_Elem_Content" class="MSC_Body">
+
+                  <!-- first zone row: marquee + flash -->
+                  <table class="MS_WH_ZoneRow">
+                    <tr>
+                      <td class="MS_WH_ZoneSpacing"></td>
+                      <td valign="top" class="MS_WH_ZoneContent">
+                        <p align="center"></p>
+                        <hr />
+
+                        <!-- Marquee recreated inline -->
+                        <div style="text-align:center;">
+                          <marquee class="welcome-marquee"
+                                   direction="left"
+                                   scrollamount="6"
+                                   behavior="scroll">
+                            Welcome to 360Education! You have now entered a world of
+                            superior educational learning with no boundaries. The Website
+                            is now managed within ISCCB and edited at the 'Unique
+                            MicroHTML Web Server' in Birmingham. So do expect faster
+                            loading speeds!
+                          </marquee>
+                        </div>
+
+                        <hr />
+
+                        <!-- Flash banner recreated inline (Flash is now legacy) -->
+                        <p style="text-align:center; margin-top:15px;">
+                          <!-- Replace the src path with your SWF file if you still use it.
+                               You may also choose to replace this entire block with a static
+                               image or Ruffle-based player. -->
+                          <object width="820" height="140"
+                                  classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+                            <param name="movie"
+                                   value="Documents/360Education%20Flash%20Banner%202.swf" />
+                            <param name="quality" value="high" />
+                            <param name="bgcolor" value="#333399" />
+                            <embed src="Documents/360Education%20Flash%20Banner%202.swf"
+                                   quality="high"
+                                   bgcolor="#333399"
+                                   width="820"
+                                   height="140"
+                                   name="FlashBanner"
+                                   type="application/x-shockwave-flash"
+                                   pluginspage="http://www.macromedia.com/go/getflashplayer">
+                            </embed>
+                          </object>
+                        </p>
+                      </td>
+                      <td class="MS_WH_ZoneSpacing"></td>
+                    </tr>
+                  </table>
+
+                  <!-- second zone row: Website Control Details -->
+                  <table class="MS_WH_ZoneRow">
+                    <tr>
+                      <td class="MS_WH_ZoneSpacing"></td>
+                      <td valign="top" class="MS_WH_ZoneContent">
+                        <p class="details-title">Website Control Details:</p>
+                        <p><strong>Site Identifier:</strong> ABC101.</p>
+                        <p><strong>Server:</strong> Unique MicroHTML Web Server.</p>
+                        <p><strong>Location:</strong> Birmingham, UK.</p>
+                        <p><strong>Beta Name:</strong> UaliEducation.</p>
+                        <p><strong>Date of Creation:</strong> Jan, 2008 (Approx.)</p>
+                        <p><strong>Last Update:</strong> 23/03/2011 (In Isolation)</p>
+                      </td>
+                      <td class="MS_WH_ZoneSpacing"></td>
+                    </tr>
+                  </table>
+
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- ===== FOOTER ===== -->
+      <tr>
+        <td id="IWS_WH_Elem_Footer" colspan="2" class="MS_MasterFooter">
+          <div class="MSC_FooterFrame">
+            <span id="IWS_WH_Elem_FooterLinks"></span>
+            <div id="IWS_WH_Elem_FooterText" class="MSC_FooterText">
+              <span>Registered and Protected By Usman Ali</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </table>
   </form>
 </body>
 </html>
