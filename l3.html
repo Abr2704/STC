@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Level 3 Programmes - Specialist Technical College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e4e8f0;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a { color: #0057a3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page-wrapper {
+      max-width: 980px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .site-header {
+      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .site-title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .site-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .main-nav {
+      background: #0c3f74;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 3px solid #f7c948;
+    }
+
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .main-nav li {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      background: #f7c948;
+      color: #0c3f74;
+      text-decoration: none;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .main-content {
+      flex: 1 1 60%;
+      min-width: 260px;
+    }
+
+    .sidebar {
+      flex: 1 1 30%;
+      min-width: 220px;
+    }
+
+    .box {
+      background: #f7f9fc;
+      border: 1px solid #d4dce8;
+      border-radius: 4px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+    }
+
+    .box h1,
+    .box h2,
+    .box h3 {
+      color: #0c3f74;
+      margin-bottom: 8px;
+    }
+
+    .box h1 { font-size: 22px; }
+    .box h2 { font-size: 18px; }
+    .box h3 { font-size: 16px; margin-top: 10px; }
+
+    .box ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      border-color: #f7c948;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e6f0ff;
+      color: #0c3f74;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .fee {
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    .meta-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+    }
+
+    .meta-list li {
+      margin-bottom: 4px;
+    }
+
+    .cta {
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid transparent;
+      margin-right: 8px;
+      margin-bottom: 6px;
+    }
+
+    .btn-primary {
+      background: #0c3f74;
+      color: #ffffff;
+      border-color: #0c3f74;
+    }
+
+    .btn-primary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #0c3f74;
+      border-color: #d4dce8;
+    }
+
+    .btn-secondary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      background: #f4f4f4;
+      border-top: 1px solid #d9d9d9;
+      padding: 10px 20px;
+      font-size: 12px;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .content-wrapper {
+        flex-direction: column;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="site-title">Specialist Technical College</div>
+      <div class="site-subtitle">British Technical College in Kosovo</div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/l3.html" class="active">Level 3 (A-Level)</a></li>
+        <li><a href="/hnd.html">Level 4 and 5 University-Level</a></li>
+        <li><a href="/bsc.html">Final Year BSc (Hons)</a></li>
+        <li><a href="/about.html">About the College</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="content-wrapper">
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+
+        <div class="box highlight">
+          <h1>Level 3 (A-Level Equivalent) Programmes</h1>
+          <p>
+            Our Level 3 programmes provide an A-Level equivalent route into higher study in Computing,
+            Cyber Security and related technical fields. They are ideal for learners who want a
+            British-style technical pathway in Kosovo and plan to progress to Level 4 and 5 university-level study.
+          </p>
+          <p class="fee">Typical tuition fee: €600 per Level 3 programme.</p>
+        </div>
+
+        <!-- ATHE L3 INTRO TO CYBER SECURITY -->
+        <div class="box">
+          <h2>ATHE Level 3 – Introduction to Cyber Security</h2>
+          <span class="tag">Awarding Body: ATHE</span>
+          <span class="tag">Level 3</span>
+          <span class="tag">Cyber Security</span>
+
+          <p style="margin-top:8px;">
+            This short Level 3 qualification introduces learners to the core ideas of cyber security:
+            how online systems can be attacked, how information can be protected, and how to keep
+            yourself and others safe when working online. It provides a strong foundation for further
+            study in cyber security and computing. :contentReference[oaicite:2]{index=2}
+          </p>
+
+          <h3>Key Topics</h3>
+          <ul>
+            <li>What cyber security is and why it matters.</li>
+            <li>Common cyber threats, attacks and vulnerabilities.</li>
+            <li>Safe online behaviour, passwords and authentication.</li>
+            <li>Basic security measures on phones, laptops and networks.</li>
+            <li>Managing cyber security risks in everyday life and work.</li>
+          </ul>
+
+          <h3>Programme Information</h3>
+          <ul class="meta-list">
+            <li><strong>Level:</strong> 3 (A-Level equivalent)</li>
+            <li><strong>Mode:</strong> Classroom-based with guided independent study.</li>
+            <li><strong>Assessment:</strong> Assignments and practical activities.</li>
+            <li><strong>Typical Tuition Fee:</strong> €600</li>
+          </ul>
+
+          <div class="cta">
+            <a href="/contact.html" class="btn btn-primary">Enquire about Level 3 Cyber Security</a>
+            <a href="/hnd.html" class="btn btn-secondary">View Level 4 &amp; 5 Pathway</a>
+          </div>
+        </div>
+
+        <!-- BCS L3 IT FLEXIQUAL -->
+        <div class="box">
+          <h2>BCS Level 3 IT (Flexiqual Route)</h2>
+          <span class="tag">Awarding Body: BCS</span>
+          <span class="tag">Level 3</span>
+          <span class="tag">Computing &amp; IT</span>
+
+          <p style="margin-top:8px;">
+            This Level 3 IT programme is designed to build strong digital and technical skills across a
+            range of areas such as productivity tools, networks, databases and web technologies. The
+            content can be adapted to meet local needs and employer demand, providing a flexible route
+            into further study or employment in IT.
+          </p>
+
+          <h3>Example Units (Placeholders)</h3>
+          <p>
+            The exact units will be confirmed with the British Computer Society. For now, we are using
+            generic unit titles as placeholders; these can be updated later with the official unit names.
+          </p>
+          <ul>
+            <li><strong>Unit 1:</strong> Productivity Software and Office IT</li>
+            <li><strong>Unit 2:</strong> IT Systems and Technical Support</li>
+            <li><strong>Unit 3:</strong> Fundamentals of Computer Networking</li>
+            <li><strong>Unit 4:</strong> Databases and Data Handling</li>
+            <li><strong>Unit 5:</strong> Web and Digital Content Creation</li>
+          </ul>
+
+          <h3>Programme Information</h3>
+          <ul class="meta-list">
+            <li><strong>Level:</strong> 3 (A-Level equivalent)</li>
+            <li><strong>Mode:</strong> Blended learning – classroom sessions plus practical labs.</li>
+            <li><strong>Assessment:</strong> Assignments, practical tasks and portfolio work.</li>
+            <li><strong>Typical Tuition Fee:</strong> €600</li>
+          </ul>
+
+          <div class="cta">
+            <a href="/contact.html" class="btn btn-primary">Enquire about Level 3 IT</a>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <div class="box">
+          <h2>Progression from Level 3</h2>
+          <ul>
+            <li>Progress to Level 4 Computing / Cyber Security.</li>
+            <li>Develop core IT and problem-solving skills.</li>
+            <li>Prepare for employment or internships in IT-related roles.</li>
+            <li>Build confidence for study in English-medium programmes.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2>Admissions</h2>
+          <ul class="meta-list">
+            <li><strong>Typical Age:</strong> 16+ or adult learners.</li>
+            <li><strong>Entry Profile:</strong> School-leaver qualifications and interest in IT/Cyber.</li>
+            <li><strong>Language:</strong> Teaching mainly in English, support available.</li>
+          </ul>
+          <div class="cta" style="margin-top:8px;">
+            <a href="/contact.html" class="btn btn-secondary">Ask about entry requirements</a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>
