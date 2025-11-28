@@ -28,38 +28,29 @@
       overflow: hidden;
     }
 
-    /* HEADER (Updated: LOGO + TAGLINE ONLY) */
+    /* BLUE HEADER - TEXT ONLY */
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
       padding: 20px;
-      text-align: center;
       border-bottom: 3px solid #f7c948;
     }
 
-    .site-header-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .site-logo {
-      height: 80px;
-      width: auto;
+    .site-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 4px;
     }
 
     .site-subtitle {
       font-size: 14px;
-      opacity: 0.95;
-      color: #ffffff;
+      opacity: 0.9;
     }
 
-    /* NAV */
+    /* NAVIGATION */
     .main-nav {
       background: #0c3f74;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: 1px solid rgba(255,255,255,0.2);
       border-bottom: 3px solid #f7c948;
     }
 
@@ -70,7 +61,7 @@
     }
 
     .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
 
     .main-nav a {
@@ -88,7 +79,7 @@
       text-decoration: none;
     }
 
-    /* CONTENT */
+    /* CONTENT AREA */
     .content-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -209,10 +200,6 @@
         flex-direction: column;
         padding: 15px;
       }
-
-      .site-logo {
-        height: 60px;
-      }
     }
 
   </style>
@@ -221,20 +208,13 @@
 <body>
   <div class="page-wrapper">
 
-    <!-- HEADER WITH LOGO ONLY -->
+    <!-- BLUE HEADER, NO LOGO -->
     <header class="site-header">
-      <div class="site-header-inner">
-
-        <img src="/assets/images/stc-logo.png"
-             alt="Specialist Technical College Logo"
-             class="site-logo" />
-
-        <div class="site-subtitle">British Technical College in Kosovo</div>
-
-      </div>
+      <div class="site-title">Specialist Technical College</div>
+      <div class="site-subtitle">British Technical College in Kosovo</div>
     </header>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION WITH UPDATED LABELS -->
     <nav class="main-nav">
       <ul>
         <li><a href="/index.html">Home</a></li>
@@ -246,7 +226,7 @@
       </ul>
     </nav>
 
-    <!-- PAGE CONTENT -->
+    <!-- PAGE CONTENT GOES HERE -->
     {{ content }}
 
     <!-- FOOTER -->
