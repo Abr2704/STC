@@ -164,7 +164,74 @@
         </form>
       </div>
 
+    </div>---
+layout: default
+title: Contact Us
+---
+
+<div class="content-wrapper column-layout">
+
+  <div class="box">
+    <h1>Contact Us</h1>
+    <p>
+      For enquiries about programmes, admissions or partnerships, you can contact us directly
+      using the details below or send a message through our enquiry form.
+    </p>
+  </div>
+
+  <div class="box">
+    <h2>Contact Details</h2>
+    <div class="contact-details">
+      <p><strong>Email:</strong>
+        <a href="mailto:info@specialist.college">info@specialist.college</a>
+      </p>
+
+      <p><strong>Business WhatsApp:</strong>
+        <a href="https://wa.me/38345398558">+383 45 398 558</a>
+      </p>
+
+      <p><strong>Landline:</strong>
+        <a href="tel:+38338600535">+383 386 00 535</a>
+      </p>
+
+      <p><strong>Address:</strong>
+        Agim Ramadani, Pristina, Kosovo
+      </p>
     </div>
+  </div>
+
+  <div class="box">
+    <h2>Send Us a Message</h2>
+    <p>Please complete the form below. All enquiries will be sent directly to our email.</p>
+
+    <form class="contact-form" 
+          action="https://formsubmit.co/info@specialist.college"
+          method="POST">
+
+      <!-- disable captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- optional redirect page -->
+      <!-- <input type="hidden" name="_next" value="https://specialist.college/thank-you.html"> -->
+
+      <label for="name">Full Name</label>
+      <input id="name" name="name" type="text" required />
+
+      <label for="email">Email Address</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Enquiry</button>
+    </form>
+  </div>
+
+</div>
+
 
     <!-- FOOTER -->
     <footer class="site-footer">
