@@ -28,30 +28,37 @@
       overflow: hidden;
     }
 
-    /* BLUE HEADER - TEXT ONLY */
+    /* HEADER WITH LOGO + TAGLINE (CENTERED) */
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 20px;
+      padding: 25px 20px;
       border-bottom: 3px solid #f7c948;
+      text-align: center;
     }
 
-    .site-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 4px;
+    .site-header-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .site-logo {
+      height: 75px;
+      width: auto;
     }
 
     .site-subtitle {
       font-size: 14px;
-      opacity: 0.9;
+      opacity: 0.95;
+      color: #ffffff;
     }
 
-    /* NAVIGATION */
+    /* NAVIGATION (TOP BORDER REMOVED) */
     .main-nav {
       background: #0c3f74;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      border-bottom: 3px solid #f7c948;
+      border-bottom: 3px solid #f7c948; /* bottom yellow line ONLY */
     }
 
     .main-nav ul {
@@ -61,7 +68,7 @@
     }
 
     .main-nav li {
-      border-right: 1px solid rgba(255,255,255,0.1);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .main-nav a {
@@ -200,6 +207,10 @@
         flex-direction: column;
         padding: 15px;
       }
+
+      .site-logo {
+        height: 60px;
+      }
     }
 
   </style>
@@ -208,25 +219,34 @@
 <body>
   <div class="page-wrapper">
 
-    <!-- BLUE HEADER, NO LOGO -->
+    <!-- HEADER WITH LOGO + TAGLINE -->
     <header class="site-header">
-      <div class="site-title">Specialist Technical College</div>
-      <div class="site-subtitle">British Technical College in Kosovo</div>
+      <div class="site-header-inner">
+
+        <!-- LOGO FILE IN ROOT -->
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
+        <!-- TAGLINE BELOW LOGO -->
+        <div class="site-subtitle">British Technical College in Kosovo</div>
+
+      </div>
     </header>
 
-    <!-- NAVIGATION WITH UPDATED LABELS -->
+    <!-- NAVIGATION -->
     <nav class="main-nav">
       <ul>
         <li><a href="/index.html">Home</a></li>
         <li><a href="/about.html">About the College</a></li>
-        <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-        <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-        <li><a href="/bsc.html">Final Year – BSc (Top-Up)</a></li>
+        <li><a href="/l3.html">Level 3 – A-Level Equivalent</a></li>
+        <li><a href="/hnd.html">Level 4 &amp; 5 – University Level</a></li>
+        <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
       </ul>
     </nav>
 
-    <!-- PAGE CONTENT GOES HERE -->
+    <!-- MAIN PAGE CONTENT -->
     {{ content }}
 
     <!-- FOOTER -->
