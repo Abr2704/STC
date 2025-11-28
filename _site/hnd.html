@@ -20,10 +20,10 @@
     a:hover { text-decoration: underline; }
 
     .page-wrapper {
-      max-width: 980px;
+      max-width: 1080px;
       margin: 20px auto;
       background: #ffffff;
-      border-radius: 6px;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
@@ -60,12 +60,14 @@
     .main-nav {
       background: #0c3f74;
       border-bottom: 3px solid #f7c948;
+      position: relative;
     }
 
     .main-nav ul {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
+      transition: max-height 0.3s ease;
     }
 
     .main-nav li {
@@ -86,6 +88,47 @@
       color: #0c3f74;
       text-decoration: none;
     }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 16px;
+      background: transparent;
+      border: 0;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-toggle:focus {
+      outline: 2px solid #f7c948;
+      outline-offset: 2px;
+    }
+
+    .nav-toggle .hamburger {
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle .hamburger::before { top: -6px; }
+    .nav-toggle .hamburger::after { top: 6px; }
 
     /* CONTENT AREA */
     .content-wrapper {
@@ -108,8 +151,8 @@
     .box {
       background: #f7f9fc;
       border: 1px solid #d4dce8;
-      border-radius: 4px;
-      padding: 15px 20px;
+      border-radius: 6px;
+      padding: 18px 20px;
       margin-bottom: 15px;
     }
 
@@ -203,13 +246,14 @@
     }
 
     /* MOBILE */
-    @media (max-width: 640px) {
-      .content-wrapper {
-        flex-direction: column;
-        padding: 15px;
+    @media (max-width: 840px) {
+      .page-wrapper {
+        margin: 12px;
+        border-radius: 8px;
       }
 
       .site-header {
+        padding: 12px 16px;
         text-align: center;
       }
 
@@ -221,6 +265,42 @@
         height: auto;
         max-height: 78px;
         max-width: min(360px, 100%);
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .sidebar {
+        min-width: 0;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .main-nav ul.collapsed {
+        display: none;
+      }
+
+      .main-nav ul.open {
+        display: flex;
+      }
+
+      .main-nav li {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .main-nav a {
+        padding: 12px 16px;
+      }
+
+      .nav-toggle {
+        display: flex;
       }
     }
 
@@ -243,7 +323,11 @@
 
     <!-- NAVIGATION -->
     <nav class="main-nav">
-      <ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">
+        Menu
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <ul id="main-menu">
         <li><a href="/index.html">Home</a></li>
         <li><a href="/about.html">About the College</a></li>
         <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
@@ -378,5 +462,27 @@
     </footer>
 
   </div>
+
+  <script>
+    (function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.main-nav ul');
+
+      if (navToggle && navList) {
+        const updateMenu = (expanded) => {
+          navList.classList.toggle('collapsed', !expanded);
+          navList.classList.toggle('open', expanded);
+          navToggle.setAttribute('aria-expanded', String(expanded));
+        };
+
+        updateMenu(false);
+
+        navToggle.addEventListener('click', () => {
+          const shouldExpand = navList.classList.contains('collapsed');
+          updateMenu(shouldExpand);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
