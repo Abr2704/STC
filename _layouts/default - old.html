@@ -32,16 +32,15 @@
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 20px 20px 20px 10px;  /* Adjusted padding to reduce space */
-      border-bottom: 3px solid #f7c948;
-      text-align: left;
+      padding: 25px 20px;
+      text-align: left;     /* << ABSOLUTE FIX */
     }
 
     .site-header-inner {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;  /* Left-align everything */
-      gap: 4px;  /* Reduced gap between logo and tagline */
+      align-items: flex-start;  /* << FORCE LEFT ALIGN */
+      gap: 8px;
     }
 
     .site-logo {
@@ -53,25 +52,7 @@
       font-size: 14px;
       opacity: 0.95;
       color: #ffffff;
-      text-align: left;  /* Ensure subtitle stays left-aligned */
-      margin-bottom: 8px; /* Spacing between tagline and button */
-    }
-
-    /* Call-to-action button below the tagline */
-    .cta-button {
-      background-color: #f7c948;
-      color: #0c3f74;
-      padding: 8px 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-    .cta-button:hover {
-      background-color: #0c3f74;
-      color: #ffffff;
-      text-decoration: none;
+      text-align: left;   /* ensure subtitle stays left */
     }
 
     /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
@@ -241,14 +222,11 @@
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
       <div class="site-header-inner">
+
         <img src="/stc.png"
              alt="Specialist Technical College Logo"
              class="site-logo" />
 
-        <div class="site-subtitle">British Technical College in Kosovo</div>
-
-        <!-- Call-to-action button -->
-        <a href="/contact.html" class="cta-button">Contact Us</a>
       </div>
     </header>
 
