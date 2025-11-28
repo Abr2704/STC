@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us - Specialist Technical College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e4e8f0;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a { color: #0057a3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page-wrapper {
+      max-width: 980px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
+    .site-header {
+      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      padding: 15px 20px;
+      text-align: left;     /* << ABSOLUTE FIX */
+    }
+
+    .site-header-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;  /* << FORCE LEFT ALIGN */
+      gap: 8px;
+    }
+
+    .site-logo {
+      height: 75px;
+      width: auto;
+    }
+
+    .site-subtitle {
+      font-size: 14px;
+      opacity: 0.95;
+      color: #ffffff;
+      text-align: left;   /* ensure subtitle stays left */
+    }
+
+    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
+    .main-nav {
+      background: #0c3f74;
+      border-bottom: 3px solid #f7c948;
+    }
+
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .main-nav li {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      background: #f7c948;
+      color: #0c3f74;
+      text-decoration: none;
+    }
+
+    /* CONTENT AREA */
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .main-content {
+      flex: 1 1 60%;
+      min-width: 260px;
+    }
+
+    .sidebar {
+      flex: 1 1 30%;
+      min-width: 220px;
+    }
+
+    .box {
+      background: #f7f9fc;
+      border: 1px solid #d4dce8;
+      border-radius: 4px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+    }
+
+    .box h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #0c3f74;
+    }
+
+    .box h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0c3f74;
+    }
+
+    .box ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      border-color: #f7c948;
+    }
+
+    .subject-links a {
+      display: inline-block;
+      margin: 3px 4px 3px 0;
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 13px;
+    }
+
+    .subject-links a:hover {
+      background: #f7c948;
+      border-color: #f7c948;
+      color: #0c3f74;
+      text-decoration: none;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #0c3f74;
+      color: #ffffff;
+      border-color: #0c3f74;
+    }
+
+    .btn-primary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #0c3f74;
+      border-color: #d4dce8;
+    }
+
+    .btn-secondary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #f4f4f4;
+      border-top: 1px solid #d9d9d9;
+      padding: 10px 20px;
+      font-size: 12px;
+      color: #555;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .content-wrapper {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .site-logo {
+        height: 65px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+    <header class="site-header">
+      <div class="site-header-inner">
+
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About the College</a></li>
+        <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
+        <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
+        <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div class="content-wrapper">
+
+  <!-- MAIN CONTENT: INTRO + FORM -->
+  <main class="main-content">
+
+    <div class="box">
+      <h1>Contact Us</h1>
+      <p>
+        If you have any questions about our programmes, admissions or partnerships,
+        please get in touch using the enquiry form below or the contact details on this page.
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>Send Us an Enquiry</h2>
+      <p>
+        Please complete the form and a member of the team will respond as soon as possible.
+      </p>
+
+      <form class="contact-form"
+            action="https://formsubmit.co/info@specialist.college"
+            method="POST">
+
+        <!-- Disable captcha (optional) -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <!-- Optional redirect page after submit -->
+        <!-- <input type="hidden" name="_next" value="https://specialist.college/thank-you.html" /> -->
+
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit">Send Enquiry</button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR: CONTACT DETAILS -->
+  <aside class="sidebar">
+
+    <div class="box">
+      <h2>Contact Details</h2>
+      <div class="contact-details">
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:info@specialist.college">info@specialist.college</a>
+        </p>
+        <p>
+          <strong>Business WhatsApp:</strong>
+          <a href="https://wa.me/38345398558">+383 45 398 558</a>
+        </p>
+        <p>
+          <strong>Landline:</strong>
+          <a href="tel:+38338600535">+383 386 00 535</a>
+        </p>
+        <p>
+          <strong>Address:</strong><br />
+          Agim Ramadani<br />
+          Pristina<br />
+          Kosovo
+        </p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Office Hours</h2>
+      <ul class="meta-list">
+        <li><strong>Monday – Friday:</strong> 09:00 – 17:00</li>
+        <li><strong>Saturday:</strong> By appointment</li>
+        <li><strong>Sunday:</strong> Closed</li>
+      </ul>
+      <p style="margin-top:6px;">
+        Messages received outside office hours will be answered as soon as possible.
+      </p>
+    </div>
+
+  </aside>
+</div>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>
