@@ -28,20 +28,20 @@
       overflow: hidden;
     }
 
-    /* HEADER WITH LOGO + TAGLINE (CENTERED) */
+    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
       padding: 25px 20px;
       border-bottom: 3px solid #f7c948;
-      text-align: center;
+      text-align: left;     /* << ABSOLUTE FIX */
     }
 
     .site-header-inner {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      align-items: flex-start;  /* << FORCE LEFT ALIGN */
+      gap: 8px;
     }
 
     .site-logo {
@@ -53,12 +53,13 @@
       font-size: 14px;
       opacity: 0.95;
       color: #ffffff;
+      text-align: left;   /* ensure subtitle stays left */
     }
 
-    /* NAVIGATION (TOP BORDER REMOVED) */
+    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
     .main-nav {
       background: #0c3f74;
-      border-bottom: 3px solid #f7c948; /* bottom yellow line ONLY */
+      border-bottom: 3px solid #f7c948;
     }
 
     .main-nav ul {
@@ -209,7 +210,7 @@
       }
 
       .site-logo {
-        height: 60px;
+        height: 55px;
       }
     }
 
@@ -219,16 +220,14 @@
 <body>
   <div class="page-wrapper">
 
-    <!-- HEADER WITH LOGO + TAGLINE -->
+    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
       <div class="site-header-inner">
 
-        <!-- LOGO FILE IN ROOT -->
         <img src="/stc.png"
              alt="Specialist Technical College Logo"
              class="site-logo" />
 
-        <!-- TAGLINE BELOW LOGO -->
         <div class="site-subtitle">British Technical College in Kosovo</div>
 
       </div>
