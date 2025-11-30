@@ -170,7 +170,7 @@ title: Apply Now
 
         <div class="step-indicator">
           Step <strong><span id="step-current">1</span></strong> of
-          <strong><span id="step-total">5</span></strong>
+          <strong><span id="step-total">4</span></strong>
         </div>
 
         <!-- STEP 1: COURSE INFORMATION -->
@@ -180,12 +180,24 @@ title: Apply Now
           <div class="form-row">
             <div class="form-group">
               <label for="first_choice">First Choice Course (Level and subject) <span style="color:#c00">*</span></label>
-              <input type="text" id="first_choice" name="first_choice" placeholder="e.g. Level 3 Diploma in Electronics" required>
+              <select id="first_choice" name="first_choice" required>
+                <option value="">Select a course</option>
+                <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
+                <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+              </select>
             </div>
 
             <div class="form-group">
               <label for="second_choice">Second Choice Course</label>
-              <input type="text" id="second_choice" name="second_choice" placeholder="Optional">
+              <select id="second_choice" name="second_choice">
+                <option value="">Optional</option>
+                <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
+                <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+              </select>
             </div>
           </div>
 
@@ -208,9 +220,9 @@ title: Apply Now
           </div>
         </fieldset>
 
-        <!-- STEP 2: PERSONAL DETAILS -->
+        <!-- STEP 2: PERSONAL + CONTACT DETAILS -->
         <fieldset class="form-step" data-step="2">
-          <legend>Personal Details</legend>
+          <legend>Personal &amp; Contact Details</legend>
 
           <div class="form-row">
             <div class="form-group">
@@ -238,18 +250,6 @@ title: Apply Now
               </div>
             </div>
           </div>
-
-          <div class="step-controls">
-            <div class="step-controls-left">
-              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
-            </div>
-            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
-          </div>
-        </fieldset>
-
-        <!-- STEP 3: CONTACT + NEXT OF KIN -->
-        <fieldset class="form-step" data-step="3">
-          <legend>Contact Details</legend>
 
           <div class="form-row">
             <div class="form-group">
@@ -304,8 +304,8 @@ title: Apply Now
           </div>
         </fieldset>
 
-        <!-- STEP 4: LEARNER SUPPORT + EDUCATION -->
-        <fieldset class="form-step" data-step="4">
+        <!-- STEP 3: LEARNER SUPPORT + EDUCATION -->
+        <fieldset class="form-step" data-step="3">
           <legend>Learner Support</legend>
 
           <p class="section-note">
@@ -376,8 +376,8 @@ title: Apply Now
           </div>
         </fieldset>
 
-        <!-- STEP 5: UPLOADS + DECLARATION -->
-        <fieldset class="form-step" data-step="5">
+        <!-- STEP 4: UPLOADS + DECLARATION -->
+        <fieldset class="form-step" data-step="4">
           <legend>Contact Preferences</legend>
 
           <div class="form-row">
