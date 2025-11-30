@@ -13,7 +13,7 @@ title: Apply Now
         Fields marked with <span style="color:#c00">*</span> are required.
       </p>
       <p style="margin-top:8px;font-size:13px;color:#555;">
-        This form is submitted securely via FormSubmit. You can upload your ID and qualification documents at the end.
+        This form is submitted securely via FormSubmit. You can upload your ID and qualification documents in Step 1.
       </p>
     </div>
 
@@ -173,7 +173,7 @@ title: Apply Now
           <strong><span id="step-total">3</span></strong>
         </div>
 
-        <!-- STEP 1: COURSE INFORMATION -->
+        <!-- STEP 1: COURSE INFORMATION + UPLOADS -->
         <fieldset class="form-step active" data-step="1">
           <legend>Course Information</legend>
 
@@ -190,16 +190,6 @@ title: Apply Now
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label>Mode of Study</label>
-              <div class="inline-options">
-                <label><input type="radio" name="mode_of_study" value="Full-time"> Full-time</label>
-                <label><input type="radio" name="mode_of_study" value="Part-time evening"> Part-time evening</label>
-              </div>
-            </div>
-          </div>
-
           <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
 
           <div class="form-row">
@@ -213,17 +203,34 @@ title: Apply Now
                 <option value="Other qualification, level not known">Other qualification, level not known</option>
               </select>
             </div>
+          </div>
 
+          <legend style="margin-top:15px;">Upload Documents</legend>
+
+          <p class="section-note">
+            Please upload clear scans or photos of your identification and any relevant qualifications.
+          </p>
+
+          <div class="form-row">
             <div class="form-group">
-              <label for="last_school">Name of Current or Last School (16–24 only)</label>
-              <input type="text" id="last_school" name="last_school">
+              <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
+              <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
+              <small>PDF or image files only.</small>
             </div>
           </div>
 
           <div class="form-row">
-            <div class="form-group" style="flex:1 1 100%;">
-              <label for="other_quals">Please list any relevant qualifications (optional)</label>
-              <textarea id="other_quals" name="other_quals"></textarea>
+            <div class="form-group">
+              <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
+              <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
+              <small>You can select more than one file.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="other_files">Other Supporting Documents (optional)</label>
+              <input type="file" id="other_files" name="other_files[]" multiple>
             </div>
           </div>
 
@@ -293,68 +300,20 @@ title: Apply Now
           </div>
         </fieldset>
 
-        <!-- STEP 3: LEARNER SUPPORT + UPLOADS/DECLARATION -->
+        <!-- STEP 3: PAYMENT + DECLARATION -->
         <fieldset class="form-step" data-step="3">
-          <legend>Learner Support</legend>
+          <legend>Payment</legend>
 
           <p class="section-note">
-            Information in this section helps us to support you and make any reasonable adjustments.
+            A €250 application payment is required and will be offset against your tuition fee.
+            You can complete this payment securely via Paysharing using the link below.
           </p>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Do you consider yourself to have a disability or learning difficulty?</label>
-              <div class="inline-options">
-                <label><input type="radio" name="has_disability" value="Yes"> Yes</label>
-                <label><input type="radio" name="has_disability" value="No"> No</label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>If Yes, do you require any help when you attend college for an interview?</label>
-              <div class="inline-options">
-                <label><input type="radio" name="help_for_interview" value="Yes"> Yes</label>
-                <label><input type="radio" name="help_for_interview" value="No"> No</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Is there any other information we should know to ensure your health and safety and that of others?</label>
-              <div class="inline-options">
-                <label><input type="radio" name="other_hs_info" value="Yes"> Yes</label>
-                <label><input type="radio" name="other_hs_info" value="No"> No</label>
-              </div>
-              <textarea id="other_hs_details" name="other_hs_details" placeholder="If yes, please give details"></textarea>
-            </div>
-          </div>
-          <legend style="margin-top:15px;">Upload Documents</legend>
-
-          <p class="section-note">
-            Please upload clear scans or photos of your identification and any relevant qualifications.
-          </p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
-              <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
-              <small>PDF or image files only.</small>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
-              <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
-              <small>You can select more than one file.</small>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="other_files">Other Supporting Documents (optional)</label>
-              <input type="file" id="other_files" name="other_files[]" multiple>
+              <a class="btn btn-primary" href="https://paysharing.example.com/application-fee" target="_blank" rel="noopener">
+                Pay €250 Application Fee (Paysharing)
+              </a>
             </div>
           </div>
 
