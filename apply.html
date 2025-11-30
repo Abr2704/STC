@@ -1,27 +1,349 @@
----
-layout: default
-title: Apply Now
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
 
-<div class="content-wrapper">
-  <div class="main-content">
-
-    <div class="box highlight">
-      <h1>Apply Now</h1>
-      <p>
-        Please complete all sections of this form so we can process your application.
-        Fields marked with <span style="color:#c00">*</span> are required.
-      </p>
-      <p style="margin-top:8px;font-size:13px;color:#555;">
-        This form is submitted securely via FormSubmit. You can upload your ID and qualification documents in Step 1.
-      </p>
-      <p style="margin-top:4px;font-size:13px;color:#555;">
-        Step 1 combines your course choice, personal/contact details, and document uploads. Step 2 covers your Paysera
-        payment reference and declaration.
-      </p>
-    </div>
-
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Apply Now - Specialist Technical College</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e4e8f0;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a { color: #0057a3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page-wrapper {
+      max-width: 1080px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
+    .site-header {
+      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      padding: 15px 20px;
+      text-align: left;     /* << ABSOLUTE FIX */
+    }
+
+    .site-header-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;  /* << FORCE LEFT ALIGN */
+      gap: 8px;
+    }
+
+    .site-logo {
+      height: 75px;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .site-subtitle {
+      font-size: 14px;
+      opacity: 0.95;
+      color: #ffffff;
+      text-align: left;   /* ensure subtitle stays left */
+    }
+
+    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
+    .main-nav {
+      background: #0c3f74;
+      border-bottom: 3px solid #f7c948;
+      position: relative;
+    }
+
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      transition: max-height 0.3s ease;
+    }
+
+    .main-nav li {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      background: #f7c948;
+      color: #0c3f74;
+      text-decoration: none;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 16px;
+      background: transparent;
+      border: 0;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-toggle:focus {
+      outline: 2px solid #f7c948;
+      outline-offset: 2px;
+    }
+
+    .nav-toggle .hamburger {
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle .hamburger::before { top: -6px; }
+    .nav-toggle .hamburger::after { top: 6px; }
+
+    /* CONTENT AREA */
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .main-content {
+      flex: 1 1 60%;
+      min-width: 260px;
+    }
+
+    .sidebar {
+      flex: 1 1 30%;
+      min-width: 220px;
+    }
+
+    .box {
+      background: #f7f9fc;
+      border: 1px solid #d4dce8;
+      border-radius: 6px;
+      padding: 18px 20px;
+      margin-bottom: 15px;
+    }
+
+    .box h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #0c3f74;
+    }
+
+    .box h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0c3f74;
+    }
+
+    .box ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      border-color: #f7c948;
+    }
+
+    .subject-links a {
+      display: inline-block;
+      margin: 3px 4px 3px 0;
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 13px;
+    }
+
+    .subject-links a:hover {
+      background: #f7c948;
+      border-color: #f7c948;
+      color: #0c3f74;
+      text-decoration: none;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #0c3f74;
+      color: #ffffff;
+      border-color: #0c3f74;
+    }
+
+    .btn-primary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #0c3f74;
+      border-color: #d4dce8;
+    }
+
+    .btn-secondary:hover {
+      background: #f7c948;
+      color: #0c3f74;
+      border-color: #f7c948;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #f4f4f4;
+      border-top: 1px solid #d9d9d9;
+      padding: 10px 20px;
+      font-size: 12px;
+      color: #555;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 840px) {
+      .page-wrapper {
+        margin: 12px;
+        border-radius: 8px;
+      }
+
+      .site-header {
+        padding: 12px 16px;
+        text-align: center;
+      }
+
+      .site-header-inner {
+        align-items: center;
+      }
+
+      .site-logo {
+        height: auto;
+        max-height: 78px;
+        max-width: min(360px, 100%);
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .sidebar {
+        min-width: 0;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .main-nav ul.collapsed {
+        display: none;
+      }
+
+      .main-nav ul.open {
+        display: flex;
+      }
+
+      .main-nav li {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .main-nav a {
+        padding: 12px 16px;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+  </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+      <header class="site-header">
+        <div class="site-header-inner"> <img src="/stc.png"
+            alt="Specialist Technical College Logo" class="site-logo"> </div>
+      </header>
+      <!-- NAVIGATION -->
+      <nav class="main-nav"> <button class="nav-toggle"
+          aria-expanded="false" aria-controls="main-menu"> Menu <span
+            class="hamburger" aria-hidden="true"></span> </button>
+        <ul id="main-menu">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/about.html">About the College</a></li>
+          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
+          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
+          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <!-- MAIN PAGE CONTENT -->
+      <div class="content-wrapper">
+        <div class="main-content">
+          <div class="box highlight">
+            <h1>Apply Now</h1>
+            <p> Please complete all sections of this form so we can
+              process your application. Fields marked with <span
+                style="color:#c00">*</span> are required. </p>
+            <p style="margin-top:8px;font-size:13px;color:#555;"> This
+              form is submitted securely via FormSubmit. You can upload
+              your ID and qualification documents in Step 1. </p>
+            <p style="margin-top:4px;font-size:13px;color:#555;"> Step 1
+              combines your course choice, personal/contact details, and
+              document uploads. Step 2 covers your Paysera payment
+              reference and declaration. </p>
+          </div>
+          <style>
       /* Apply Now form styling (page-specific) */
       .apply-form fieldset {
         border: none;
@@ -158,206 +480,195 @@ title: Apply Now
         }
       }
     </style>
-
-    <div class="box">
-      <!-- IMPORTANT: Replace YOUR_FORMSUBMIT_URL_HERE with your actual FormSubmit endpoint -->
-      <form class="apply-form"
-            action="https://formsubmit.co/YOUR_FORMSUBMIT_URL_HERE"
-            method="POST"
-            enctype="multipart/form-data">
-
-        <!-- FormSubmit config -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="New Application - Specialist Technical College">
-        <input type="hidden" name="_next" value="https://www.specialist.college/thank-you.html">
-
-        <div class="step-indicator">
-          Step <strong><span id="step-current">1</span></strong> of
-          <strong><span id="step-total">2</span></strong>
+          <div class="box">
+            <!-- IMPORTANT: Replace YOUR_FORMSUBMIT_URL_HERE with your actual FormSubmit endpoint -->
+            <form class="apply-form"
+              action="https://formsubmit.co/YOUR_FORMSUBMIT_URL_HERE"
+              method="POST" enctype="multipart/form-data">
+              <!-- FormSubmit config --> <input name="_captcha"
+                value="false" type="hidden"> <input name="_template"
+                value="table" type="hidden"> <input name="_subject"
+                value="New Application - Specialist Technical College"
+                type="hidden"> <input name="_next"
+                value="https://www.specialist.college/thank-you.html"
+                type="hidden">
+              <div class="step-indicator"> Step <strong><span
+                    id="step-current">1</span></strong> of <strong><span
+                    id="step-total">2</span></strong> </div>
+              <!-- STEP 1: COURSE INFORMATION, UPLOADS + PERSONAL DETAILS -->
+              <fieldset class="form-step active" data-step="1"> <legend>Course
+                  Information</legend>
+                <div class="form-row">
+                  <div class="form-group"> <label for="first_choice">Select
+                      Course <span style="color:#c00">*</span></label>
+                    <select id="first_choice" name="first_choice"
+                      required="">
+                      <option value="" selected="selected">Select a
+                        course</option>
+                      <option value="Level 3 IT (Diploma - BCS)">Level 3
+                        IT (Diploma - BCS)</option>
+                      <option value="Level 3 Award in Cyber Security
+                        (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
+                      <option value="Level 4">Level 4</option>
+                      <option value="Level 5">Level 5</option>
+                    </select>
+                  </div>
+                </div>
+                <legend style="margin-top:15px;">Your Education &amp;
+                  Qualifications</legend>
+                <div class="form-row">
+                  <div class="form-group"> <label
+                      for="highest_qualification">Current Highest Level
+                      of Qualification</label>
+                    <select id="highest_qualification"
+                      name="highest_qualification">
+                      <option value="" selected="selected">Please select</option>
+                      <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
+                      <option value="Level 3 (T-Level or A-Level)">Level
+                        3 (T-Level or A-Level)</option>
+                      <option value="Level 4 (HNC, first year of
+                        degree)">Level 4 (HNC, first year of degree
+                        etc.)</option>
+                      <option value="Other qualification, level not
+                        known (Kosovo qualification)">Other
+                        qualification, level not known (Kosovo
+                        qualification)</option>
+                    </select>
+                  </div>
+                </div>
+                <legend style="margin-top:15px;">Upload Documents</legend>
+                <p class="section-note"> Please upload clear scans or
+                  photos of your identification and any relevant
+                  qualifications. </p>
+                <div class="form-row">
+                  <div class="form-group"> <label for="id_document">Photo
+                      ID (passport, driving licence, ID card) <span
+                        style="color:#c00">*</span></label> <input
+                      id="id_document" name="id_document"
+                      accept=".pdf,.jpg,.jpeg,.png" required=""
+                      type="file"> <small>PDF or image files only.</small>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"> <label
+                      for="qualification_files">Qualification
+                      Certificates (GCSEs, A-Levels, Diplomas)</label> <input
+                      id="qualification_files"
+                      name="qualification_files[]" multiple=""
+                      accept=".pdf,.jpg,.jpeg,.png" type="file"> <small>You
+                      can select more than one file.</small> </div>
+                </div>
+                <legend style="margin-top:15px;">Applicant Details</legend>
+                <div class="form-row">
+                  <div class="form-group"> <label for="full_name">Full
+                      Name <span style="color:#c00">*</span></label> <input
+                      id="full_name" name="full_name" required=""
+                      type="text"> </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"> <label for="dob">Date of
+                      Birth <span style="color:#c00">*</span></label> <input
+                      id="dob" name="dob" required="" type="date"> </div>
+                  <div class="form-group"> <label>Gender <span
+                        style="color:#c00">*</span></label>
+                    <div class="inline-options"> <label><input
+                          name="gender" value="Male" required=""
+                          type="radio"> Male</label> <label><input
+                          name="gender" value="Female" type="radio">
+                        Female</label> </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"> <label for="contact_number">Contact
+                      Number (including country code) <span
+                        style="color:#c00">*</span></label> <input
+                      id="contact_number" name="contact_number"
+                      required="" type="tel"> </div>
+                  <div class="form-group"> <label for="email">Email
+                      Address <span style="color:#c00">*</span></label>
+                    <input id="email" name="email" required=""
+                      type="email"> </div>
+                </div>
+                <div class="step-controls">
+                  <div class="step-controls-left">
+                    <!-- no Back on first step --> </div>
+                  <button type="button" class="btn btn-primary"
+                    data-next="">Next »</button> </div>
+              </fieldset>
+              <!-- STEP 2: PAYMENT + DECLARATION -->
+              <fieldset class="form-step" data-step="2"> <legend>Payment</legend>
+                <p class="section-note"> A €250 application payment is
+                  required and will be offset against your tuition fee.
+                  Please complete the payment securely via Paysera using
+                  the link below and paste your Paysera payment
+                  reference so we can match your application. </p>
+                <div class="form-row">
+                  <div class="form-group"> <a class="btn btn-primary"
+                      href="https://www.paysera.com/pay/?proj=APPLICATION_FEE"
+                      target="_blank" rel="noopener"> Pay €250
+                      Application Fee (Paysera) </a> <small>After
+                      paying, copy the Paysera payment reference/ID and
+                      enter it below.</small> </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"> <label
+                      for="payment_reference">Paysera Payment Reference
+                      <span style="color:#c00">*</span></label> <input
+                      id="payment_reference" name="payment_reference"
+                      required="" type="text"> <small>The Paysera
+                      payment reference helps us confirm your fee has
+                      been received.</small> </div>
+                </div>
+                <legend style="margin-top:15px;">Declaration</legend>
+                <div class="form-row">
+                  <div class="form-group"> <label
+                      for="applicant_signature">Applicant’s Signature
+                      (type full name) <span style="color:#c00">*</span></label>
+                    <input id="applicant_signature"
+                      name="applicant_signature" required="" type="text">
+                  </div>
+                  <div class="form-group"> <label for="applicant_date">Date
+                      <span style="color:#c00">*</span></label> <input
+                      id="applicant_date" name="applicant_date"
+                      required="" type="date"> </div>
+                </div>
+                <p class="section-note"> By submitting this form you
+                  confirm that, to the best of your knowledge, the
+                  information you have provided is accurate and
+                  complete. </p>
+                <div class="step-controls">
+                  <div class="step-controls-left"> <button
+                      type="button" class="btn btn-secondary"
+                      data-prev="">« Back</button> </div>
+                  <div> <button type="reset" class="btn btn-secondary">Clear
+                      All</button> <button type="submit" class="btn
+                      btn-primary">Submit Application</button> </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
-
-        <!-- STEP 1: COURSE INFORMATION, UPLOADS + PERSONAL DETAILS -->
-        <fieldset class="form-step active" data-step="1">
-          <legend>Course Information</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first_choice">Select Course <span style="color:#c00">*</span></label>
-              <select id="first_choice" name="first_choice" required>
-                <option value="">Select a course</option>
-                <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
-                <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
-                <option value="Level 4">Level 4</option>
-                <option value="Level 5">Level 5</option>
-              </select>
-            </div>
+        <div class="sidebar">
+          <div class="box">
+            <h2>Need Help with Your Application?</h2>
+            <p> If you have any questions about completing this form or
+              about our courses, please contact our admissions team: </p>
+            <ul>
+              <li>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></li>
+              <li>Phone: 00000 000000</li>
+            </ul>
           </div>
-
-          <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="highest_qualification">Current Highest Level of Qualification</label>
-              <select id="highest_qualification" name="highest_qualification">
-                <option value="">Please select</option>
-                <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
-                <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
-                <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
-                <option value="Other qualification, level not known (Kosovo qualification)">Other qualification, level not known (Kosovo qualification)</option>
-              </select>
-            </div>
+          <div class="box">
+            <h2>Before You Apply</h2>
+            <ul>
+              <li>Check the entry requirements for your chosen course.</li>
+              <li>Have your previous qualifications and ID ready.</li>
+              <li>Make sure your contact details are correct.</li>
+            </ul>
           </div>
-
-          <legend style="margin-top:15px;">Upload Documents</legend>
-
-          <p class="section-note">
-            Please upload clear scans or photos of your identification and any relevant qualifications.
-          </p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
-              <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
-              <small>PDF or image files only.</small>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
-              <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
-              <small>You can select more than one file.</small>
-            </div>
-          </div>
-
-          <legend style="margin-top:15px;">Personal &amp; Contact Details</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="full_name">Full Name <span style="color:#c00">*</span></label>
-              <input type="text" id="full_name" name="full_name" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="dob">Date of Birth <span style="color:#c00">*</span></label>
-              <input type="date" id="dob" name="dob" required>
-            </div>
-
-            <div class="form-group">
-              <label>Gender <span style="color:#c00">*</span></label>
-              <div class="inline-options">
-                <label><input type="radio" name="gender" value="Male" required> Male</label>
-                <label><input type="radio" name="gender" value="Female"> Female</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact_number">Contact Number (including country code) <span style="color:#c00">*</span></label>
-              <input type="tel" id="contact_number" name="contact_number" required>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address <span style="color:#c00">*</span></label>
-              <input type="email" id="email" name="email" required>
-            </div>
-          </div>
-
-          <div class="step-controls">
-            <div class="step-controls-left">
-              <!-- no Back on first step -->
-            </div>
-            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
-          </div>
-        </fieldset>
-
-        <!-- STEP 2: PAYMENT + DECLARATION -->
-        <fieldset class="form-step" data-step="2">
-          <legend>Payment</legend>
-
-          <p class="section-note">
-            A €250 application payment is required and will be offset against your tuition fee.
-            Please complete the payment securely via Paysera using the link below and paste your Paysera payment reference so we can match your application.
-          </p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <a class="btn btn-primary" href="https://www.paysera.com/pay/?proj=APPLICATION_FEE" target="_blank" rel="noopener">
-                Pay €250 Application Fee (Paysera)
-              </a>
-              <small>After paying, copy the Paysera payment reference/ID and enter it below.</small>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="payment_reference">Paysera Payment Reference <span style="color:#c00">*</span></label>
-              <input type="text" id="payment_reference" name="payment_reference" required>
-              <small>The Paysera payment reference helps us confirm your fee has been received.</small>
-            </div>
-          </div>
-
-          <legend style="margin-top:15px;">Declaration</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="applicant_signature">Applicant’s Signature (type full name) <span style="color:#c00">*</span></label>
-              <input type="text" id="applicant_signature" name="applicant_signature" required>
-            </div>
-
-            <div class="form-group">
-              <label for="applicant_date">Date <span style="color:#c00">*</span></label>
-              <input type="date" id="applicant_date" name="applicant_date" required>
-            </div>
-          </div>
-
-          <p class="section-note">
-            By submitting this form you confirm that, to the best of your knowledge, the information you have provided is accurate and complete.
-          </p>
-
-          <div class="step-controls">
-            <div class="step-controls-left">
-              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
-            </div>
-            <div>
-              <button type="reset" class="btn btn-secondary">Clear All</button>
-              <button type="submit" class="btn btn-primary">Submit Application</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-
-  <div class="sidebar">
-    <div class="box">
-      <h2>Need Help with Your Application?</h2>
-      <p>
-        If you have any questions about completing this form or about our courses,
-        please contact our admissions team:
-      </p>
-      <ul>
-        <li>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></li>
-        <li>Phone: 00000 000000</li>
-      </ul>
-    </div>
-
-    <div class="box">
-      <h2>Before You Apply</h2>
-      <ul>
-        <li>Check the entry requirements for your chosen course.</li>
-        <li>Have your previous qualifications and ID ready.</li>
-        <li>Make sure your contact details are correct.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<script>
+        </div>
+      </div>
+      <script>
   // Simple multi-step wizard
   document.addEventListener('DOMContentLoaded', function () {
     const steps = Array.from(document.querySelectorAll('.form-step'));
@@ -398,3 +709,32 @@ title: Apply Now
     showStep(current);
   });
 </script>
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div>© Specialist Technical College. All rights reserved.</div>
+        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+      </footer>
+    </div>
+    <script>
+    (function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.main-nav ul');
+
+      if (navToggle && navList) {
+        const updateMenu = (expanded) => {
+          navList.classList.toggle('collapsed', !expanded);
+          navList.classList.toggle('open', expanded);
+          navToggle.setAttribute('aria-expanded', String(expanded));
+        };
+
+        updateMenu(false);
+
+        navToggle.addEventListener('click', () => {
+          const shouldExpand = navList.classList.contains('collapsed');
+          updateMenu(shouldExpand);
+        });
+      }
+    })();
+  </script>
+  </body>
+</html>
