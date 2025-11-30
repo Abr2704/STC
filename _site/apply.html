@@ -350,10 +350,6 @@
       <p style="margin-top:8px;font-size:13px;color:#555;">
         This form is submitted securely via FormSubmit. You can upload your ID and qualification documents in Step 1.
       </p>
-      <p style="margin-top:4px;font-size:13px;color:#555;">
-        Step 1 combines your course choice, personal/contact details, and document uploads. Step 2 covers your Paysera
-        payment reference and declaration.
-      </p>
     </div>
 
     <style>
@@ -509,109 +505,138 @@
 
         <div class="step-indicator">
           Step <strong><span id="step-current">1</span></strong> of
-          <strong><span id="step-total">2</span></strong>
+          <strong><span id="step-total">3</span></strong>
         </div>
 
-          <!-- STEP 1: COURSE INFORMATION, UPLOADS + PERSONAL DETAILS -->
-          <fieldset class="form-step active" data-step="1">
-            <legend>Course Information</legend>
+        <!-- STEP 1: COURSE INFORMATION + UPLOADS -->
+        <fieldset class="form-step active" data-step="1">
+          <legend>Course Information</legend>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="first_choice">Select Course <span style="color:#c00">*</span></label>
-                <select id="first_choice" name="first_choice" required>
-                  <option value="">Select a course</option>
-                  <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
-                  <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
-                  <option value="Level 4">Level 4</option>
-                  <option value="Level 5">Level 5</option>
-                </select>
-              </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_choice">First Choice Course (Level and subject) <span style="color:#c00">*</span></label>
+              <select id="first_choice" name="first_choice" required>
+                <option value="">Select a course</option>
+                <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
+                <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+              </select>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="highest_qualification">Current Highest Level of Qualification</label>
+              <select id="highest_qualification" name="highest_qualification">
+                <option value="">Please select</option>
+                <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
+                <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
+                <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
+                <option value="Other qualification, level not known">Other qualification, level not known</option>
+              </select>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Upload Documents</legend>
+
+          <p class="section-note">
+            Please upload clear scans or photos of your identification and any relevant qualifications.
+          </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
+              <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
+              <small>PDF or image files only.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
+              <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
+              <small>You can select more than one file.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="other_files">Other Supporting Documents (optional)</label>
+              <input type="file" id="other_files" name="other_files[]" multiple>
+            </div>
+          </div>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <!-- no Back on first step -->
+            </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2: PERSONAL + CONTACT DETAILS -->
+        <fieldset class="form-step" data-step="2">
+          <legend>Personal &amp; Contact Details</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_names">First Name(s) <span style="color:#c00">*</span></label>
+              <input type="text" id="first_names" name="first_names" required>
             </div>
 
-            <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
+            <div class="form-group">
+              <label for="surname">Surname / Family Name <span style="color:#c00">*</span></label>
+              <input type="text" id="surname" name="surname" required>
+            </div>
+          </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="highest_qualification">Current Highest Level of Qualification</label>
-                <select id="highest_qualification" name="highest_qualification">
-                  <option value="">Please select</option>
-                  <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
-                  <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
-                  <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
-                  <option value="Other qualification, level not known (Kosovo qualification)">Other qualification, level not known (Kosovo qualification)</option>
-                </select>
-              </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Date of Birth <span style="color:#c00">*</span></label>
+              <input type="date" id="dob" name="dob" required>
             </div>
 
-            <legend style="margin-top:15px;">Upload Documents</legend>
-
-            <p class="section-note">
-              Please upload clear scans or photos of your identification and any relevant qualifications.
-            </p>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
-                <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
-                <small>PDF or image files only.</small>
+            <div class="form-group">
+              <label>Gender <span style="color:#c00">*</span></label>
+              <div class="inline-options">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
               </div>
             </div>
+          </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
-                <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
-                <small>You can select more than one file.</small>
-              </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="address">Home Address <span style="color:#c00">*</span></label>
+              <textarea id="address" name="address" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact_number">Contact Number <span style="color:#c00">*</span></label>
+              <input type="tel" id="contact_number" name="contact_number" required>
             </div>
 
-            <legend style="margin-top:15px;">Personal &amp; Contact Details</legend>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="full_name">Full Name <span style="color:#c00">*</span></label>
-                <input type="text" id="full_name" name="full_name" required>
-              </div>
+            <div class="form-group">
+              <label for="email">Email Address <span style="color:#c00">*</span></label>
+              <input type="email" id="email" name="email" required>
             </div>
+          </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="dob">Date of Birth <span style="color:#c00">*</span></label>
-                <input type="date" id="dob" name="dob" required>
-              </div>
-
-              <div class="form-group">
-                <label>Gender <span style="color:#c00">*</span></label>
-                <div class="inline-options">
-                  <label><input type="radio" name="gender" value="Male" required> Male</label>
-                  <label><input type="radio" name="gender" value="Female"> Female</label>
-                </div>
-              </div>
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
             </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contact_number">Contact Number (including country code) <span style="color:#c00">*</span></label>
-                <input type="tel" id="contact_number" name="contact_number" required>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email Address <span style="color:#c00">*</span></label>
-                <input type="email" id="email" name="email" required>
-              </div>
-            </div>
-
-            <div class="step-controls">
-              <div class="step-controls-left">
-                <!-- no Back on first step -->
-              </div>
-              <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
-            </div>
-          </fieldset>
-
-          <!-- STEP 2: PAYMENT + DECLARATION -->
-          <fieldset class="form-step" data-step="2">
+        <!-- STEP 3: PAYMENT + DECLARATION -->
+        <fieldset class="form-step" data-step="3">
           <legend>Payment</legend>
 
           <p class="section-note">
