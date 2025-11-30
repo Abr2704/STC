@@ -306,14 +306,23 @@ title: Apply Now
 
           <p class="section-note">
             A €250 application payment is required and will be offset against your tuition fee.
-            You can complete this payment securely via Paysharing using the link below.
+            Please complete the payment securely via Paysera using the link below and paste your Paysera payment reference so we can match your application.
           </p>
 
           <div class="form-row">
             <div class="form-group">
-              <a class="btn btn-primary" href="https://paysharing.example.com/application-fee" target="_blank" rel="noopener">
-                Pay €250 Application Fee (Paysharing)
+              <a class="btn btn-primary" href="https://www.paysera.com/pay/?proj=APPLICATION_FEE" target="_blank" rel="noopener">
+                Pay €250 Application Fee (Paysera)
               </a>
+              <small>After paying, copy the Paysera payment reference/ID and enter it below.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="payment_reference">Paysera Payment Reference <span style="color:#c00">*</span></label>
+              <input type="text" id="payment_reference" name="payment_reference" required>
+              <small>The Paysera payment reference helps us confirm your fee has been received.</small>
             </div>
           </div>
 
