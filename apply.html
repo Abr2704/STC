@@ -1,0 +1,662 @@
+---
+layout: default
+title: Apply Now
+---
+
+<div class="content-wrapper">
+  <div class="main-content">
+
+    <div class="box highlight">
+      <h1>Apply Now</h1>
+      <p>
+        Please complete all sections of this form so we can process your application.
+        Fields marked with <span style="color:#c00">*</span> are required.
+      </p>
+      <p style="margin-top:8px;font-size:13px;color:#555;">
+        This form is submitted securely via FormSubmit. You can upload your ID and qualification documents at the end.
+      </p>
+    </div>
+
+    <style>
+      /* Apply Now form styling (page-specific) */
+      .apply-form fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 18px 0;
+      }
+
+      .apply-form legend {
+        font-weight: bold;
+        font-size: 16px;
+        color: #0c3f74;
+        margin-bottom: 8px;
+      }
+
+      .apply-form .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .apply-form .form-group {
+        flex: 1 1 180px;
+        min-width: 160px;
+      }
+
+      .apply-form label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+
+      .apply-form input[type="text"],
+      .apply-form input[type="email"],
+      .apply-form input[type="tel"],
+      .apply-form input[type="date"],
+      .apply-form input[type="file"],
+      .apply-form select,
+      .apply-form textarea {
+        width: 100%;
+        padding: 6px 8px;
+        border-radius: 3px;
+        border: 1px solid #d4dce8;
+        font-size: 14px;
+      }
+
+      .apply-form textarea {
+        min-height: 70px;
+        resize: vertical;
+      }
+
+      .apply-form .inline-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .apply-form .inline-options label {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 4px;
+      }
+
+      .apply-form small {
+        display: block;
+        font-size: 12px;
+        color: #666;
+        margin-top: 2px;
+      }
+
+      .apply-form .section-note {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 6px;
+      }
+
+      .apply-form .disability-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 8px 16px;
+      }
+
+      .apply-form .disability-grid label {
+        font-size: 13px;
+      }
+
+      .step-indicator {
+        font-size: 13px;
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .step-indicator strong {
+        color: #0c3f74;
+      }
+
+      .form-step {
+        display: none; /* wizard: JS will show the current one */
+      }
+
+      .form-step.active {
+        display: block;
+      }
+
+      .step-controls {
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .step-controls .btn {
+        flex: 0 0 auto;
+      }
+
+      .step-controls-left {
+        display: flex;
+        gap: 8px;
+      }
+
+      @media (max-width: 640px) {
+        .apply-form .form-group {
+          flex: 1 1 100%;
+        }
+        .step-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .step-controls-left {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    </style>
+
+    <div class="box">
+      <!-- IMPORTANT: Replace YOUR_FORMSUBMIT_URL_HERE with your actual FormSubmit endpoint -->
+      <form class="apply-form"
+            action="https://formsubmit.co/YOUR_FORMSUBMIT_URL_HERE"
+            method="POST"
+            enctype="multipart/form-data">
+
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Application - Specialist Technical College">
+        <input type="hidden" name="_next" value="https://www.specialist.college/thank-you.html">
+
+        <div class="step-indicator">
+          Step <strong><span id="step-current">1</span></strong> of
+          <strong><span id="step-total">5</span></strong>
+        </div>
+
+        <!-- STEP 1: PERSONAL DETAILS -->
+        <fieldset class="form-step active" data-step="1">
+          <legend>Personal Details</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="title">Title <span style="color:#c00">*</span></label>
+              <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+              <label for="student_number">Student Number (if you have studied at the college before)</label>
+              <input type="text" id="student_number" name="student_number">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="surname">Surname / Family Name <span style="color:#c00">*</span></label>
+              <input type="text" id="surname" name="surname" required>
+            </div>
+
+            <div class="form-group">
+              <label for="first_names">First Name(s) <span style="color:#c00">*</span></label>
+              <input type="text" id="first_names" name="first_names" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Date of Birth <span style="color:#c00">*</span></label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+              <label>Gender <span style="color:#c00">*</span></label>
+              <div class="inline-options">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other / Prefer not to say</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_language">First Language <span style="color:#c00">*</span></label>
+              <select id="first_language" name="first_language" required>
+                <option value="">Please select</option>
+                <option value="English">English</option>
+                <option value="Other">Other (please state below)</option>
+              </select>
+              <small>If "Other", please give details below.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="first_language_other">If Other, please state</label>
+              <input type="text" id="first_language_other" name="first_language_other">
+            </div>
+          </div>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <!-- no Back on first step -->
+            </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2: CONTACT + NEXT OF KIN -->
+        <fieldset class="form-step" data-step="2">
+          <legend>Contact Details</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="address">Home Address <span style="color:#c00">*</span></label>
+              <textarea id="address" name="address" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="postcode">Postcode <span style="color:#c00">*</span></label>
+              <input type="text" id="postcode" name="postcode" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telephone">Telephone Number</label>
+              <input type="tel" id="telephone" name="telephone">
+            </div>
+
+            <div class="form-group">
+              <label for="mobile">Mobile Number <span style="color:#c00">*</span></label>
+              <input type="tel" id="mobile" name="mobile" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address <span style="color:#c00">*</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Next of Kin / Emergency Contact</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nok_name">Next of Kin Name <span style="color:#c00">*</span></label>
+              <input type="text" id="nok_name" name="nok_name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="nok_relationship">Relationship <span style="color:#c00">*</span></label>
+              <input type="text" id="nok_relationship" name="nok_relationship" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nok_tel">Next of Kin Telephone <span style="color:#c00">*</span></label>
+              <input type="tel" id="nok_tel" name="nok_tel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="nok_email">Next of Kin Email</label>
+              <input type="email" id="nok_email" name="nok_email">
+            </div>
+          </div>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 3: INTENDED DESTINATION + EQUAL OPPORTUNITIES -->
+        <fieldset class="form-step" data-step="3">
+          <legend>Intended Destination</legend>
+
+          <p class="section-note">What is the main reason for attending college?</p>
+
+          <div class="inline-options">
+            <label><input type="radio" name="destination" value="Progress into Further or Higher Education" required> Progress into Further or Higher Education</label>
+            <label><input type="radio" name="destination" value="Enter employment"> Enter employment</label>
+            <label><input type="radio" name="destination" value="Improve current employment"> Improve current employment</label>
+            <label><input type="radio" name="destination" value="Personal interest"> Personal interest</label>
+            <label><input type="radio" name="destination" value="Update skills"> Update skills</label>
+          </div>
+
+          <legend style="margin-top:15px;">Equal Opportunities</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ethnicity">Ethnicity</label>
+              <select id="ethnicity" name="ethnicity">
+                <option value="">Please select</option>
+                <option value="English / Welsh / Scottish / Northern Irish / British">English / Welsh / Scottish / Northern Irish / British</option>
+                <option value="Irish">Irish</option>
+                <option value="African">African</option>
+                <option value="Indian">Indian</option>
+                <option value="Pakistani">Pakistani</option>
+                <option value="Bangladeshi">Bangladeshi</option>
+                <option value="Arab">Arab</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Any Other Ethnic Background">Any Other Ethnic Background</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="religion">Religion / Belief</label>
+              <select id="religion" name="religion">
+                <option value="">Please select</option>
+                <option value="Christian">Christian</option>
+                <option value="Muslim">Muslim</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Jewish">Jewish</option>
+                <option value="Sikh">Sikh</option>
+                <option value="Buddhist">Buddhist</option>
+                <option value="Other">Any other religion</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Circumstances</label>
+              <p class="section-note">
+                Please tick any circumstances which apply to you:
+              </p>
+              <div class="inline-options">
+                <label><input type="checkbox" name="circumstances[]" value="In Care"> In Care</label>
+                <label><input type="checkbox" name="circumstances[]" value="Care Leaver"> Care Leaver</label>
+                <label><input type="checkbox" name="circumstances[]" value="Supported by a Social Worker"> Supported by a Social Worker</label>
+              </div>
+              <small>Care may have been provided in different settings, e.g. foster care, residential children’s home or kinship care.</small>
+            </div>
+          </div>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 4: LEARNER SUPPORT + EDUCATION -->
+        <fieldset class="form-step" data-step="4">
+          <legend>Learner Support</legend>
+
+          <p class="section-note">
+            Information in this section helps us to support you and make any reasonable adjustments.
+          </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Do you consider yourself to have a disability or learning difficulty?</label>
+              <div class="inline-options">
+                <label><input type="radio" name="has_disability" value="Yes"> Yes</label>
+                <label><input type="radio" name="has_disability" value="No"> No</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>If Yes, do you require any help when you attend college for an interview?</label>
+              <div class="inline-options">
+                <label><input type="radio" name="help_for_interview" value="Yes"> Yes</label>
+                <label><input type="radio" name="help_for_interview" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Do you have an EHCP (Education Health Care Plan) or Learning Difficulty Assessment?</label>
+              <div class="inline-options">
+                <label><input type="radio" name="ehcp" value="Yes"> Yes</label>
+                <label><input type="radio" name="ehcp" value="No"> No</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Is there any other information we should know to ensure your health and safety and that of others?</label>
+              <div class="inline-options">
+                <label><input type="radio" name="other_hs_info" value="Yes"> Yes</label>
+                <label><input type="radio" name="other_hs_info" value="No"> No</label>
+              </div>
+              <textarea id="other_hs_details" name="other_hs_details" placeholder="If yes, please give details"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex:1 1 100%;">
+              <label>Disability and/or Learning Difficulty</label>
+              <p class="section-note">Please tick all that apply.</p>
+
+              <div class="disability-grid">
+                <label><input type="checkbox" name="disability[]" value="Visual impairment"> Visual impairment</label>
+                <label><input type="checkbox" name="disability[]" value="Hearing impairment"> Hearing impairment</label>
+                <label><input type="checkbox" name="disability[]" value="Disability affecting mobility"> Disability affecting mobility</label>
+                <label><input type="checkbox" name="disability[]" value="Profound complex disabilities"> Profound complex disabilities</label>
+                <label><input type="checkbox" name="disability[]" value="Social and emotional difficulties"> Social and emotional difficulties</label>
+                <label><input type="checkbox" name="disability[]" value="Mental health difficulty"> Mental health difficulty</label>
+                <label><input type="checkbox" name="disability[]" value="Moderate learning difficulty"> Moderate learning difficulty</label>
+                <label><input type="checkbox" name="disability[]" value="Severe learning difficulty"> Severe learning difficulty</label>
+                <label><input type="checkbox" name="disability[]" value="Dyslexia"> Dyslexia</label>
+                <label><input type="checkbox" name="disability[]" value="Dyscalculia"> Dyscalculia</label>
+                <label><input type="checkbox" name="disability[]" value="Autism spectrum disorder"> Autism spectrum disorder</label>
+                <label><input type="checkbox" name="disability[]" value="Asperger’s syndrome"> Asperger’s syndrome</label>
+                <label><input type="checkbox" name="disability[]" value="Temporary disability after illness or accident"> Temporary disability after illness or accident</label>
+                <label><input type="checkbox" name="disability[]" value="Speech, Language & Communication"> Speech, Language & Communication need</label>
+                <label><input type="checkbox" name="disability[]" value="Other physical disability"> Other physical disability</label>
+                <label><input type="checkbox" name="disability[]" value="Other specific learning difficulty"> Other specific learning difficulty (e.g. Dyspraxia)</label>
+                <label><input type="checkbox" name="disability[]" value="Other medical condition"> Other medical condition (e.g. epilepsy, asthma, diabetes)</label>
+                <label><input type="checkbox" name="disability[]" value="Other learning difficulty"> Other learning difficulty</label>
+                <label><input type="checkbox" name="disability[]" value="Other disability"> Other disability</label>
+                <label><input type="checkbox" name="disability[]" value="Prefer not to say"> Prefer not to say</label>
+              </div>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="highest_qualification">Current Highest Level of Qualification</label>
+              <select id="highest_qualification" name="highest_qualification">
+                <option value="">Please select</option>
+                <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
+                <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
+                <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
+                <option value="Other qualification, level not known">Other qualification, level not known</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="last_school">Name of Current or Last School (16–24 only)</label>
+              <input type="text" id="last_school" name="last_school">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex:1 1 100%;">
+              <label for="other_quals">Please list any relevant qualifications (optional)</label>
+              <textarea id="other_quals" name="other_quals"></textarea>
+            </div>
+          </div>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 5: COURSE INFO + CONTACT PREFS + UPLOADS + DECLARATION -->
+        <fieldset class="form-step" data-step="5">
+          <legend>Course Information</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_choice">First Choice Course (Level and subject) <span style="color:#c00">*</span></label>
+              <input type="text" id="first_choice" name="first_choice" placeholder="e.g. Level 3 Diploma in Electronics" required>
+            </div>
+
+            <div class="form-group">
+              <label for="second_choice">Second Choice Course</label>
+              <input type="text" id="second_choice" name="second_choice" placeholder="Optional">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Mode of Study</label>
+              <div class="inline-options">
+                <label><input type="radio" name="mode_of_study" value="Full-time"> Full-time</label>
+                <label><input type="radio" name="mode_of_study" value="Part-time day"> Part-time day</label>
+                <label><input type="radio" name="mode_of_study" value="Part-time evening"> Part-time evening</label>
+              </div>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Contact Preferences</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>How would you like the college to contact you?</label>
+              <div class="inline-options">
+                <label><input type="checkbox" name="contact_pref[]" value="telephone"> By telephone</label>
+                <label><input type="checkbox" name="contact_pref[]" value="email"> By email</label>
+                <label><input type="checkbox" name="contact_pref[]" value="sms"> By SMS</label>
+                <label><input type="checkbox" name="contact_pref[]" value="any"> Any of these</label>
+              </div>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Upload Documents</legend>
+
+          <p class="section-note">
+            Please upload clear scans or photos of your identification and any relevant qualifications.
+          </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="id_document">Photo ID (passport, driving licence, ID card) <span style="color:#c00">*</span></label>
+              <input type="file" id="id_document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" required>
+              <small>PDF or image files only.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qualification_files">Qualification Certificates (GCSEs, A-Levels, Diplomas)</label>
+              <input type="file" id="qualification_files" name="qualification_files[]" multiple accept=".pdf,.jpg,.jpeg,.png">
+              <small>You can select more than one file.</small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="other_files">Other Supporting Documents (optional)</label>
+              <input type="file" id="other_files" name="other_files[]" multiple>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Declaration</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="applicant_signature">Applicant’s Signature (type full name) <span style="color:#c00">*</span></label>
+              <input type="text" id="applicant_signature" name="applicant_signature" required>
+            </div>
+
+            <div class="form-group">
+              <label for="applicant_date">Date <span style="color:#c00">*</span></label>
+              <input type="date" id="applicant_date" name="applicant_date" required>
+            </div>
+          </div>
+
+          <p class="section-note">
+            By submitting this form you confirm that, to the best of your knowledge, the information you have provided is accurate and complete.
+          </p>
+
+          <div class="step-controls">
+            <div class="step-controls-left">
+              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
+            </div>
+            <div>
+              <button type="reset" class="btn btn-secondary">Clear All</button>
+              <button type="submit" class="btn btn-primary">Submit Application</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="box">
+      <h2>Need Help with Your Application?</h2>
+      <p>
+        If you have any questions about completing this form or about our courses,
+        please contact our admissions team:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></li>
+        <li>Phone: 00000 000000</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Before You Apply</h2>
+      <ul>
+        <li>Check the entry requirements for your chosen course.</li>
+        <li>Have your previous qualifications and ID ready.</li>
+        <li>Make sure your contact details are correct.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simple multi-step wizard
+  document.addEventListener('DOMContentLoaded', function () {
+    const steps = Array.from(document.querySelectorAll('.form-step'));
+    const total = steps.length;
+    const currentSpan = document.getElementById('step-current');
+    const totalSpan = document.getElementById('step-total');
+    let current = 0;
+
+    if (totalSpan) totalSpan.textContent = total.toString();
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === index);
+      });
+      if (currentSpan) currentSpan.textContent = (index + 1).toString();
+    }
+
+    document.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (current < total - 1) {
+          current++;
+          showStep(current);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-prev]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (current > 0) {
+          current--;
+          showStep(current);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    showStep(current);
+  });
+</script>
