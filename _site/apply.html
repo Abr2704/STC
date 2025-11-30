@@ -505,7 +505,7 @@
 
         <div class="step-indicator">
           Step <strong><span id="step-current">1</span></strong> of
-          <strong><span id="step-total">4</span></strong>
+          <strong><span id="step-total">3</span></strong>
         </div>
 
         <!-- STEP 1: COURSE INFORMATION -->
@@ -523,17 +523,6 @@
                 <option value="Level 5">Level 5</option>
               </select>
             </div>
-
-            <div class="form-group">
-              <label for="second_choice">Second Choice Course</label>
-              <select id="second_choice" name="second_choice">
-                <option value="">Optional</option>
-                <option value="Level 3 IT (Diploma - BCS)">Level 3 IT (Diploma - BCS)</option>
-                <option value="Level 3 Award in Cyber Security (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
-                <option value="Level 4">Level 4</option>
-                <option value="Level 5">Level 5</option>
-              </select>
-            </div>
           </div>
 
           <div class="form-row">
@@ -541,9 +530,35 @@
               <label>Mode of Study</label>
               <div class="inline-options">
                 <label><input type="radio" name="mode_of_study" value="Full-time"> Full-time</label>
-                <label><input type="radio" name="mode_of_study" value="Part-time day"> Part-time day</label>
                 <label><input type="radio" name="mode_of_study" value="Part-time evening"> Part-time evening</label>
               </div>
+            </div>
+          </div>
+
+          <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="highest_qualification">Current Highest Level of Qualification</label>
+              <select id="highest_qualification" name="highest_qualification">
+                <option value="">Please select</option>
+                <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
+                <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
+                <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
+                <option value="Other qualification, level not known">Other qualification, level not known</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="last_school">Name of Current or Last School (16–24 only)</label>
+              <input type="text" id="last_school" name="last_school">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex:1 1 100%;">
+              <label for="other_quals">Please list any relevant qualifications (optional)</label>
+              <textarea id="other_quals" name="other_quals"></textarea>
             </div>
           </div>
 
@@ -605,32 +620,6 @@
             </div>
           </div>
 
-          <legend style="margin-top:15px;">Next of Kin / Emergency Contact</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nok_name">Next of Kin Name <span style="color:#c00">*</span></label>
-              <input type="text" id="nok_name" name="nok_name" required>
-            </div>
-
-            <div class="form-group">
-              <label for="nok_relationship">Relationship <span style="color:#c00">*</span></label>
-              <input type="text" id="nok_relationship" name="nok_relationship" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nok_tel">Next of Kin Telephone <span style="color:#c00">*</span></label>
-              <input type="tel" id="nok_tel" name="nok_tel" required>
-            </div>
-
-            <div class="form-group">
-              <label for="nok_email">Next of Kin Email</label>
-              <input type="email" id="nok_email" name="nok_email">
-            </div>
-          </div>
-
           <div class="step-controls">
             <div class="step-controls-left">
               <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
@@ -639,7 +628,7 @@
           </div>
         </fieldset>
 
-        <!-- STEP 3: LEARNER SUPPORT + EDUCATION -->
+        <!-- STEP 3: LEARNER SUPPORT + UPLOADS/DECLARATION -->
         <fieldset class="form-step" data-step="3">
           <legend>Learner Support</legend>
 
@@ -675,58 +664,6 @@
               <textarea id="other_hs_details" name="other_hs_details" placeholder="If yes, please give details"></textarea>
             </div>
           </div>
-
-          <legend style="margin-top:15px;">Education &amp; Qualifications</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="highest_qualification">Current Highest Level of Qualification</label>
-              <select id="highest_qualification" name="highest_qualification">
-                <option value="">Please select</option>
-                <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
-                <option value="Level 3 (T-Level or A-Level)">Level 3 (T-Level or A-Level)</option>
-                <option value="Level 4 (HNC, first year of degree)">Level 4 (HNC, first year of degree etc.)</option>
-                <option value="Other qualification, level not known">Other qualification, level not known</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="last_school">Name of Current or Last School (16–24 only)</label>
-              <input type="text" id="last_school" name="last_school">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group" style="flex:1 1 100%;">
-              <label for="other_quals">Please list any relevant qualifications (optional)</label>
-              <textarea id="other_quals" name="other_quals"></textarea>
-            </div>
-          </div>
-
-          <div class="step-controls">
-            <div class="step-controls-left">
-              <button type="button" class="btn btn-secondary" data-prev>&laquo; Back</button>
-            </div>
-            <button type="button" class="btn btn-primary" data-next>Next &raquo;</button>
-          </div>
-        </fieldset>
-
-        <!-- STEP 4: UPLOADS + DECLARATION -->
-        <fieldset class="form-step" data-step="4">
-          <legend>Contact Preferences</legend>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>How would you like the college to contact you?</label>
-              <div class="inline-options">
-                <label><input type="checkbox" name="contact_pref[]" value="telephone"> By telephone</label>
-                <label><input type="checkbox" name="contact_pref[]" value="email"> By email</label>
-                <label><input type="checkbox" name="contact_pref[]" value="sms"> By SMS</label>
-                <label><input type="checkbox" name="contact_pref[]" value="any"> Any of these</label>
-              </div>
-            </div>
-          </div>
-
           <legend style="margin-top:15px;">Upload Documents</legend>
 
           <p class="section-note">
