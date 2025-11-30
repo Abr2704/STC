@@ -1,506 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Level 4 &amp; 5 Computing (Cyber Security Pathway) -
-      Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+---
+layout: default
+title: Level 4 & 5 Computing (Cyber Security Pathway)
+---
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #e4e8f0;
-      color: #333;
-      line-height: 1.5;
-    }
+<style>
+  .tag {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-left: 6px;
+    background: #e9eff8;
+    color: #0c3f74;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+  }
 
-    a { color: #0057a3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  .meta-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+  }
 
-    .page-wrapper {
-      max-width: 1080px;
-      margin: 20px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
+  .meta-list li {
+    margin-bottom: 6px;
+  }
 
-    /* HEADER — LOGO LEFT */
-    .site-header {
-      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
-      color: #ffffff;
-      padding: 15px 20px;
-      text-align: left;
-    }
+  .cta {
+    margin: 12px 0 8px 0;
+  }
+</style>
 
-    .site-header-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
+<!-- FULL-WIDTH INTRO BOX -->
+<div class="box highlight" style="margin:20px;">
+  <h1>Level 4 &amp; 5 Computing – Cyber Security Pathway</h1>
+  <p>
+    Our Level 4 and Level 5 Computing programmes provide a
+    university-level pathway, equivalent to the first two years of
+    a UK Bachelor’s degree in a computing discipline. The Cyber
+    Security pathway develops technical and professional skills
+    for roles in cyber defence, security operations and related
+    fields.
+  </p>
+</div>
 
-    .site-logo {
-      height: 75px;
-      width: auto;
-      max-width: 100%;
-    }
-
-    .site-subtitle {
-      font-size: 14px;
-      opacity: 0.95;
-      color: #ffffff;
-      text-align: left;
-    }
-
-    /* NAVIGATION + MOBILE TOGGLE */
-    .main-nav {
-      background: #0c3f74;
-      border-bottom: 3px solid #f7c948;
-      position: relative;
-    }
-
-    .main-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      transition: max-height 0.3s ease;
-    }
-
-    .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 14px;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    .main-nav a:hover,
-    .main-nav a.active {
-      background: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 16px;
-      background: transparent;
-      border: 0;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .nav-toggle:focus {
-      outline: 2px solid #f7c948;
-      outline-offset: 2px;
-    }
-
-    .nav-toggle .hamburger {
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      position: relative;
-    }
-
-    .nav-toggle .hamburger::before,
-    .nav-toggle .hamburger::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-toggle .hamburger::before { top: -6px; }
-    .nav-toggle .hamburger::after { top: 6px; }
-
-    /* CONTENT AREA */
-    .content-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    /* Make both columns even */
-    .main-content,
-    .sidebar {
-      flex: 1 1 50%;
-      min-width: 260px;
-    }
-
-    .box {
-      background: #f7f9fc;
-      border: 1px solid #d4dce8;
-      border-radius: 6px;
-      padding: 18px 20px;
-      margin-bottom: 12px;
-    }
-
-    .box h1,
-    .box h2,
-    .box h3 {
-      color: #0c3f74;
-      margin-bottom: 8px;
-    }
-
-    .box h1 { font-size: 22px; }
-    .box h2 { font-size: 18px; }
-    .box h3 { font-size: 16px; margin-top: 10px; }
-
-    .box ul {
-      list-style: disc;
-      padding-left: 20px;
-      margin-top: 5px;
-    }
-
-    .highlight {
-      background: #fffbe6;
-      border-color: #f7c948;
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      background: #e6f0ff;
-      color: #0c3f74;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-right: 6px;
-      margin-bottom: 4px;
-    }
-
-    .fee {
-      font-weight: bold;
-      margin-top: 6px;
-    }
-
-    .meta-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 14px;
-    }
-
-    .meta-list li {
-      margin-bottom: 4px;
-    }
-
-    .cta {
-      margin-top: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid transparent;
-      margin-right: 8px;
-      margin-bottom: 6px;
-    }
-
-    .btn-primary {
-      background: #0c3f74;
-      color: #ffffff;
-      border-color: #0c3f74;
-    }
-
-    .btn-primary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: #ffffff;
-      color: #0c3f74;
-      border-color: #d4dce8;
-    }
-
-    .btn-secondary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    .site-footer {
-      background: #f4f4f4;
-      border-top: 1px solid #d9d9d9;
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 840px) {
-      .page-wrapper {
-        margin: 12px;
-        border-radius: 8px;
-      }
-
-      .site-header {
-        padding: 12px 16px;
-        text-align: center;
-      }
-
-      .site-header-inner {
-        align-items: center;
-      }
-
-      .site-logo {
-        height: auto;
-        max-height: 78px;
-        max-width: min(360px, 100%);
-      }
-
-      .content-wrapper {
-        flex-direction: column;
-        padding: 16px;
-      }
-
-      .main-content,
-      .sidebar {
-        min-width: 0;
-      }
-
-      .main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .main-nav ul.collapsed {
-        display: none;
-      }
-
-      .main-nav ul.open {
-        display: flex;
-      }
-
-      .main-nav li {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .main-nav a {
-        padding: 12px 16px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-    }
-    </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LOGO -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo">
-          <div class="site-subtitle"> British Technical College in
-            Kosovo </div>
-        </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav"> <button class="nav-toggle"
-          aria-expanded="false" aria-controls="main-menu"> Menu <span
-            class="hamburger" aria-hidden="true"></span> </button>
-        <ul id="main-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html" class="active">Level 4 &amp; 5
-              (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- FULL-WIDTH INTRO BOX -->
-      <div class="box highlight" style="margin:20px;">
-        <h1>Level 4 &amp; 5 Computing – Cyber Security Pathway</h1>
-        <p> Our Level 4 and Level 5 Computing programmes provide a
-          university-level pathway, equivalent to the first two years of
-          a UK Bachelor’s degree in a computing discipline. The Cyber
-          Security pathway develops technical and professional skills
-          for roles in cyber defence, security operations and related
-          fields. </p>
+<!-- TWO-COLUMN LAYOUT: LEVEL 4 & LEVEL 5 -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <!-- LEFT COLUMN: LEVEL 4 -->
+  <main class="main-content">
+    <div class="box">
+      <h2>ATHE Level 4 – Extended Diploma in Computing <br></h2>
+      <h2>(Cyber Security Route) <span class="tag"> Level 4</span>
+        <span class="tag">Year 1 University-Level</span>
+      </h2>
+      <p style="margin-top:8px;">
+        Level 4 develops core computing knowledge and skills alongside specialist study in cyber
+        security. Learners build a strong foundation in computer systems, networking and software,
+        before focusing on security concepts and controls.
+      </p>
+      <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
+      <div class="cta">
+        <a href="/contact.html" class="btn btn-primary"> Apply Now </a>
       </div>
-      <!-- TWO-COLUMN LAYOUT: LEVEL 4 & LEVEL 5 -->
-      <div class="content-wrapper" style="padding-top:10px;">
-        <!-- LEFT COLUMN: LEVEL 4 -->
-        <main class="main-content">
-          <div class="box">
-            <h2>ATHE Level 4 – Extended Diploma in Computing <br>
-            </h2>
-            <h2>(Cyber Security Route) <span class="tag"> Level 4</span>
-              <span class="tag">Year 1 University-Level</span> </h2>
-            <p style="margin-top:8px;"> Level 4 develops core computing
-              knowledge and skills alongside specialist study in cyber
-              security. Learners build a strong foundation in computer
-              systems, networking and software, before focusing on
-              security concepts and controls. </p>
-            <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
-            <div class="cta"> <a href="/contact.html" class="btn
-                btn-primary"> Apply Now </a> </div>
-            <h3 style="margin-top:14px;">Example Core Units</h3>
-            <ul>
-              <li><strong>Computer Systems, Networks and Security</strong>
-                – hardware, operating systems, networking principles and
-                risks to systems and data.</li>
-              <li><strong>Programming and Software Development</strong>
-                – fundamental programming constructs and software design
-                techniques.</li>
-              <li><strong>Database Design and Development</strong> –
-                designing and implementing relational databases for
-                realistic scenarios.</li>
-              <li><strong>Web Technologies</strong> – client- and
-                server-side concepts for delivering secure web
-                applications.</li>
-              <li><strong>Cyber Security Concepts</strong> – threats,
-                vulnerabilities, risk assessment and incident response
-                at an introductory level.</li>
-            </ul>
-            <h3>Programme Information</h3>
-            <ul class="meta-list">
-              <li><strong>Level:</strong> 4 – approximately equivalent
-                to the first year of a UK degree.</li>
-              <li><strong>Mode:</strong> Classroom-based with lab work
-                and guided independent study.</li>
-              <li><strong>Assessment:</strong> Assignments, practical
-                projects and case-study work.</li>
-              <li><strong>Typical Tuition Fee:</strong> €1,500</li>
-            </ul>
-            <p><br>
-              <br>
-            </p>
-            <ul class="meta-list">
-            </ul>
-          </div>
-        </main>
-        <!-- RIGHT COLUMN: LEVEL 5 -->
-        <aside class="sidebar">
-          <div class="box">
-            <h2>ATHE Level 5 – Extended Diploma in Computing <br>
-            </h2>
-            <h2>(Cyber Security Route) <span class="tag">Level 5</span>
-              <span class="tag">Year 2 University-Level</span><br>
-            </h2>
-            <p style="margin-top:8px;">Level 5 builds on the foundations
-              from Level 4 and focuses on more advanced topics such as
-              network security, cyber defence, penetration testing and
-              secure systems development, preparing learners for direct
-              entry to the final year of a degree or for specialist
-              technical roles. </p>
-            <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
-            <div class="cta"> <a href="/contact.html" class="btn
-                btn-primary"> Apply Now </a> </div>
-            <h3 style="margin-top:14px;">Example Core Units</h3>
-            <ul>
-              <li><strong>Cyber Security</strong> – organisational
-                security, industry standards and recommending
-                improvements to secure networks and systems.</li>
-              <li><strong>Network Security and Cryptography</strong> –
-                securing network infrastructures and applying encryption
-                principles.</li>
-              <li><strong>Penetration Testing and Ethical Hacking</strong>
-                – concepts, tools and methods used to test system
-                defences in a controlled way.</li>
-              <li><strong>Secure Software Development</strong> –
-                designing and building applications with security in
-                mind from the outset.</li>
-              <li><strong>Incident Response and Digital Forensics</strong>
-                – responding to security incidents and gathering digital
-                evidence appropriately.</li>
-            </ul>
-            <h3>Programme Information</h3>
-            <ul class="meta-list">
-              <li><strong>Level:</strong> 5 – approximately equivalent
-                to the second year of a UK degree.</li>
-              <li><strong>Mode:</strong> Classroom teaching, labs and
-                project-based learning.</li>
-              <li><strong>Assessment:</strong> Larger projects,
-                technical reports and scenario-based tasks.</li>
-              <li><strong>Typical Tuition Fee:</strong> €1,500</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-      <!-- ENTRY REQUIREMENTS AT BOTTOM -->
-      <div class="content-wrapper" style="padding-top:10px;">
-        <div class="box" style="width:100%;">
-          <h2>Entry Requirements – Level 4 &amp; 5 Computing (Cyber
-            Security)</h2>
-          <ul>
-            <li><strong>Entry to Level 4:</strong> Normally a Level 3
-              qualification in a related subject (e.g. IT, Computing,
-              Cyber Security) or relevant experience.</li>
-            <li><strong>Entry to Level 5:</strong> Completion of a
-              suitable Level 4 Computing qualification.</li>
-            <li><strong>Language:</strong> Teaching mainly in English;
-              support is available for local learners who need to
-              strengthen their academic English.</li>
-            <li><strong>Profile:</strong> Interest in Computing and
-              Cyber Security, willingness to engage with practical lab
-              work and independent study.</li>
-          </ul>
-          <a href="/contact.html" class="btn btn-secondary"
-            style="margin-top:8px;"> Discuss your entry profile </a> </div>
-      </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+      <h3 style="margin-top:14px;">Example Core Units</h3>
+      <ul>
+        <li><strong>Computer Systems, Networks and Security</strong> – hardware, operating systems,
+          networking principles and risks to systems and data.</li>
+        <li><strong>Programming and Software Development</strong> – fundamental programming constructs
+          and software design techniques.</li>
+        <li><strong>Database Design and Development</strong> – designing and implementing relational
+          databases for realistic scenarios.</li>
+        <li><strong>Web Technologies</strong> – client- and server-side concepts for delivering secure
+          web applications.</li>
+        <li><strong>Cyber Security Concepts</strong> – threats, vulnerabilities, risk assessment and
+          incident response at an introductory level.</li>
+      </ul>
+      <h3>Programme Information</h3>
+      <ul class="meta-list">
+        <li><strong>Level:</strong> 4 – approximately equivalent to the first year of a UK degree.</li>
+        <li><strong>Mode:</strong> Classroom-based with lab work and guided independent study.</li>
+        <li><strong>Assessment:</strong> Assignments, practical projects and case-study work.</li>
+        <li><strong>Typical Tuition Fee:</strong> €1,500</li>
+      </ul>
     </div>
-    <!-- MOBILE NAV SCRIPT -->
-    <script>
-    (function() {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navList = document.querySelector('.main-nav ul');
+  </main>
 
-      if (navToggle && navList) {
-        const updateMenu = (expanded) => {
-          navList.classList.toggle('collapsed', !expanded);
-          navList.classList.toggle('open', expanded);
-          navToggle.setAttribute('aria-expanded', String(expanded));
-        };
+  <!-- RIGHT COLUMN: LEVEL 5 -->
+  <aside class="sidebar">
+    <div class="box">
+      <h2>ATHE Level 5 – Extended Diploma in Computing <br></h2>
+      <h2>(Cyber Security Route) <span class="tag">Level 5</span>
+        <span class="tag">Year 2 University-Level</span><br>
+      </h2>
+      <p style="margin-top:8px;">Level 5 builds on the foundations from Level 4 and focuses on more
+        advanced topics such as network security, cyber defence, penetration testing and secure
+        systems development, preparing learners for direct entry to the final year of a degree or for
+        specialist technical roles.
+      </p>
+      <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
+      <div class="cta">
+        <a href="/contact.html" class="btn btn-primary"> Apply Now </a>
+      </div>
+      <h3 style="margin-top:14px;">Example Core Units</h3>
+      <ul>
+        <li><strong>Cyber Security</strong> – organisational security, industry standards and
+          recommending improvements to secure networks and systems.</li>
+        <li><strong>Network Security and Cryptography</strong> – securing network infrastructures and
+          applying encryption principles.</li>
+        <li><strong>Penetration Testing and Ethical Hacking</strong> – concepts, tools and methods used
+          to test system defences in a controlled way.</li>
+        <li><strong>Secure Software Development</strong> – designing and building applications with
+          security in mind from the outset.</li>
+        <li><strong>Incident Response and Digital Forensics</strong> – responding to security incidents
+          and gathering digital evidence appropriately.</li>
+      </ul>
+      <h3>Programme Information</h3>
+      <ul class="meta-list">
+        <li><strong>Level:</strong> 5 – approximately equivalent to the second year of a UK degree.</li>
+        <li><strong>Mode:</strong> Classroom teaching, labs and project-based learning.</li>
+        <li><strong>Assessment:</strong> Larger projects, technical reports and scenario-based tasks.</li>
+        <li><strong>Typical Tuition Fee:</strong> €1,500</li>
+      </ul>
+    </div>
+  </aside>
+</div>
 
-        // Start collapsed on mobile
-        updateMenu(false);
-
-        navToggle.addEventListener('click', () => {
-          const shouldExpand = navList.classList.contains('collapsed');
-          updateMenu(shouldExpand);
-        });
-      }
-    })();
-    </script>
-  </body>
-</html>
+<!-- ENTRY REQUIREMENTS AT BOTTOM -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <div class="box" style="width:100%;">
+    <h2>Entry Requirements – Level 4 &amp; 5 Computing (Cyber Security)</h2>
+    <ul>
+      <li><strong>Entry to Level 4:</strong> Normally a Level 3 qualification in a related subject
+        (e.g. IT, Computing, Cyber Security) or relevant experience.</li>
+      <li><strong>Entry to Level 5:</strong> Completion of a suitable Level 4 Computing qualification.</li>
+      <li><strong>Language:</strong> Teaching mainly in English; support is available for local learners
+        who need to strengthen their academic English.</li>
+      <li><strong>Profile:</strong> Interest in Computing and Cyber Security, willingness to engage with
+        practical lab work and independent study.</li>
+    </ul>
+    <a href="/contact.html" class="btn btn-secondary" style="margin-top:8px;">
+      Discuss your entry profile
+    </a>
+  </div>
+</div>
