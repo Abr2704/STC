@@ -336,12 +336,21 @@
               process your application. Fields marked with <span
                 style="color:#c00">*</span> are required. </p>
             <p style="margin-top:8px;font-size:13px;color:#555;"> This
-              form is submitted securely via FormSubmit. You can upload
-              your ID and qualification documents in Step 1. </p>
+              form no longer uses FormSubmit (it cannot keep your file
+              uploads or start a Paysera payment). Everything is now
+              handled on our own secure PHP server instead. </p>
             <p style="margin-top:4px;font-size:13px;color:#555;"> Step 1
-              combines your course choice, personal/contact details, and
-              document uploads. Step 2 covers your Paysera payment
-              reference and declaration. </p>
+              securely uploads your documents. After you submit, Step 2
+              redirects you to Paysera to pay the €250 application fee.
+              We match your payment automatically—no manual reference or
+              separate Paysera form is needed. </p>
+              form submits directly to our admissions server. You can
+              upload your ID and qualification documents in Step 1, then
+              complete payment in Step 2. </p>
+            <p style="margin-top:4px;font-size:13px;color:#555;"> After
+              you submit, you'll be redirected to Paysera to pay the
+              €250 application fee. We match your payment automatically—no
+              manual reference needed. </p>
           </div>
           <style>
       /* Apply Now form styling (page-specific) */
@@ -481,17 +490,13 @@
       }
     </style>
           <div class="box">
-            <!-- IMPORTANT: Replace YOUR_FORMSUBMIT_URL_HERE with your actual FormSubmit endpoint -->
+            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
             <form class="apply-form"
-              action="https://formsubmit.co/YOUR_FORMSUBMIT_URL_HERE"
+              action="/libwebtopay/apply-submit.php"
+            <!-- The application now posts to the PaySera-enabled PHP handler -->
+            <form class="apply-form"
+              action="https://yourserver.com/libwebtopay/apply-submit.php"
               method="POST" enctype="multipart/form-data">
-              <!-- FormSubmit config --> <input name="_captcha"
-                value="false" type="hidden"> <input name="_template"
-                value="table" type="hidden"> <input name="_subject"
-                value="New Application - Specialist Technical College"
-                type="hidden"> <input name="_next"
-                value="https://www.specialist.college/thank-you.html"
-                type="hidden">
               <div class="step-indicator"> Step <strong><span
                     id="step-current">1</span></strong> of <strong><span
                     id="step-total">2</span></strong> </div>
@@ -595,30 +600,14 @@
                   <button type="button" class="btn btn-primary"
                     data-next="">Next »</button> </div>
               </fieldset>
-              <!-- STEP 2: PAYMENT + DECLARATION -->
-              <fieldset class="form-step" data-step="2"> <legend>Payment</legend>
-                <p class="section-note"> A €250 application payment is
-                  required and will be offset against your tuition fee.
-                  Please complete the payment securely via Paysera using
-                  the link below and paste your Paysera payment
-                  reference so we can match your application. </p>
-                <div class="form-row">
-                  <div class="form-group"> <a class="btn btn-primary"
-                      href="https://www.paysera.com/pay/?proj=APPLICATION_FEE"
-                      target="_blank" rel="noopener"> Pay €250
-                      Application Fee (Paysera) </a> <small>After
-                      paying, copy the Paysera payment reference/ID and
-                      enter it below.</small> </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="payment_reference">Paysera Payment Reference
-                      <span style="color:#c00">*</span></label> <input
-                      id="payment_reference" name="payment_reference"
-                      required="" type="text"> <small>The Paysera
-                      payment reference helps us confirm your fee has
-                      been received.</small> </div>
-                </div>
+                <!-- STEP 2: PAYMENT + DECLARATION -->
+                <fieldset class="form-step" data-step="2"> <legend>Payment</legend>
+                  <p class="section-note"> A €250 application payment is
+                    required and will be offset against your tuition fee.
+                    When you click Submit, you'll be taken to Paysera to
+                    complete the payment securely. You won't need to copy
+                    or paste any payment reference—we'll match it
+                    automatically. </p>
                 <legend style="margin-top:15px;">Declaration</legend>
                 <div class="form-row">
                   <div class="form-group"> <label
