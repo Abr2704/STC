@@ -344,6 +344,13 @@
               redirects you to Paysera to pay the €250 application fee.
               We match your payment automatically—no manual reference or
               separate Paysera form is needed. </p>
+              form submits directly to our admissions server. You can
+              upload your ID and qualification documents in Step 1, then
+              complete payment in Step 2. </p>
+            <p style="margin-top:4px;font-size:13px;color:#555;"> After
+              you submit, you'll be redirected to Paysera to pay the
+              €250 application fee. We match your payment automatically—no
+              manual reference needed. </p>
           </div>
           <style>
       /* Apply Now form styling (page-specific) */
@@ -486,6 +493,9 @@
             <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
             <form class="apply-form"
               action="/libwebtopay/apply-submit.php"
+            <!-- The application now posts to the PaySera-enabled PHP handler -->
+            <form class="apply-form"
+              action="https://yourserver.com/libwebtopay/apply-submit.php"
               method="POST" enctype="multipart/form-data">
               <div class="step-indicator"> Step <strong><span
                     id="step-current">1</span></strong> of <strong><span
