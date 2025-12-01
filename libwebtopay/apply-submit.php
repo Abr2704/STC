@@ -82,6 +82,10 @@ function getBaseUrl(): string
 }
 
 try {
+    if (PROJECT_ID <= 0 || PROJECT_PASSWORD === 'CHANGE_ME') {
+        throw new RuntimeException('Paysera credentials are not configured yet. Please set PROJECT_ID and PROJECT_PASSWORD in libwebtopay/config.php.');
+    }
+
     $firstName = readField('first_names');
     $lastName = readField('surname');
     $email = readField('email');
@@ -109,6 +113,7 @@ try {
 
     $baseUrl = getBaseUrl();
 
+    $paymentUrl = WebToPay::buildRequestUrl([
     WebToPay::redirectToPayment([
         'projectid' => PROJECT_ID,
         'sign_password' => PROJECT_PASSWORD,
@@ -128,6 +133,20 @@ try {
         'version' => WebToPay::VERSION,
         'payment' => 'card',
     ]);
+    header('Location: ' . $paymentUrl);
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=<?php echo htmlspecialchars($paymentUrl, ENT_QUOTES, 'UTF-8'); ?>">
+    <title>Redirecting to Paysera…</title>
+</head>
+<body>
+    <p>We are redirecting you to Paysera to complete your payment. If you are not redirected automatically, <a href="<?php echo htmlspecialchars($paymentUrl, ENT_QUOTES, 'UTF-8'); ?>">click here</a>.</p>
+</body>
+</html>
+<?php
 } catch (Exception $e) {
     http_response_code(500);
     echo 'Error: ' . htmlspecialchars($e->getMessage());

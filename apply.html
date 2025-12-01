@@ -336,6 +336,14 @@
               process your application. Fields marked with <span
                 style="color:#c00">*</span> are required. </p>
             <p style="margin-top:8px;font-size:13px;color:#555;"> This
+              form no longer uses FormSubmit (it cannot keep your file
+              uploads or start a Paysera payment). Everything is now
+              handled on our own secure PHP server instead. </p>
+            <p style="margin-top:4px;font-size:13px;color:#555;"> Step 1
+              securely uploads your documents. After you submit, Step 2
+              redirects you to Paysera to pay the €250 application fee.
+              We match your payment automatically—no manual reference or
+              separate Paysera form is needed. </p>
               form submits directly to our admissions server. You can
               upload your ID and qualification documents in Step 1, then
               complete payment in Step 2. </p>
@@ -482,6 +490,9 @@
       }
     </style>
           <div class="box">
+            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
+            <form class="apply-form"
+              action="/libwebtopay/apply-submit.php"
             <!-- The application now posts to the PaySera-enabled PHP handler -->
             <form class="apply-form"
               action="https://yourserver.com/libwebtopay/apply-submit.php"
