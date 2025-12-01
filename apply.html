@@ -482,9 +482,9 @@
       }
     </style>
           <div class="box">
-            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
+            <!-- The application now posts to the PaySera-enabled PHP handler -->
             <form class="apply-form"
-              action="/libwebtopay/apply-submit.php"
+              action="https://yourserver.com/libwebtopay/apply-submit.php"
               method="POST" enctype="multipart/form-data">
               <div class="step-indicator"> Step <strong><span
                     id="step-current">1</span></strong> of <strong><span
