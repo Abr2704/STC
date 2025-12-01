@@ -481,17 +481,10 @@
       }
     </style>
           <div class="box">
-            <!-- IMPORTANT: Replace YOUR_FORMSUBMIT_URL_HERE with your actual FormSubmit endpoint -->
+            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the PaySera payment step.</p>
             <form class="apply-form"
-              action="https://formsubmit.co/YOUR_FORMSUBMIT_URL_HERE"
+              action="/libwebtopay/apply-submit.php"
               method="POST" enctype="multipart/form-data">
-              <!-- FormSubmit config --> <input name="_captcha"
-                value="false" type="hidden"> <input name="_template"
-                value="table" type="hidden"> <input name="_subject"
-                value="New Application - Specialist Technical College"
-                type="hidden"> <input name="_next"
-                value="https://www.specialist.college/thank-you.html"
-                type="hidden">
               <div class="step-indicator"> Step <strong><span
                     id="step-current">1</span></strong> of <strong><span
                     id="step-total">2</span></strong> </div>
