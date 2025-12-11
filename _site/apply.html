@@ -408,20 +408,6 @@
         resize: vertical;
       }
 
-      .apply-form .inline-options {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        font-size: 14px;
-      }
-
-      .apply-form .inline-options label {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        margin-bottom: 4px;
-      }
-
       .apply-form small {
         display: block;
         font-size: 12px;
@@ -476,11 +462,10 @@
                   action="https://formsubmit.co/info@specialist.college"
                   method="POST">
                   <input type="hidden" name="_next" id="formsubmit-next"
-                    value="https://specialist.college/libwebtopay/accept.php?submitted=1">
+                    value="https://www.specialist.college/pay.html">
                   <input type="hidden" name="_subject"
                     value="New STC application submission">
                   <input type="hidden" name="_captcha" value="false">
-                  <input type="hidden" name="orderid" id="orderid" value="">
 
                   <fieldset>
                     <legend>Course Information</legend>
@@ -535,20 +520,6 @@
                           type="text"> </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group"> <label>Gender <span
-                            style="color:#c00">*</span></label>
-                        <div class="inline-options"> <label for="gender_male"> <input
-                              id="gender_male" name="gender" required=""
-                              type="radio" value="male"> Male </label> <label
-                            for="gender_female"> <input id="gender_female"
-                              name="gender" required="" type="radio"
-                              value="female"> Female </label> <label
-                            for="gender_other"> <input id="gender_other"
-                              name="gender" required="" type="radio"
-                              value="other"> Prefer to self-describe </label> </div>
-                      </div>
-                    </div>
-                    <div class="form-row">
                       <div class="form-group"> <label for="contact_number">Contact
                           Number (including country code) <span
                             style="color:#c00">*</span></label> <input
@@ -565,20 +536,10 @@
                     <legend>Payment</legend>
                     <p class="section-note"> A €250 application payment is
                       required and will be offset against your tuition fee.
-                      After submitting the form, you'll be taken to Paysera
-                      to complete the payment securely. We will only send
-                      your application details to admissions after you finish
-                      payment. You won't need to copy or paste any payment
-                      reference—we'll match it automatically. </p>
-                    <p class="section-note" style="margin-top:8px;"> Your
-                      Paysera project ID <strong>254450</strong> is used to generate a
-                      signed redirect on the server (your secret password never
-                      leaves the backend). We generate a fresh order ID,
-                      request a signed Paysera link from the server, and send
-                      you to Paysera immediately after the FormSubmit email is
-                      sent. The Paysera link is only created when the form is
-                      valid and submitted, so payment and submission stay
-                      together. </p>
+                      After submitting the form, you'll be redirected to our
+                      payment page where you can continue to the secure
+                      Paysera checkout. We'll match the payment to your
+                      application automatically. </p>
                   </fieldset>
 
                   <div class="form-actions"> <button type="reset"
@@ -615,210 +576,6 @@
         <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
       </footer>
     </div>
-    <script>
-      (function() {
-        const form = document.querySelector('.apply-form');
-        const nextField = document.getElementById('formsubmit-next');
-        const orderField = document.getElementById('orderid');
-        const submitButton = document.getElementById('submit-paysera');
-        const pendingKey = 'stcPendingApplication';
-
-        if (!form || !nextField) {
-          return;
-        }
-
-        const normalizeBase = (base) => (base || '').replace(/\/+$/, '').replace(/\/\_site$/, '');
-
-        async function fetchPayseraUrl(formData, orderId) {
-          const payload = {
-            orderId,
-            email: formData.get('email') || '',
-            fullName: formData.get('full_name') || '',
-            phone: formData.get('contact_number') || '',
-          };
-
-          const endpointBases = Array.from(new Set([
-            'https://specialist.college',
-            'https://www.specialist.college',
-            normalizeBase(window.location.origin),
-          ].filter(Boolean)));
-
-          async function callEndpoint(method, baseUrl) {
-            let url = `${baseUrl}/libwebtopay/sign.php`;
-            const options = { method, headers: { Accept: 'application/json, text/plain;q=0.9,*/*;q=0.8' } };
-
-            if (method === 'POST') {
-              options.headers['Content-Type'] = 'application/json';
-              options.body = JSON.stringify(payload);
-            } else {
-              const query = new URLSearchParams({ ...payload, format: 'text' }).toString();
-              url = `${url}?${query}`;
-            }
-
-            try {
-              const response = await fetch(url, options);
-              return { response, url, error: null };
-            } catch (error) {
-              return { response: null, url, error };
-            }
-          }
-
-          async function parseError(response) {
-            if (!response) {
-              return 'Network error contacting Paysera signing endpoint';
-            }
-
-            let message = '';
-            const contentType = response.headers.get('content-type') || '';
-
-            if (contentType.includes('application/json')) {
-              const error = await response.json().catch(() => null);
-              message = error && typeof error.error === 'string' ? error.error : '';
-            }
-
-            if (!message) {
-              const body = await response.text().catch(() => '');
-              message = body.trim();
-            }
-
-            const fallback = `Unable to generate Paysera link (status ${response.status})`;
-            return message || fallback;
-          }
-
-          async function parseResponse(response) {
-            const contentType = response.headers.get('content-type') || '';
-            let data = null;
-            let textBody = '';
-
-            if (contentType.includes('application/json')) {
-              data = await response.json().catch(() => null);
-            }
-
-            if (!data) {
-              textBody = await response.text().catch(() => '');
-              if (textBody) {
-                const trimmed = textBody.trim();
-                if (/^https?:\/\//i.test(trimmed)) {
-                  return { url: trimmed, rawPhp: false, detail: '' };
-                }
-
-                try {
-                  data = JSON.parse(trimmed);
-                } catch (error) {
-                  // leave data null
-                }
-              }
-            }
-
-            if (data && data.url) {
-              return { url: data.url, rawPhp: false, detail: '' };
-            }
-
-            const rawPhp = textBody.trim().startsWith('<?php');
-            const detail = textBody ? `Missing Paysera URL in response: ${textBody.slice(0, 200)}` : '';
-            return { url: '', rawPhp, detail };
-          }
-
-          let lastError = '';
-
-          for (const base of endpointBases) {
-            let { response, error, url } = await callEndpoint('POST', base);
-
-            if (error) {
-              lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
-              continue;
-            }
-
-            if (!response.ok && response.status === 405) {
-              // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
-              ({ response, error, url } = await callEndpoint('GET', base));
-
-              if (error) {
-                lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
-                continue;
-              }
-            }
-
-            if (!response) {
-              lastError = 'Network error contacting Paysera signing endpoint';
-              continue;
-            }
-
-            if (!response.ok) {
-              lastError = await parseError(response);
-              continue;
-            }
-
-            const parsed = await parseResponse(response);
-
-            if (parsed.url) {
-              return parsed.url;
-            }
-
-            if (parsed.rawPhp) {
-              lastError = 'The payment link service responded with raw PHP. Trying another endpoint…';
-              continue;
-            }
-
-            lastError = parsed.detail || 'Missing Paysera URL in response';
-          }
-
-          throw new Error(lastError || 'Missing Paysera URL in response');
-        }
-
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-          }
-
-          if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting and redirecting to Paysera…';
-          }
-
-          const orderId = `STC-${Date.now()}`;
-          const formData = new FormData(form);
-          const origin = normalizeBase(window.location && window.location.origin ? window.location.origin : '');
-          const nextUrl = `${origin || 'https://specialist.college'}/libwebtopay/accept.php?submitted=1`;
-
-          try {
-            const payseraUrl = await fetchPayseraUrl(formData, orderId);
-            if (orderField) orderField.value = orderId;
-            nextField.value = nextUrl;
-
-            const serialized = [];
-            formData.forEach((value, key) => {
-              serialized.push([key, value]);
-            });
-
-            const payload = {
-              action: form.action,
-              method: form.method || 'POST',
-              next: nextUrl,
-              orderId,
-              fields: serialized,
-            };
-
-            try {
-              sessionStorage.setItem(pendingKey, JSON.stringify(payload));
-            } catch (storageError) {
-              console.warn('Could not cache pending application for post-payment submission', storageError);
-            }
-
-            window.location.href = payseraUrl;
-          } catch (error) {
-            alert(error.message || 'Could not generate Paysera link. Please try again.');
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = 'Submit Application & Pay €250';
-            }
-          }
-        });
-      })();
-    </script>
     <script>
     (function() {
       const navToggle = document.querySelector('.nav-toggle');
