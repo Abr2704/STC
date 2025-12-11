@@ -605,12 +605,25 @@
           });
 
           if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(error.error || 'Unable to generate Paysera link');
+            let message = '';
+            const contentType = response.headers.get('content-type') || '';
+
+            if (contentType.includes('application/json')) {
+              const error = await response.json().catch(() => null);
+              message = error && typeof error.error === 'string' ? error.error : '';
+            }
+
+            if (!message) {
+              const body = await response.text().catch(() => '');
+              message = body.trim();
+            }
+
+            const fallback = `Unable to generate Paysera link (status ${response.status})`;
+            throw new Error(message || fallback);
           }
 
-          const data = await response.json();
-          if (!data.url) {
+          const data = await response.json().catch(() => null);
+          if (!data || !data.url) {
             throw new Error('Missing Paysera URL in response');
           }
 
