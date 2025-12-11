@@ -114,7 +114,6 @@ try {
     $baseUrl = getBaseUrl();
 
     $paymentUrl = WebToPay::buildRequestUrl([
-    WebToPay::redirectToPayment([
         'projectid' => PROJECT_ID,
         'sign_password' => PROJECT_PASSWORD,
         'orderid' => $orderId,
