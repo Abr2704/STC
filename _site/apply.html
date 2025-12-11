@@ -633,8 +633,14 @@
             phone: formData.get('contact_number') || '',
           };
 
-          async function callEndpoint(method) {
-            let url = '/libwebtopay/sign.php';
+          const endpointBases = Array.from(new Set([
+            window.location.origin || '',
+            'https://specialist.college',
+            'https://www.specialist.college'
+          ].filter(Boolean)));
+
+          async function callEndpoint(method, baseUrl) {
+            let url = `${baseUrl}/libwebtopay/sign.php`;
             const options = { method, headers: { Accept: 'application/json, text/plain;q=0.9,*/*;q=0.8' } };
 
             if (method === 'POST') {
@@ -667,51 +673,70 @@
             return message || fallback;
           }
 
-          let { response } = await callEndpoint('POST');
+          async function parseResponse(response) {
+            const contentType = response.headers.get('content-type') || '';
+            let data = null;
+            let textBody = '';
 
-          if (!response.ok && response.status === 405) {
-            // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
-            ({ response } = await callEndpoint('GET'));
-          }
+            if (contentType.includes('application/json')) {
+              data = await response.json().catch(() => null);
+            }
 
-          if (!response.ok) {
-            const message = await parseError(response);
-            throw new Error(message);
-          }
+            if (!data) {
+              textBody = await response.text().catch(() => '');
+              if (textBody) {
+                const trimmed = textBody.trim();
+                if (/^https?:\/\//i.test(trimmed)) {
+                  return { url: trimmed, rawPhp: false, detail: '' };
+                }
 
-          const contentType = response.headers.get('content-type') || '';
-          let data = null;
-          let textBody = '';
-
-          if (contentType.includes('application/json')) {
-            data = await response.json().catch(() => null);
-          }
-
-          if (!data) {
-            textBody = await response.text().catch(() => '');
-            if (textBody) {
-              const trimmed = textBody.trim();
-              if (trimmed.startsWith('<?php')) {
-                throw new Error('The payment link service is returning raw PHP. Please ensure the server runs the PHP endpoints (libwebtopay/sign.php).');
-              }
-              if (/^https?:\/\//i.test(trimmed)) {
-                return trimmed;
-              }
-
-              try {
-                data = JSON.parse(trimmed);
-              } catch (error) {
-                // leave data null
+                try {
+                  data = JSON.parse(trimmed);
+                } catch (error) {
+                  // leave data null
+                }
               }
             }
+
+            if (data && data.url) {
+              return { url: data.url, rawPhp: false, detail: '' };
+            }
+
+            const rawPhp = textBody.trim().startsWith('<?php');
+            const detail = textBody ? `Missing Paysera URL in response: ${textBody.slice(0, 200)}` : '';
+            return { url: '', rawPhp, detail };
           }
 
-          if (data && data.url) {
-            return data.url;
+          let lastError = '';
+
+          for (const base of endpointBases) {
+            let { response } = await callEndpoint('POST', base);
+
+            if (!response.ok && response.status === 405) {
+              // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
+              ({ response } = await callEndpoint('GET', base));
+            }
+
+            if (!response.ok) {
+              lastError = await parseError(response);
+              continue;
+            }
+
+            const parsed = await parseResponse(response);
+
+            if (parsed.url) {
+              return parsed.url;
+            }
+
+            if (parsed.rawPhp) {
+              lastError = 'The payment link service responded with raw PHP. Trying another endpoint…';
+              continue;
+            }
+
+            lastError = parsed.detail || 'Missing Paysera URL in response';
           }
 
-          const detail = textBody ? `: ${textBody.slice(0, 200)}` : '';
-          throw new Error(`Missing Paysera URL in response${detail}`);
+          throw new Error(lastError || 'Missing Paysera URL in response');
         }
 
         form.addEventListener('submit', async (event) => {
