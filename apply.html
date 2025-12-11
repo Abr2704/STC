@@ -608,8 +608,13 @@
           const endpointBases = Array.from(new Set([
             window.location.origin || '',
             'https://specialist.college',
-            'https://www.specialist.college'
-          ].filter(Boolean)));
+            'https://www.specialist.college',
+            'http://specialist.college',
+            'http://www.specialist.college'
+          ].filter(Boolean))).flatMap((base) => [
+            base,
+            base ? `${base}/_site` : ''
+          ]).filter(Boolean);
 
           async function callEndpoint(method, baseUrl) {
             let url = `${baseUrl}/libwebtopay/sign.php`;
