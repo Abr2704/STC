@@ -232,6 +232,110 @@
       text-decoration: none;
     }
 
+    /* INLINE APPLICATION FORM (COURSE PAGES) */
+    .course-apply {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 38, 82, 0.08);
+    }
+
+    .course-apply.hidden { display: none; }
+
+    .apply-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .apply-form .form-stage {
+      border: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      opacity: 1;
+    }
+
+    .apply-form .form-stage.is-hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    .apply-form .form-stage.is-visible {
+      display: block;
+      animation: fadeInUp 0.35s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .apply-form legend {
+      font-weight: bold;
+      font-size: 16px;
+      color: #0c3f74;
+      margin-bottom: 6px;
+    }
+
+    .apply-form .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .apply-form .form-group {
+      flex: 1 1 200px;
+      min-width: 170px;
+      margin-bottom: 2px;
+    }
+
+    .apply-form label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+      color: #0c3f74;
+      letter-spacing: 0.1px;
+    }
+
+    .apply-form input,
+    .apply-form select,
+    .apply-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #c8d2e5;
+      font-size: 14px;
+      background: linear-gradient(180deg, #f9fbff 0%, #f4f7fb 100%);
+      box-shadow: inset 0 1px 2px rgba(12, 63, 116, 0.08);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus,
+    .apply-form textarea:focus {
+      outline: none;
+      border-color: #0c3f74;
+      box-shadow: 0 0 0 3px rgba(12, 63, 116, 0.12);
+      background: #ffffff;
+    }
+
+    .apply-form input[readonly] { background: #eef2f8; }
+
+    .apply-form .section-note {
+      font-size: 13px;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .form-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .form-actions .btn { min-width: 140px; text-align: center; }
+
     /* FOOTER */
     .site-footer {
       background: #f4f4f4;
@@ -367,6 +471,62 @@
           updateMenu(shouldExpand);
         });
       }
+
+      const applyButtons = document.querySelectorAll('[data-apply-target]');
+
+      applyButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.dataset.applyTarget);
+
+          if (!target) return;
+
+          target.classList.toggle('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const courseForms = document.querySelectorAll('.course-apply .apply-form');
+
+      const stageIsComplete = (stage) => {
+        const fields = stage.querySelectorAll('input, select, textarea');
+
+        for (const field of fields) {
+          if (field.required && !field.value.trim()) {
+            return false;
+          }
+
+          if (field.type === 'email' && field.value && !field.validity.valid) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      const refreshStages = (form) => {
+        const stages = Array.from(form.querySelectorAll('.form-stage'));
+        let unlocked = true;
+
+        stages.forEach((stage) => {
+          if (unlocked) {
+            stage.classList.add('is-visible');
+            stage.classList.remove('is-hidden');
+          } else {
+            stage.classList.add('is-hidden');
+            stage.classList.remove('is-visible');
+          }
+
+          if (!stageIsComplete(stage)) {
+            unlocked = false;
+          }
+        });
+      };
+
+      courseForms.forEach((form) => {
+        refreshStages(form);
+        form.addEventListener('input', () => refreshStages(form));
+        form.addEventListener('change', () => refreshStages(form));
+      });
     })();
   </script>
 </body>

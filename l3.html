@@ -1,440 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Level 3 (A-Level Equivalent) - Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+---
+layout: default
+title: Level 3 (A-Level Equivalent)
+---
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #e4e8f0;
-      color: #333;
-      line-height: 1.5;
-    }
+<!-- FULL-WIDTH INTRO BOX -->
+<div class="box highlight" style="margin:20px;">
+  <h1>Level 3 Certificate and Diploma – A-Level Equivalents</h1>
+  <p>
+    Successful completion of Level 3 can lead directly into our Level 4 &amp; 5 university-level programmes in Computing and
+    Cyber Security, and then on to a final year BSc (Top-Up) with partner universities. They are designed for learners who want
+    to build strong foundations in Computing (Cyber Security) before progressing to higher-level study.
+  </p>
+</div>
 
-    a { color: #0057a3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .page-wrapper {
-      max-width: 1080px;
-      margin: 20px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
-
-    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
-    .site-header {
-      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
-      color: #ffffff;
-      padding: 15px 20px;
-      text-align: left;
-    }
-
-    .site-header-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .site-logo {
-      height: 75px;
-      width: auto;
-      max-width: 100%;
-    }
-
-    .site-subtitle {
-      font-size: 14px;
-      opacity: 0.95;
-      color: #ffffff;
-      text-align: left;
-    }
-
-    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
-    .main-nav {
-      background: #0c3f74;
-      border-bottom: 3px solid #f7c948;
-      position: relative;
-    }
-
-    .main-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      transition: max-height 0.3s ease;
-    }
-
-    .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 14px;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    .main-nav a:hover,
-    .main-nav a.active {
-      background: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 16px;
-      background: transparent;
-      border: 0;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .nav-toggle:focus {
-      outline: 2px solid #f7c948;
-      outline-offset: 2px;
-    }
-
-    .nav-toggle .hamburger {
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      position: relative;
-    }
-
-    .nav-toggle .hamburger::before,
-    .nav-toggle .hamburger::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-toggle .hamburger::before { top: -6px; }
-    .nav-toggle .hamburger::after { top: 6px; }
-
-    /* CONTENT AREA */
-    .content-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    /* Make the two columns evenly spread (50/50) */
-    .main-content {
-      flex: 1 1 50%;
-      min-width: 260px;
-    }
-
-    .sidebar {
-      flex: 1 1 50%;
-      min-width: 260px;
-    }
-
-    .box {
-      background: #f7f9fc;
-      border: 1px solid #d4dce8;
-      border-radius: 6px;
-      padding: 18px 20px;
-      margin-bottom: 10px; /* slightly reduced to bring sections closer */
-    }
-
-    .box h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #0c3f74;
-    }
-
-    .box h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #0c3f74;
-    }
-
-    .box ul {
-      list-style: disc;
-      padding-left: 20px;
-      margin-top: 5px;
-    }
-
-    .highlight {
-      background: #fffbe6;
-      border-color: #f7c948;
-    }
-
-    .subject-links a {
-      display: inline-block;
-      margin: 3px 4px 3px 0;
-      padding: 6px 10px;
-      border-radius: 3px;
-      border: 1px solid #d4dce8;
-      background: #ffffff;
-      font-size: 13px;
-    }
-
-    .subject-links a:hover {
-      background: #f7c948;
-      border-color: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: #0c3f74;
-      color: #ffffff;
-      border-color: #0c3f74;
-    }
-
-    .btn-primary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: #ffffff;
-      color: #0c3f74;
-      border-color: #d4dce8;
-    }
-
-    .btn-secondary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    .site-footer {
-      background: #f4f4f4;
-      border-top: 1px solid #d9d9d9;
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 840px) {
-      .page-wrapper {
-        margin: 12px;
-        border-radius: 8px;
-      }
-
-      .site-header {
-        padding: 12px 16px;
-        text-align: center;
-      }
-
-      .site-header-inner {
-        align-items: center;
-      }
-
-      .site-logo {
-        height: auto;
-        max-height: 78px;
-        max-width: min(360px, 100%);
-      }
-
-      .content-wrapper {
-        flex-direction: column;
-        padding: 16px;
-      }
-
-      .sidebar {
-        min-width: 0;
-      }
-
-      .main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .main-nav ul.collapsed {
-        display: none;
-      }
-
-      .main-nav ul.open {
-        display: flex;
-      }
-
-      .main-nav li {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .main-nav a {
-        padding: 12px 16px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-    }
-
-  </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav"> <button class="nav-toggle"
-          aria-expanded="false" aria-controls="main-menu"> Menu <span
-            class="hamburger" aria-hidden="true"></span> </button>
-        <ul id="main-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- FULL-WIDTH INTRO BOX (CLOSER TO COURSES) -->
-      <div class="box highlight" style="margin:15px 20px 10px 20px;">
-        <h2>Level 3 Certificate and Diploma – A-Level Equivalents</h2>
-        <p> Successful completion of Level 3 can lead directly into our
-          Level 4 &amp; 5 university-level programmes in Computing and
-          Cyber Security, and then on to a final year BSc (Top-Up) with
-          partner universities. They are designed for learners who want
-          to build strong foundations in Computing (Cyber Security)
-          before progressing to higher-level study. </p>
+<!-- TWO-COLUMN LAYOUT -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <!-- LEFT COLUMN -->
+  <main class="main-content">
+    <div class="box">
+      <h2>ATHE Level 3 Certificate (Intro to Cyber Security)</h2>
+      <p>
+        This Level 3 qualification introduces the core ideas of cyber security: how online systems can be attacked, how
+        information can be protected, and how to keep yourself and others safe when working online.
+      </p>
+      <div class="cta">
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-l3-cyber">Apply Now</button>
       </div>
-      <!-- TWO-COLUMN LAYOUT (CLOSER TO INTRO BOX) -->
-      <div class="content-wrapper" style="padding:10px 20px 10px 20px;">
-        <!-- LEFT COLUMN -->
-        <main class="main-content">
-          <!-- ATHE L3 INTRO TO CYBER SECURITY -->
-          <div class="box">
-            <h2>ATHE Level 3 Certificate (Intro to Cyber Security)</h2>
-            <p> This Level 3 qualification introduces the core ideas of
-              cyber security: how online systems can be attacked, how
-              information can be protected, and how to keep yourself and
-              others safe when working online. </p>
-            <!-- APPLY BUTTON MOVED DIRECTLY AFTER INTRO PARAGRAPH -->
-            <div style="margin:10px 0 12px 0;"> <a href="/contact.html"
-                class="btn btn-primary"> Apply Now</a> </div>
-            <h3>Topics</h3>
-            <ul>
-              <li>Cyber threats, attacks &amp; vulnerabilities.</li>
-              <li>Safe online behaviour &amp; authentication.</li>
-              <li>Basic security on devices &amp; networks.</li>
-              <li>Risk management in daily digital use.</li>
-            </ul>
-            <h3><br>
-            </h3>
-            <h3>Tuition Fee: €400</h3>
-          </div>
-        </main>
-        <!-- RIGHT COLUMN -->
-        <aside class="sidebar">
-          <!-- BCS LEVEL 3 IT -->
-          <div class="box">
-            <h2>BCS Level 3 IT (Diploma)</h2>
-            <p> This Level 3 IT programme builds strong digital and
-              technical skills including IT systems and networks. It is
-              assessed by multiple choice test, coursework and a
-              practical.<br>
-              <br>
+      <div id="apply-l3-cyber" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-l3-cyber">Course</label>
+                <input id="course-l3-cyber" name="first_choice" type="text" value="ATHE Level 3 Certificate (Intro to Cyber Security)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_l3_cyber">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_l3_cyber" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_l3_cyber">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_l3_cyber" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_l3_cyber">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_l3_cyber" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">
+              A €250 application payment is required and will be offset against your tuition fee. After submitting the form,
+              you'll be redirected to our payment page to complete the secure Paysera checkout.
             </p>
-            <!-- APPLY BUTTON MOVED DIRECTLY AFTER INTRO PARAGRAPH -->
-            <div style="margin:10px 0 12px 0;"> <a href="/contact.html"
-                class="btn btn-primary"> Apply Now</a> </div>
-            <h3>Modules</h3>
-            <ul>
-              <li>Optimise IT Systems Performance</li>
-              <li>IT Security for Users</li>
-              <li>Improving Productivity Using IT</li>
-              <li>Set Up An IT System</li>
-              <li>Understanding the Potential of IT</li>
-            </ul>
-            <h3><br>
-            </h3>
-            <h3>Tuition Fee: €600</h3>
-            <ul>
-            </ul>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
           </div>
-        </aside>
+        </form>
       </div>
-      <!-- ENTRY REQUIREMENTS AT BOTTOM, CLOSER TO COURSES -->
-      <div class="content-wrapper" style="padding:10px 20px 20px 20px;">
-        <div class="box" style="width:100%;">
-          <h2>Entry Requirements for Level 3</h2>
-          <ul>
-            <li>Normally aged 16+ or an adult learner.</li>
-            <li>Completion of compulsory secondary education.</li>
-            <li>Interest in Computing, IT or Cyber Security.</li>
-            <li>Basic computer skills.</li>
-            <li>English GCSE and Maths GCSE or equivalent (support
-              available).</li>
-          </ul>
-          <a href="/contact.html" class="btn btn-secondary"
-            style="margin-top:8px;"> Contact to discuss further for
-            Entry Requirements </a> </div>
-      </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+      <h3 style="margin-top:14px;">Topics</h3>
+      <ul>
+        <li>Cyber threats, attacks &amp; vulnerabilities.</li>
+        <li>Safe online behaviour &amp; authentication.</li>
+        <li>Basic security on devices &amp; networks.</li>
+        <li>Risk management in daily digital use.</li>
+      </ul>
+      <h3>Tuition Fee: €400</h3>
     </div>
-    <script>
-    (function() {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navList = document.querySelector('.main-nav ul');
+  </main>
 
-      if (navToggle && navList) {
-        const updateMenu = (expanded) => {
-          navList.classList.toggle('collapsed', !expanded);
-          navList.classList.toggle('open', expanded);
-          navToggle.setAttribute('aria-expanded', String(expanded));
-        };
+  <!-- RIGHT COLUMN -->
+  <aside class="sidebar">
+    <div class="box">
+      <h2>BCS Level 3 IT (Diploma)</h2>
+      <p>
+        This Level 3 IT programme builds strong digital and technical skills including IT systems and networks. It is assessed
+        by multiple choice test, coursework and a practical.
+      </p>
+      <div class="cta">
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-l3-bcs">Apply Now</button>
+      </div>
+      <div id="apply-l3-bcs" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-l3-bcs">Course</label>
+                <input id="course-l3-bcs" name="first_choice" type="text" value="BCS Level 3 IT (Diploma)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_l3_bcs">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_l3_bcs" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_l3_bcs">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_l3_bcs" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_l3_bcs">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_l3_bcs" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">
+              A €250 application payment is required and will be offset against your tuition fee. After submitting the form,
+              you'll be redirected to our payment page to complete the secure Paysera checkout.
+            </p>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
+          </div>
+        </form>
+      </div>
+      <h3 style="margin-top:14px;">Modules</h3>
+      <ul>
+        <li>Optimise IT Systems Performance</li>
+        <li>IT Security for Users</li>
+        <li>Improving Productivity Using IT</li>
+        <li>Set Up An IT System</li>
+        <li>Understanding the Potential of IT</li>
+      </ul>
+      <h3>Tuition Fee: €600</h3>
+    </div>
+  </aside>
+</div>
 
-        updateMenu(false);
-
-        navToggle.addEventListener('click', () => {
-          const shouldExpand = navList.classList.contains('collapsed');
-          updateMenu(shouldExpand);
-        });
-      }
-    })();
-    </script>
-  </body>
-</html>
+<!-- ENTRY REQUIREMENTS -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <div class="box" style="width:100%;">
+    <h2>Entry Requirements for Level 3</h2>
+    <ul>
+      <li>Normally aged 16+ or an adult learner.</li>
+      <li>Completion of compulsory secondary education.</li>
+      <li>Interest in Computing, IT or Cyber Security.</li>
+      <li>Basic computer skills.</li>
+      <li>English GCSE and Maths GCSE or equivalent (support available).</li>
+    </ul>
+    <a href="/contact.html" class="btn btn-secondary" style="margin-top:8px;">Contact to discuss further for Entry Requirements</a>
+  </div>
+</div>
