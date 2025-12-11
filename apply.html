@@ -623,11 +623,19 @@
               url = `${url}?${query}`;
             }
 
-            const response = await fetch(url, options);
-            return { response, url };
+            try {
+              const response = await fetch(url, options);
+              return { response, url, error: null };
+            } catch (error) {
+              return { response: null, url, error };
+            }
           }
 
           async function parseError(response) {
+            if (!response) {
+              return 'Network error contacting Paysera signing endpoint';
+            }
+
             let message = '';
             const contentType = response.headers.get('content-type') || '';
 
@@ -682,11 +690,26 @@
           let lastError = '';
 
           for (const base of endpointBases) {
-            let { response } = await callEndpoint('POST', base);
+            let { response, error, url } = await callEndpoint('POST', base);
+
+            if (error) {
+              lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
+              continue;
+            }
 
             if (!response.ok && response.status === 405) {
               // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
-              ({ response } = await callEndpoint('GET', base));
+              ({ response, error, url } = await callEndpoint('GET', base));
+
+              if (error) {
+                lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
+                continue;
+              }
+            }
+
+            if (!response) {
+              lastError = 'Network error contacting Paysera signing endpoint';
+              continue;
             }
 
             if (!response.ok) {
