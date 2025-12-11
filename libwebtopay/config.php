@@ -1,7 +1,9 @@
 <?php
 // PaySera project credentials (live)
+// The password should be provided via the environment to avoid storing secrets in git.
+// Set an environment variable named PAYSERA_PROJECT_PASSWORD on the server.
 const PROJECT_ID = 254450;
-const PROJECT_PASSWORD = 'f666d0fa7bc89cd31aaaa23352cbbb96';
+const PROJECT_PASSWORD = getenv('PAYSERA_PROJECT_PASSWORD') ?: 'CHANGE_ME';
 
 // Application fee configuration
 const APPLICATION_FEE_CENTS = 25000; // cents
