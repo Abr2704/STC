@@ -476,7 +476,7 @@
                   action="https://formsubmit.co/info@specialist.college"
                   method="POST">
                   <input type="hidden" name="_next" id="formsubmit-next"
-                    value="https://www.specialist.college/libwebtopay/accept.php?submitted=1">
+                    value="https://specialist.college/libwebtopay/accept.php?submitted=1">
                   <input type="hidden" name="_subject"
                     value="New STC application submission">
                   <input type="hidden" name="_captcha" value="false">
@@ -627,6 +627,8 @@
           return;
         }
 
+        const normalizeBase = (base) => (base || '').replace(/\/+$/, '').replace(/\/\_site$/, '');
+
         async function fetchPayseraUrl(formData, orderId) {
           const payload = {
             orderId,
@@ -635,17 +637,11 @@
             phone: formData.get('contact_number') || '',
           };
 
-          const isSecure = (window.location && window.location.protocol === 'https:');
           const endpointBases = Array.from(new Set([
-            window.location.origin || '',
             'https://specialist.college',
             'https://www.specialist.college',
-            'http://specialist.college',
-            'http://www.specialist.college'
-          ].filter(Boolean))).flatMap((base) => [
-            base,
-            base ? `${base}/_site` : ''
-          ]).filter((base) => base && !(isSecure && base.startsWith('http://')));
+            normalizeBase(window.location.origin),
+          ].filter(Boolean)));
 
           async function callEndpoint(method, baseUrl) {
             let url = `${baseUrl}/libwebtopay/sign.php`;
@@ -785,8 +781,8 @@
 
           const orderId = `STC-${Date.now()}`;
           const formData = new FormData(form);
-          const origin = window.location && window.location.origin ? window.location.origin : '';
-          const nextUrl = `${origin}/libwebtopay/accept.php?submitted=1`;
+          const origin = normalizeBase(window.location && window.location.origin ? window.location.origin : '');
+          const nextUrl = `${origin || 'https://specialist.college'}/libwebtopay/accept.php?submitted=1`;
 
           try {
             const payseraUrl = await fetchPayseraUrl(formData, orderId);
