@@ -8,6 +8,9 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, HEAD, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
+if (PAYSERA_OWNERSHIP !== '') {
+    header('Paysera-Ownership: ' . PAYSERA_OWNERSHIP);
+}
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $allowedMethods = 'GET, POST, HEAD, OPTIONS';

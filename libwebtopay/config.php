@@ -4,6 +4,9 @@
 // Set an environment variable named PAYSERA_PROJECT_PASSWORD on the server.
 const PROJECT_ID = 254450;
 const PROJECT_PASSWORD = getenv('PAYSERA_PROJECT_PASSWORD') ?: 'CHANGE_ME';
+// Paysera domain ownership verification header value (if provided by Paysera).
+// Expose via the PAYSERA_OWNERSHIP environment variable to avoid committing tokens.
+const PAYSERA_OWNERSHIP = getenv('PAYSERA_OWNERSHIP') ?: '';
 
 // Application fee configuration
 const APPLICATION_FEE_CENTS = 25000; // cents
