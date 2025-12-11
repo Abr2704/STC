@@ -5,6 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Apply Now - Specialist Technical College</title>
+    <meta name="verify-paysera" content="6cc8cf82b61376b01ba8b6b2b52334d5">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     /* RESET */
@@ -336,21 +337,10 @@
               process your application. Fields marked with <span
                 style="color:#c00">*</span> are required. </p>
             <p style="margin-top:8px;font-size:13px;color:#555;"> This
-              form no longer uses FormSubmit (it cannot keep your file
-              uploads or start a Paysera payment). Everything is now
-              handled on our own secure PHP server instead. </p>
-            <p style="margin-top:4px;font-size:13px;color:#555;"> Step 1
-              securely uploads your documents. After you submit, Step 2
-              redirects you to Paysera to pay the €250 application fee.
-              We match your payment automatically—no manual reference or
-              separate Paysera form is needed. </p>
-              form submits directly to our admissions server. You can
-              upload your ID and qualification documents in Step 1, then
-              complete payment in Step 2. </p>
-            <p style="margin-top:4px;font-size:13px;color:#555;"> After
-              you submit, you'll be redirected to Paysera to pay the
-              €250 application fee. We match your payment automatically—no
-              manual reference needed. </p>
+              single-page form emails your details to our admissions
+              team via FormSubmit and then directs you to Paysera to pay
+              the €250 application fee. We match your payment
+              automatically—no manual reference is needed. </p>
           </div>
           <style>
       /* Apply Now form styling (page-specific) */
@@ -441,201 +431,155 @@
         font-size: 13px;
       }
 
-      .step-indicator {
-        font-size: 13px;
-        margin-bottom: 10px;
-        color: #555;
-      }
-
-      .step-indicator strong {
-        color: #0c3f74;
-      }
-
-      .form-step {
-        display: none; /* wizard: JS will show the current one */
-      }
-
-      .form-step.active {
-        display: block;
-      }
-
-      .step-controls {
-        margin-top: 12px;
+      .form-actions {
+        margin-top: 16px;
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
         gap: 10px;
+        justify-content: flex-end;
       }
 
-      .step-controls .btn {
-        flex: 0 0 auto;
-      }
-
-      .step-controls-left {
-        display: flex;
-        gap: 8px;
+      .form-actions .btn {
+        min-width: 140px;
+        text-align: center;
       }
 
       @media (max-width: 640px) {
         .apply-form .form-group {
           flex: 1 1 100%;
         }
-        .step-controls {
+        .form-actions {
           flex-direction: column;
           align-items: stretch;
         }
-        .step-controls-left {
-          width: 100%;
-          justify-content: space-between;
-        }
       }
-    </style>
-          <div class="box">
-            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
-            <form class="apply-form"
-              action="/libwebtopay/apply-submit.php"
-            <!-- The application now posts to the PaySera-enabled PHP handler -->
-            <form class="apply-form"
-              action="https://yourserver.com/libwebtopay/apply-submit.php"
-              method="POST" enctype="multipart/form-data">
-              <div class="step-indicator"> Step <strong><span
-                    id="step-current">1</span></strong> of <strong><span
-                    id="step-total">2</span></strong> </div>
-              <!-- STEP 1: COURSE INFORMATION, UPLOADS + PERSONAL DETAILS -->
-              <fieldset class="form-step active" data-step="1"> <legend>Course
-                  Information</legend>
-                <div class="form-row">
-                  <div class="form-group"> <label for="first_choice">Select
-                      Course <span style="color:#c00">*</span></label>
-                    <select id="first_choice" name="first_choice"
-                      required="">
-                      <option value="" selected="selected">Select a
-                        course</option>
-                      <option value="Level 3 IT (Diploma - BCS)">Level 3
-                        IT (Diploma - BCS)</option>
-                      <option value="Level 3 Award in Cyber Security
-                        (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
-                      <option value="Level 4">Level 4</option>
-                      <option value="Level 5">Level 5</option>
-                    </select>
-                  </div>
-                </div>
-                <legend style="margin-top:15px;">Your Education &amp;
-                  Qualifications</legend>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="highest_qualification">Current Highest Level
-                      of Qualification</label>
-                    <select id="highest_qualification"
-                      name="highest_qualification">
-                      <option value="" selected="selected">Please select</option>
-                      <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
-                      <option value="Level 3 (T-Level or A-Level)">Level
-                        3 (T-Level or A-Level)</option>
-                      <option value="Level 4 (HNC, first year of
-                        degree)">Level 4 (HNC, first year of degree
-                        etc.)</option>
-                      <option value="Other qualification, level not
-                        known (Kosovo qualification)">Other
-                        qualification, level not known (Kosovo
-                        qualification)</option>
-                    </select>
-                  </div>
-                </div>
-                <legend style="margin-top:15px;">Upload Documents</legend>
-                <p class="section-note"> Please upload clear scans or
-                  photos of your identification and any relevant
-                  qualifications. </p>
-                <div class="form-row">
-                  <div class="form-group"> <label for="id_document">Photo
-                      ID (passport, driving licence, ID card) <span
-                        style="color:#c00">*</span></label> <input
-                      id="id_document" name="id_document"
-                      accept=".pdf,.jpg,.jpeg,.png" required=""
-                      type="file"> <small>PDF or image files only.</small>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="qualification_files">Qualification
-                      Certificates (GCSEs, A-Levels, Diplomas)</label> <input
-                      id="qualification_files"
-                      name="qualification_files[]" multiple=""
-                      accept=".pdf,.jpg,.jpeg,.png" type="file"> <small>You
-                      can select more than one file.</small> </div>
-                </div>
-                <legend style="margin-top:15px;">Applicant Details</legend>
-                <div class="form-row">
-                  <div class="form-group"> <label for="full_name">Full
-                      Name <span style="color:#c00">*</span></label> <input
-                      id="full_name" name="full_name" required=""
-                      type="text"> </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group"> <label for="dob">Date of
-                      Birth <span style="color:#c00">*</span></label> <input
-                      id="dob" name="dob" required="" type="date"> </div>
-                  <div class="form-group"> <label>Gender <span
-                        style="color:#c00">*</span></label>
-                    <div class="inline-options"> <label><input
-                          name="gender" value="Male" required=""
-                          type="radio"> Male</label> <label><input
-                          name="gender" value="Female" type="radio">
-                        Female</label> </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group"> <label for="contact_number">Contact
-                      Number (including country code) <span
-                        style="color:#c00">*</span></label> <input
-                      id="contact_number" name="contact_number"
-                      required="" type="tel"> </div>
-                  <div class="form-group"> <label for="email">Email
-                      Address <span style="color:#c00">*</span></label>
-                    <input id="email" name="email" required=""
-                      type="email"> </div>
-                </div>
-                <div class="step-controls">
-                  <div class="step-controls-left">
-                    <!-- no Back on first step --> </div>
-                  <button type="button" class="btn btn-primary"
-                    data-next="">Next »</button> </div>
-              </fieldset>
-                <!-- STEP 2: PAYMENT + DECLARATION -->
-                <fieldset class="form-step" data-step="2"> <legend>Payment</legend>
-                  <p class="section-note"> A €250 application payment is
-                    required and will be offset against your tuition fee.
-                    When you click Submit, you'll be taken to Paysera to
-                    complete the payment securely. You won't need to copy
-                    or paste any payment reference—we'll match it
-                    automatically. </p>
-                <legend style="margin-top:15px;">Declaration</legend>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="applicant_signature">Applicant’s Signature
-                      (type full name) <span style="color:#c00">*</span></label>
-                    <input id="applicant_signature"
-                      name="applicant_signature" required="" type="text">
-                  </div>
-                  <div class="form-group"> <label for="applicant_date">Date
-                      <span style="color:#c00">*</span></label> <input
-                      id="applicant_date" name="applicant_date"
-                      required="" type="date"> </div>
-                </div>
-                <p class="section-note"> By submitting this form you
-                  confirm that, to the best of your knowledge, the
-                  information you have provided is accurate and
-                  complete. </p>
-                <div class="step-controls">
-                  <div class="step-controls-left"> <button
-                      type="button" class="btn btn-secondary"
-                      data-prev="">« Back</button> </div>
-                  <div> <button type="reset" class="btn btn-secondary">Clear
-                      All</button> <button type="submit" class="btn
-                      btn-primary">Submit Application</button> </div>
-                </div>
-              </fieldset>
-            </form>
-          </div>
+      </style>
+              <div class="box">
+                <p class="section-note">Submitting this form will email your
+                  details directly to our admissions team. You'll also be
+                  able to pay the €250 application fee through Paysera.</p>
+                <form class="apply-form"
+                  action="https://formsubmit.co/info@specialist.college"
+                  method="POST">
+                  <input type="hidden" name="_next" id="formsubmit-next"
+                    value="https://www.paysera.com/pay/">
+                  <input type="hidden" name="_subject"
+                    value="New STC application submission">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="orderid" id="orderid" value="">
+                  <input type="hidden" name="paysera_data" id="paysera_data"
+                    value="">
+                  <input type="hidden" name="paysera_sign" id="paysera_sign"
+                    value="">
+
+                  <fieldset>
+                    <legend>Course Information</legend>
+                    <div class="form-row">
+                      <div class="form-group"> <label for="first_choice">Select
+                          Course <span style="color:#c00">*</span></label>
+                        <select id="first_choice" name="first_choice"
+                          required="">
+                          <option value="" selected="selected">Select a
+                            course</option>
+                          <option value="Level 3 IT (Diploma - BCS)">Level 3
+                            IT (Diploma - BCS)</option>
+                          <option value="Level 3 Award in Cyber Security
+                            (ATHE)">Level 3 Award in Cyber Security (ATHE)</option>
+                          <option value="Level 4">Level 4</option>
+                          <option value="Level 5">Level 5</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Your Education &amp; Qualifications</legend>
+                    <div class="form-row">
+                      <div class="form-group"> <label
+                          for="highest_qualification">Current Highest Level
+                          of Qualification</label>
+                        <select id="highest_qualification"
+                          name="highest_qualification">
+                          <option value="" selected="selected">Please select</option>
+                          <option value="Level 2 (GCSE)">Level 2 (GCSE)</option>
+                          <option value="Level 3 (T-Level or A-Level)">Level
+                            3 (T-Level or A-Level)</option>
+                          <option value="Level 4 (HNC, first year of
+                            degree)">Level 4 (HNC, first year of degree
+                            etc.)</option>
+                          <option value="Other qualification, level not
+                            known (Kosovo qualification)">Other
+                            qualification, level not known (Kosovo
+                            qualification)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Applicant Details</legend>
+                    <div class="form-row">
+                      <div class="form-group"> <label for="full_name">Full
+                          Name <span style="color:#c00">*</span></label> <input
+                          id="full_name" name="full_name" required=""
+                          type="text"> </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group"> <label for="dob">Date of
+                          Birth <span style="color:#c00">*</span></label> <input
+                          id="dob" name="dob" required="" type="date"> </div>
+                      <div class="form-group"> <label>Gender <span
+                            style="color:#c00">*</span></label>
+                        <div class="inline-options"> <label for="gender_male"> <input
+                              id="gender_male" name="gender" required=""
+                              type="radio" value="male"> Male </label> <label
+                            for="gender_female"> <input id="gender_female"
+                              name="gender" required="" type="radio"
+                              value="female"> Female </label> <label
+                            for="gender_other"> <input id="gender_other"
+                              name="gender" required="" type="radio"
+                              value="other"> Prefer to self-describe </label> </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group"> <label for="contact_number">Contact
+                          Number (including country code) <span
+                            style="color:#c00">*</span></label> <input
+                          id="contact_number" name="contact_number"
+                          required="" type="tel"> </div>
+                      <div class="form-group"> <label for="email">Email
+                          Address <span style="color:#c00">*</span></label>
+                        <input id="email" name="email" required=""
+                          type="email"> </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Payment</legend>
+                    <p class="section-note"> A €250 application payment is
+                      required and will be offset against your tuition fee.
+                      After submitting the form, you'll be taken to Paysera
+                      to complete the payment securely. You won't need to
+                      copy or paste any payment reference—we'll match it
+                      automatically. </p>
+                    <p class="section-note" style="margin-top:8px;">
+                      Your Paysera project ID <strong>254450</strong> and sign password
+                      are now embedded in the redirect. We generate a fresh
+                      order ID, sign the request client-side, and send you to
+                      Paysera after the FormSubmit email is sent. If the
+                      redirect fails, use the button below.</p>
+                    <a class="btn btn-secondary" id="paysera-link"
+                      href="https://www.paysera.com/pay/" target="_blank"
+                      rel="noopener" style="margin-top:6px;display:inline-block;">Pay
+                      €250 via Paysera</a>
+                  </fieldset>
+
+                  <div class="form-actions"> <button type="reset"
+                      class="btn btn-secondary">Clear All</button> <button
+                      type="submit" class="btn btn-primary">Submit
+                      Application</button> </div>
+                </form>
+              </div>
         </div>
         <div class="sidebar">
           <div class="box">
@@ -649,61 +593,260 @@
           </div>
           <div class="box">
             <h2>Before You Apply</h2>
-            <ul>
-              <li>Check the entry requirements for your chosen course.</li>
-              <li>Have your previous qualifications and ID ready.</li>
-              <li>Make sure your contact details are correct.</li>
-            </ul>
+              <ul>
+                <li>Check the entry requirements for your chosen course.</li>
+                <li>Keep your previous qualifications and ID handy for
+                  verification.</li>
+                <li>Make sure your contact details are correct.</li>
+              </ul>
           </div>
         </div>
       </div>
-      <script>
-  // Simple multi-step wizard
-  document.addEventListener('DOMContentLoaded', function () {
-    const steps = Array.from(document.querySelectorAll('.form-step'));
-    const total = steps.length;
-    const currentSpan = document.getElementById('step-current');
-    const totalSpan = document.getElementById('step-total');
-    let current = 0;
-
-    if (totalSpan) totalSpan.textContent = total.toString();
-
-    function showStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle('active', i === index);
-      });
-      if (currentSpan) currentSpan.textContent = (index + 1).toString();
-    }
-
-    document.querySelectorAll('[data-next]').forEach(btn => {
-      btn.addEventListener('click', function () {
-        if (current < total - 1) {
-          current++;
-          showStep(current);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    });
-
-    document.querySelectorAll('[data-prev]').forEach(btn => {
-      btn.addEventListener('click', function () {
-        if (current > 0) {
-          current--;
-          showStep(current);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    });
-
-    showStep(current);
-  });
-</script>
       <!-- FOOTER -->
       <footer class="site-footer">
         <div>© Specialist Technical College. All rights reserved.</div>
         <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
       </footer>
     </div>
+    <script>
+      (function() {
+        const form = document.querySelector('.apply-form');
+        const nextField = document.getElementById('formsubmit-next');
+        const orderField = document.getElementById('orderid');
+        const dataField = document.getElementById('paysera_data');
+        const signField = document.getElementById('paysera_sign');
+        const payseraLink = document.getElementById('paysera-link');
+
+        const payseraConfig = {
+          projectId: 254450,
+          signPassword: 'f666d0fa7bc89cd31aaaa23352cbbb96',
+          amountCents: 25000,
+          currency: 'EUR',
+          country: 'GB',
+          payUrl: 'https://www.paysera.com/pay/',
+        };
+
+        if (!form || !nextField) {
+          return;
+        }
+
+        function md5cycle(x, k) {
+          let [a, b, c, d] = x;
+
+          a = ff(a, b, c, d, k[0], 7, -680876936);
+          d = ff(d, a, b, c, k[1], 12, -389564586);
+          c = ff(c, d, a, b, k[2], 17, 606105819);
+          b = ff(b, c, d, a, k[3], 22, -1044525330);
+          a = ff(a, b, c, d, k[4], 7, -176418897);
+          d = ff(d, a, b, c, k[5], 12, 1200080426);
+          c = ff(c, d, a, b, k[6], 17, -1473231341);
+          b = ff(b, c, d, a, k[7], 22, -45705983);
+          a = ff(a, b, c, d, k[8], 7, 1770035416);
+          d = ff(d, a, b, c, k[9], 12, -1958414417);
+          c = ff(c, d, a, b, k[10], 17, -42063);
+          b = ff(b, c, d, a, k[11], 22, -1990404162);
+          a = ff(a, b, c, d, k[12], 7, 1804603682);
+          d = ff(d, a, b, c, k[13], 12, -40341101);
+          c = ff(c, d, a, b, k[14], 17, -1502002290);
+          b = ff(b, c, d, a, k[15], 22, 1236535329);
+
+          a = gg(a, b, c, d, k[1], 5, -165796510);
+          d = gg(d, a, b, c, k[6], 9, -1069501632);
+          c = gg(c, d, a, b, k[11], 14, 643717713);
+          b = gg(b, c, d, a, k[0], 20, -373897302);
+          a = gg(a, b, c, d, k[5], 5, -701558691);
+          d = gg(d, a, b, c, k[10], 9, 38016083);
+          c = gg(c, d, a, b, k[15], 14, -660478335);
+          b = gg(b, c, d, a, k[4], 20, -405537848);
+          a = gg(a, b, c, d, k[9], 5, 568446438);
+          d = gg(d, a, b, c, k[14], 9, -1019803690);
+          c = gg(c, d, a, b, k[3], 14, -187363961);
+          b = gg(b, c, d, a, k[8], 20, 1163531501);
+          a = gg(a, b, c, d, k[13], 5, -1444681467);
+          d = gg(d, a, b, c, k[2], 9, -51403784);
+          c = gg(c, d, a, b, k[7], 14, 1735328473);
+          b = gg(b, c, d, a, k[12], 20, -1926607734);
+
+          a = hh(a, b, c, d, k[5], 4, -378558);
+          d = hh(d, a, b, c, k[8], 11, -2022574463);
+          c = hh(c, d, a, b, k[11], 16, 1839030562);
+          b = hh(b, c, d, a, k[14], 23, -35309556);
+          a = hh(a, b, c, d, k[1], 4, -1530992060);
+          d = hh(d, a, b, c, k[4], 11, 1272893353);
+          c = hh(c, d, a, b, k[7], 16, -155497632);
+          b = hh(b, c, d, a, k[10], 23, -1094730640);
+          a = hh(a, b, c, d, k[13], 4, 681279174);
+          d = hh(d, a, b, c, k[0], 11, -358537222);
+          c = hh(c, d, a, b, k[3], 16, -722521979);
+          b = hh(b, c, d, a, k[6], 23, 76029189);
+          a = hh(a, b, c, d, k[9], 4, -640364487);
+          d = hh(d, a, b, c, k[12], 11, -421815835);
+          c = hh(c, d, a, b, k[15], 16, 530742520);
+          b = hh(b, c, d, a, k[2], 23, -995338651);
+
+          a = ii(a, b, c, d, k[0], 6, -198630844);
+          d = ii(d, a, b, c, k[7], 10, 1126891415);
+          c = ii(c, d, a, b, k[14], 15, -1416354905);
+          b = ii(b, c, d, a, k[5], 21, -57434055);
+          a = ii(a, b, c, d, k[12], 6, 1700485571);
+          d = ii(d, a, b, c, k[3], 10, -1894986606);
+          c = ii(c, d, a, b, k[10], 15, -1051523);
+          b = ii(b, c, d, a, k[1], 21, -2054922799);
+          a = ii(a, b, c, d, k[8], 6, 1873313359);
+          d = ii(d, a, b, c, k[15], 10, -30611744);
+          c = ii(c, d, a, b, k[6], 15, -1560198380);
+          b = ii(b, c, d, a, k[13], 21, 1309151649);
+          a = ii(a, b, c, d, k[4], 6, -145523070);
+          d = ii(d, a, b, c, k[11], 10, -1120210379);
+          c = ii(c, d, a, b, k[2], 15, 718787259);
+          b = ii(b, c, d, a, k[9], 21, -343485551);
+
+          x[0] = add32(a, x[0]);
+          x[1] = add32(b, x[1]);
+          x[2] = add32(c, x[2]);
+          x[3] = add32(d, x[3]);
+        }
+
+        function cmn(q, a, b, x, s, t) {
+          a = add32(add32(a, q), add32(x, t));
+          return add32((a << s) | (a >>> (32 - s)), b);
+        }
+
+        function ff(a, b, c, d, x, s, t) {
+          return cmn((b & c) | ((~b) & d), a, b, x, s, t);
+        }
+
+        function gg(a, b, c, d, x, s, t) {
+          return cmn((b & d) | (c & (~d)), a, b, x, s, t);
+        }
+
+        function hh(a, b, c, d, x, s, t) {
+          return cmn(b ^ c ^ d, a, b, x, s, t);
+        }
+
+        function ii(a, b, c, d, x, s, t) {
+          return cmn(c ^ (b | (~d)), a, b, x, s, t);
+        }
+
+        function md51(s) {
+          const txt = '';
+          const n = s.length;
+          const state = [1732584193, -271733879, -1732584194, 271733878];
+          let i;
+
+          for (i = 64; i <= n; i += 64) {
+            md5cycle(state, md5blk(s.substring(i - 64, i)));
+          }
+
+          s = s.substring(i - 64);
+          const tail = new Array(16).fill(0);
+          for (i = 0; i < s.length; i++) {
+            tail[i >> 2] |= s.charCodeAt(i) << ((i % 4) << 3);
+          }
+          tail[i >> 2] |= 0x80 << ((i % 4) << 3);
+
+          if (i > 55) {
+            md5cycle(state, tail);
+            tail.fill(0);
+          }
+
+          tail[14] = n * 8;
+          md5cycle(state, tail);
+          return state;
+        }
+
+        function md5blk(s) {
+          const md5blks = [];
+          for (let i = 0; i < 64; i += 4) {
+            md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) +
+              (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
+          }
+          return md5blks;
+        }
+
+        function rhex(n) {
+          const s = '0123456789abcdef';
+          let j;
+          let str = '';
+          for (j = 0; j < 4; j++) {
+            str += s.charAt((n >> (j * 8 + 4)) & 0x0f) + s.charAt((n >> (j * 8)) & 0x0f);
+          }
+          return str;
+        }
+
+        function hex(x) {
+          for (let i = 0; i < x.length; i++) {
+            x[i] = rhex(x[i]);
+          }
+          return x.join('');
+        }
+
+        function md5(s) {
+          return hex(md51(s));
+        }
+
+        function add32(a, b) {
+          return (a + b) & 0xffffffff;
+        }
+
+        function buildQuery(params) {
+          return Object.keys(params)
+            .sort()
+            .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+            .join('&');
+        }
+
+        function base64Encode(str) {
+          return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        function buildPayseraUrl(formData, orderId) {
+          const acceptUrl = new URL('/libwebtopay/accept.php', window.location.origin).href;
+          const cancelUrl = new URL('/libwebtopay/cancel.php', window.location.origin).href;
+          const callbackUrl = new URL('/libwebtopay/callback.php', window.location.origin).href;
+
+          const params = {
+            projectid: payseraConfig.projectId,
+            sign_password: payseraConfig.signPassword,
+            orderid: orderId,
+            amount: payseraConfig.amountCents,
+            currency: payseraConfig.currency,
+            country: payseraConfig.country,
+            p_email: formData.get('email') || '',
+            p_firstname: formData.get('full_name') || '',
+            p_phone: formData.get('contact_number') || '',
+            accepturl: acceptUrl,
+            cancelurl: cancelUrl,
+            callbackurl: callbackUrl,
+            test: 0,
+            lang: 'en',
+            payment: 'card',
+          };
+
+          const paramsForData = { ...params };
+          delete paramsForData.sign_password;
+
+          const data = base64Encode(buildQuery(paramsForData));
+          const sign = md5(`${payseraConfig.signPassword}${data}${payseraConfig.signPassword}`);
+
+          if (dataField) dataField.value = data;
+          if (signField) signField.value = sign;
+
+          const query = new URLSearchParams({ data, sign }).toString();
+          return `${payseraConfig.payUrl}?${query}`;
+        }
+
+        form.addEventListener('submit', () => {
+          const orderId = `STC-${Date.now()}`;
+          const formData = new FormData(form);
+          const payseraUrl = buildPayseraUrl(formData, orderId);
+
+          if (orderField) orderField.value = orderId;
+          nextField.value = payseraUrl;
+          if (payseraLink) payseraLink.href = payseraUrl;
+        });
+      })();
+    </script>
     <script>
     (function() {
       const navToggle = document.querySelector('.nav-toggle');
