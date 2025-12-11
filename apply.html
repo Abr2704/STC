@@ -607,13 +607,13 @@
 
           async function callEndpoint(method) {
             let url = '/libwebtopay/sign.php';
-            const options = { method, headers: { Accept: 'application/json' } };
+            const options = { method, headers: { Accept: 'application/json, text/plain;q=0.9,*/*;q=0.8' } };
 
             if (method === 'POST') {
               options.headers['Content-Type'] = 'application/json';
               options.body = JSON.stringify(payload);
             } else {
-              const query = new URLSearchParams(payload).toString();
+              const query = new URLSearchParams({ ...payload, format: 'text' }).toString();
               url = `${url}?${query}`;
             }
 
@@ -663,6 +663,9 @@
             textBody = await response.text().catch(() => '');
             if (textBody) {
               const trimmed = textBody.trim();
+              if (trimmed.startsWith('<?php')) {
+                throw new Error('The payment link service is returning raw PHP. Please ensure the server runs the PHP endpoints (libwebtopay/sign.php).');
+              }
               if (/^https?:\/\//i.test(trimmed)) {
                 return trimmed;
               }

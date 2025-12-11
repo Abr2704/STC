@@ -89,7 +89,15 @@ try {
         'version' => WebToPay::VERSION,
     ]);
 
-    echo json_encode(['url' => $paymentUrl]);
+    $response = ['url' => $paymentUrl];
+
+    if (isset($input['format']) && $input['format'] === 'text') {
+        header('Content-Type: text/plain');
+        echo $paymentUrl;
+        exit;
+    }
+
+    echo json_encode($response);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
