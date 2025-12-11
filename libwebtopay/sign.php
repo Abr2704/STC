@@ -6,11 +6,11 @@ header('Content-Type: application/json');
 // Allow same-origin and static-hosted sites to call this endpoint (e.g. GitHub Pages
 // HTML submitting to a PHP backend elsewhere).
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, HEAD, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, HEAD, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-$allowedMethods = 'POST, HEAD, OPTIONS';
+$allowedMethods = 'GET, POST, HEAD, OPTIONS';
 header('Allow: ' . $allowedMethods);
 
 if ($method === 'HEAD' || $method === 'OPTIONS') {
@@ -19,7 +19,7 @@ if ($method === 'HEAD' || $method === 'OPTIONS') {
     exit;
 }
 
-if ($method !== 'POST') {
+if ($method !== 'POST' && $method !== 'GET') {
     http_response_code(405);
     echo json_encode(['error' => 'Method not allowed']);
     exit;
@@ -31,11 +31,24 @@ if (PROJECT_PASSWORD === 'CHANGE_ME' || empty(PROJECT_PASSWORD)) {
     exit;
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
+$rawBody = file_get_contents('php://input');
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+$input = [];
+
+if ($method === 'POST') {
+    if (stripos($contentType, 'application/json') !== false) {
+        $input = json_decode($rawBody, true) ?: [];
+    } elseif (!empty($_POST)) {
+        $input = $_POST;
+    }
+}
+
+if ($method === 'GET' && empty($input)) {
+    $input = $_GET;
+}
+
 if (!is_array($input)) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Invalid payload']);
-    exit;
+    $input = [];
 }
 
 $orderId = isset($input['orderId']) ? trim((string) $input['orderId']) : '';

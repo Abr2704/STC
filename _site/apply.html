@@ -622,15 +622,24 @@
             phone: formData.get('contact_number') || '',
           };
 
-          const response = await fetch('/libwebtopay/sign.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-          });
+          async function callEndpoint(method) {
+            let url = '/libwebtopay/sign.php';
+            const options = { method };
 
-          if (!response.ok) {
+            if (method === 'POST') {
+              options.headers = { 'Content-Type': 'application/json' };
+              options.body = JSON.stringify(payload);
+            } else {
+              const query = new URLSearchParams(payload).toString();
+              url = `${url}?${query}`;
+              options.headers = { Accept: 'application/json' };
+            }
+
+            const response = await fetch(url, options);
+            return { response, url };
+          }
+
+          async function parseError(response) {
             let message = '';
             const contentType = response.headers.get('content-type') || '';
 
@@ -645,7 +654,19 @@
             }
 
             const fallback = `Unable to generate Paysera link (status ${response.status})`;
-            throw new Error(message || fallback);
+            return message || fallback;
+          }
+
+          let { response } = await callEndpoint('POST');
+
+          if (!response.ok && response.status === 405) {
+            // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
+            ({ response } = await callEndpoint('GET'));
+          }
+
+          if (!response.ok) {
+            const message = await parseError(response);
+            throw new Error(message);
           }
 
           const data = await response.json().catch(() => null);
