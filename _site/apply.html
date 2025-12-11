@@ -559,12 +559,14 @@
                       copy or paste any payment reference—we'll match it
                       automatically. </p>
                     <p class="section-note" style="margin-top:8px;"> Your
-                      Paysera project ID <strong>254450</strong> and sign password are
-                      now embedded in the redirect. We generate a fresh order
-                      ID, sign the request client-side, and send you to Paysera
-                      immediately after the FormSubmit email is sent. The
-                      Paysera link is only created when the form is valid and
-                      submitted, so payment and submission stay together. </p>
+                      Paysera project ID <strong>254450</strong> is used to generate a
+                      signed redirect on the server (your secret password never
+                      leaves the backend). We generate a fresh order ID,
+                      request a signed Paysera link from the server, and send
+                      you to Paysera immediately after the FormSubmit email is
+                      sent. The Paysera link is only created when the form is
+                      valid and submitted, so payment and submission stay
+                      together. </p>
                   </fieldset>
 
                   <div class="form-actions"> <button type="reset"
@@ -670,8 +672,6 @@
             }
           }
         });
-      })();
-    </script>
       })();
     </script>
     <script>
