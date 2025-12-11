@@ -91,7 +91,10 @@ class WebToPay
         unset($prepared['sign_password']);
         ksort($prepared, SORT_STRING);
 
-        $encoded = http_build_query($prepared, '', '&', PHP_QUERY_RFC3986);
+        // Follow Paysera's canonical encoding: RFC1738 (spaces encoded as "+")
+        // to ensure our signature matches their verification on the gateway.
+        $encoded = http_build_query($prepared);
+
         return base64_encode($encoded);
     }
 
