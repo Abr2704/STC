@@ -476,7 +476,7 @@
                   action="https://formsubmit.co/info@specialist.college"
                   method="POST">
                   <input type="hidden" name="_next" id="formsubmit-next"
-                    value="https://www.paysera.com/pay/">
+                    value="https://www.specialist.college/libwebtopay/accept.php?submitted=1">
                   <input type="hidden" name="_subject"
                     value="New STC application submission">
                   <input type="hidden" name="_captcha" value="false">
@@ -566,9 +566,10 @@
                     <p class="section-note"> A €250 application payment is
                       required and will be offset against your tuition fee.
                       After submitting the form, you'll be taken to Paysera
-                      to complete the payment securely. You won't need to
-                      copy or paste any payment reference—we'll match it
-                      automatically. </p>
+                      to complete the payment securely. We will only send
+                      your application details to admissions after you finish
+                      payment. You won't need to copy or paste any payment
+                      reference—we'll match it automatically. </p>
                     <p class="section-note" style="margin-top:8px;"> Your
                       Paysera project ID <strong>254450</strong> is used to generate a
                       signed redirect on the server (your secret password never
@@ -620,6 +621,7 @@
         const nextField = document.getElementById('formsubmit-next');
         const orderField = document.getElementById('orderid');
         const submitButton = document.getElementById('submit-paysera');
+        const pendingKey = 'stcPendingApplication';
 
         if (!form || !nextField) {
           return;
@@ -783,12 +785,34 @@
 
           const orderId = `STC-${Date.now()}`;
           const formData = new FormData(form);
+          const origin = window.location && window.location.origin ? window.location.origin : '';
+          const nextUrl = `${origin}/libwebtopay/accept.php?submitted=1`;
 
           try {
             const payseraUrl = await fetchPayseraUrl(formData, orderId);
             if (orderField) orderField.value = orderId;
-            nextField.value = payseraUrl;
-            form.submit();
+            nextField.value = nextUrl;
+
+            const serialized = [];
+            formData.forEach((value, key) => {
+              serialized.push([key, value]);
+            });
+
+            const payload = {
+              action: form.action,
+              method: form.method || 'POST',
+              next: nextUrl,
+              orderId,
+              fields: serialized,
+            };
+
+            try {
+              sessionStorage.setItem(pendingKey, JSON.stringify(payload));
+            } catch (storageError) {
+              console.warn('Could not cache pending application for post-payment submission', storageError);
+            }
+
+            window.location.href = payseraUrl;
           } catch (error) {
             alert(error.message || 'Could not generate Paysera link. Please try again.');
             if (submitButton) {
