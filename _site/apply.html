@@ -633,6 +633,7 @@
             phone: formData.get('contact_number') || '',
           };
 
+          const isSecure = (window.location && window.location.protocol === 'https:');
           const endpointBases = Array.from(new Set([
             window.location.origin || '',
             'https://specialist.college',
@@ -642,7 +643,7 @@
           ].filter(Boolean))).flatMap((base) => [
             base,
             base ? `${base}/_site` : ''
-          ]).filter(Boolean);
+          ]).filter((base) => base && !(isSecure && base.startsWith('http://')));
 
           async function callEndpoint(method, baseUrl) {
             let url = `${baseUrl}/libwebtopay/sign.php`;
