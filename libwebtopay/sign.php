@@ -3,8 +3,23 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/WebToPay.php';
 
 header('Content-Type: application/json');
+// Allow same-origin and static-hosted sites to call this endpoint (e.g. GitHub Pages
+// HTML submitting to a PHP backend elsewhere).
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, HEAD, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$allowedMethods = 'POST, HEAD, OPTIONS';
+header('Allow: ' . $allowedMethods);
+
+if ($method === 'HEAD' || $method === 'OPTIONS') {
+    // Hosting platforms sometimes probe endpoints with HEAD/OPTIONS. Respond gracefully.
+    http_response_code(204);
+    exit;
+}
+
+if ($method !== 'POST') {
     http_response_code(405);
     echo json_encode(['error' => 'Method not allowed']);
     exit;
