@@ -347,46 +347,60 @@
       .apply-form fieldset {
         border: none;
         padding: 0;
-        margin: 0 0 18px 0;
+        margin: 0 0 16px 0;
       }
 
       .apply-form legend {
         font-weight: bold;
         font-size: 16px;
         color: #0c3f74;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .apply-form .form-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 10px;
+        gap: 10px;
+        margin-bottom: 8px;
       }
 
       .apply-form .form-group {
         flex: 1 1 180px;
         min-width: 160px;
+        margin-bottom: 2px;
       }
 
       .apply-form label {
         display: block;
-        font-size: 14px;
-        margin-bottom: 3px;
+        font-size: 13px;
+        margin-bottom: 2px;
+        color: #0c3f74;
+        letter-spacing: 0.1px;
       }
 
       .apply-form input[type="text"],
       .apply-form input[type="email"],
       .apply-form input[type="tel"],
-      .apply-form input[type="date"],
       .apply-form input[type="file"],
       .apply-form select,
       .apply-form textarea {
         width: 100%;
-        padding: 6px 8px;
-        border-radius: 3px;
-        border: 1px solid #d4dce8;
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: 1px solid #c8d2e5;
         font-size: 14px;
+        background: linear-gradient(180deg, #f9fbff 0%, #f4f7fb 100%);
+        box-shadow: inset 0 1px 2px rgba(12, 63, 116, 0.08);
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .apply-form input:focus,
+      .apply-form select:focus,
+      .apply-form textarea:focus {
+        outline: none;
+        border-color: #0c3f74;
+        box-shadow: 0 0 0 3px rgba(12, 63, 116, 0.12);
+        background: #ffffff;
       }
 
       .apply-form textarea {
@@ -462,7 +476,7 @@
                   action="https://formsubmit.co/info@specialist.college"
                   method="POST">
                   <input type="hidden" name="_next" id="formsubmit-next"
-                    value="https://www.paysera.com/pay/">
+                    value="https://www.specialist.college/libwebtopay/accept.php?submitted=1">
                   <input type="hidden" name="_subject"
                     value="New STC application submission">
                   <input type="hidden" name="_captcha" value="false">
@@ -521,9 +535,6 @@
                           type="text"> </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group"> <label for="dob">Date of
-                          Birth <span style="color:#c00">*</span></label> <input
-                          id="dob" name="dob" required="" type="date"> </div>
                       <div class="form-group"> <label>Gender <span
                             style="color:#c00">*</span></label>
                         <div class="inline-options"> <label for="gender_male"> <input
@@ -555,9 +566,10 @@
                     <p class="section-note"> A €250 application payment is
                       required and will be offset against your tuition fee.
                       After submitting the form, you'll be taken to Paysera
-                      to complete the payment securely. You won't need to
-                      copy or paste any payment reference—we'll match it
-                      automatically. </p>
+                      to complete the payment securely. We will only send
+                      your application details to admissions after you finish
+                      payment. You won't need to copy or paste any payment
+                      reference—we'll match it automatically. </p>
                     <p class="section-note" style="margin-top:8px;"> Your
                       Paysera project ID <strong>254450</strong> is used to generate a
                       signed redirect on the server (your secret password never
@@ -609,6 +621,7 @@
         const nextField = document.getElementById('formsubmit-next');
         const orderField = document.getElementById('orderid');
         const submitButton = document.getElementById('submit-paysera');
+        const pendingKey = 'stcPendingApplication';
 
         if (!form || !nextField) {
           return;
@@ -622,23 +635,43 @@
             phone: formData.get('contact_number') || '',
           };
 
-          async function callEndpoint(method) {
-            let url = '/libwebtopay/sign.php';
-            const options = { method, headers: { Accept: 'application/json' } };
+          const isSecure = (window.location && window.location.protocol === 'https:');
+          const endpointBases = Array.from(new Set([
+            window.location.origin || '',
+            'https://specialist.college',
+            'https://www.specialist.college',
+            'http://specialist.college',
+            'http://www.specialist.college'
+          ].filter(Boolean))).flatMap((base) => [
+            base,
+            base ? `${base}/_site` : ''
+          ]).filter((base) => base && !(isSecure && base.startsWith('http://')));
+
+          async function callEndpoint(method, baseUrl) {
+            let url = `${baseUrl}/libwebtopay/sign.php`;
+            const options = { method, headers: { Accept: 'application/json, text/plain;q=0.9,*/*;q=0.8' } };
 
             if (method === 'POST') {
               options.headers['Content-Type'] = 'application/json';
               options.body = JSON.stringify(payload);
             } else {
-              const query = new URLSearchParams(payload).toString();
+              const query = new URLSearchParams({ ...payload, format: 'text' }).toString();
               url = `${url}?${query}`;
             }
 
-            const response = await fetch(url, options);
-            return { response, url };
+            try {
+              const response = await fetch(url, options);
+              return { response, url, error: null };
+            } catch (error) {
+              return { response: null, url, error };
+            }
           }
 
           async function parseError(response) {
+            if (!response) {
+              return 'Network error contacting Paysera signing endpoint';
+            }
+
             let message = '';
             const contentType = response.headers.get('content-type') || '';
 
@@ -656,48 +689,85 @@
             return message || fallback;
           }
 
-          let { response } = await callEndpoint('POST');
+          async function parseResponse(response) {
+            const contentType = response.headers.get('content-type') || '';
+            let data = null;
+            let textBody = '';
 
-          if (!response.ok && response.status === 405) {
-            // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
-            ({ response } = await callEndpoint('GET'));
-          }
+            if (contentType.includes('application/json')) {
+              data = await response.json().catch(() => null);
+            }
 
-          if (!response.ok) {
-            const message = await parseError(response);
-            throw new Error(message);
-          }
+            if (!data) {
+              textBody = await response.text().catch(() => '');
+              if (textBody) {
+                const trimmed = textBody.trim();
+                if (/^https?:\/\//i.test(trimmed)) {
+                  return { url: trimmed, rawPhp: false, detail: '' };
+                }
 
-          const contentType = response.headers.get('content-type') || '';
-          let data = null;
-          let textBody = '';
-
-          if (contentType.includes('application/json')) {
-            data = await response.json().catch(() => null);
-          }
-
-          if (!data) {
-            textBody = await response.text().catch(() => '');
-            if (textBody) {
-              const trimmed = textBody.trim();
-              if (/^https?:\/\//i.test(trimmed)) {
-                return trimmed;
-              }
-
-              try {
-                data = JSON.parse(trimmed);
-              } catch (error) {
-                // leave data null
+                try {
+                  data = JSON.parse(trimmed);
+                } catch (error) {
+                  // leave data null
+                }
               }
             }
+
+            if (data && data.url) {
+              return { url: data.url, rawPhp: false, detail: '' };
+            }
+
+            const rawPhp = textBody.trim().startsWith('<?php');
+            const detail = textBody ? `Missing Paysera URL in response: ${textBody.slice(0, 200)}` : '';
+            return { url: '', rawPhp, detail };
           }
 
-          if (data && data.url) {
-            return data.url;
+          let lastError = '';
+
+          for (const base of endpointBases) {
+            let { response, error, url } = await callEndpoint('POST', base);
+
+            if (error) {
+              lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
+              continue;
+            }
+
+            if (!response.ok && response.status === 405) {
+              // Some hosts may block POST to PHP endpoints by default. Try a GET fallback.
+              ({ response, error, url } = await callEndpoint('GET', base));
+
+              if (error) {
+                lastError = `Network error contacting Paysera signing endpoint at ${url}: ${error.message || error}`;
+                continue;
+              }
+            }
+
+            if (!response) {
+              lastError = 'Network error contacting Paysera signing endpoint';
+              continue;
+            }
+
+            if (!response.ok) {
+              lastError = await parseError(response);
+              continue;
+            }
+
+            const parsed = await parseResponse(response);
+
+            if (parsed.url) {
+              return parsed.url;
+            }
+
+            if (parsed.rawPhp) {
+              lastError = 'The payment link service responded with raw PHP. Trying another endpoint…';
+              continue;
+            }
+
+            lastError = parsed.detail || 'Missing Paysera URL in response';
           }
 
-          const detail = textBody ? `: ${textBody.slice(0, 200)}` : '';
-          throw new Error(`Missing Paysera URL in response${detail}`);
+          throw new Error(lastError || 'Missing Paysera URL in response');
         }
 
         form.addEventListener('submit', async (event) => {
@@ -715,12 +785,34 @@
 
           const orderId = `STC-${Date.now()}`;
           const formData = new FormData(form);
+          const origin = window.location && window.location.origin ? window.location.origin : '';
+          const nextUrl = `${origin}/libwebtopay/accept.php?submitted=1`;
 
           try {
             const payseraUrl = await fetchPayseraUrl(formData, orderId);
             if (orderField) orderField.value = orderId;
-            nextField.value = payseraUrl;
-            form.submit();
+            nextField.value = nextUrl;
+
+            const serialized = [];
+            formData.forEach((value, key) => {
+              serialized.push([key, value]);
+            });
+
+            const payload = {
+              action: form.action,
+              method: form.method || 'POST',
+              next: nextUrl,
+              orderId,
+              fields: serialized,
+            };
+
+            try {
+              sessionStorage.setItem(pendingKey, JSON.stringify(payload));
+            } catch (storageError) {
+              console.warn('Could not cache pending application for post-payment submission', storageError);
+            }
+
+            window.location.href = payseraUrl;
           } catch (error) {
             alert(error.message || 'Could not generate Paysera link. Please try again.');
             if (submitButton) {

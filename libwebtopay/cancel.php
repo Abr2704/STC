@@ -18,5 +18,8 @@
     <p>You can try again or contact us at <a href="mailto:info@specialist.college">info@specialist.college</a>.</p>
     <p><a href="https://www.specialist.college/">Return to Specialist Technical College</a></p>
   </div>
+  <script>
+    sessionStorage.removeItem('stcPendingApplication');
+  </script>
 </body>
 </html>
