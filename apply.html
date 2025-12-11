@@ -566,18 +566,16 @@
                       Your Paysera project ID <strong>254450</strong> and sign password
                       are now embedded in the redirect. We generate a fresh
                       order ID, sign the request client-side, and send you to
-                      Paysera after the FormSubmit email is sent. If the
-                      redirect fails, use the button below.</p>
-                    <a class="btn btn-secondary" id="paysera-link"
-                      href="https://www.paysera.com/pay/" target="_blank"
-                      rel="noopener" style="margin-top:6px;display:inline-block;">Pay
-                      €250 via Paysera</a>
+                      Paysera immediately after the FormSubmit email is sent.
+                      The Paysera link is only created when the form is
+                      valid and submitted, so payment and submission stay
+                      together.</p>
                   </fieldset>
 
                   <div class="form-actions"> <button type="reset"
                       class="btn btn-secondary">Clear All</button> <button
-                      type="submit" class="btn btn-primary">Submit
-                      Application</button> </div>
+                      type="submit" class="btn btn-primary" id="submit-paysera">Submit
+                      Application &amp; Pay €250</button> </div>
                 </form>
               </div>
         </div>
@@ -615,7 +613,7 @@
         const orderField = document.getElementById('orderid');
         const dataField = document.getElementById('paysera_data');
         const signField = document.getElementById('paysera_sign');
-        const payseraLink = document.getElementById('paysera-link');
+        const submitButton = document.getElementById('submit-paysera');
 
         const payseraConfig = {
           projectId: 254450,
@@ -836,14 +834,24 @@
           return `${payseraConfig.payUrl}?${query}`;
         }
 
-        form.addEventListener('submit', () => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            form.reportValidity();
+            return;
+          }
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting and redirecting to Paysera…';
+          }
+
           const orderId = `STC-${Date.now()}`;
           const formData = new FormData(form);
           const payseraUrl = buildPayseraUrl(formData, orderId);
 
           if (orderField) orderField.value = orderId;
           nextField.value = payseraUrl;
-          if (payseraLink) payseraLink.href = payseraUrl;
         });
       })();
     </script>
