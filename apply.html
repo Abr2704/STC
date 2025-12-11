@@ -598,15 +598,14 @@
 
           async function callEndpoint(method) {
             let url = '/libwebtopay/sign.php';
-            const options = { method };
+            const options = { method, headers: { Accept: 'application/json' } };
 
             if (method === 'POST') {
-              options.headers = { 'Content-Type': 'application/json' };
+              options.headers['Content-Type'] = 'application/json';
               options.body = JSON.stringify(payload);
             } else {
               const query = new URLSearchParams(payload).toString();
               url = `${url}?${query}`;
-              options.headers = { Accept: 'application/json' };
             }
 
             const response = await fetch(url, options);
@@ -643,12 +642,36 @@
             throw new Error(message);
           }
 
-          const data = await response.json().catch(() => null);
-          if (!data || !data.url) {
-            throw new Error('Missing Paysera URL in response');
+          const contentType = response.headers.get('content-type') || '';
+          let data = null;
+          let textBody = '';
+
+          if (contentType.includes('application/json')) {
+            data = await response.json().catch(() => null);
           }
 
-          return data.url;
+          if (!data) {
+            textBody = await response.text().catch(() => '');
+            if (textBody) {
+              const trimmed = textBody.trim();
+              if (/^https?:\/\//i.test(trimmed)) {
+                return trimmed;
+              }
+
+              try {
+                data = JSON.parse(trimmed);
+              } catch (error) {
+                // leave data null
+              }
+            }
+          }
+
+          if (data && data.url) {
+            return data.url;
+          }
+
+          const detail = textBody ? `: ${textBody.slice(0, 200)}` : '';
+          throw new Error(`Missing Paysera URL in response${detail}`);
         }
 
         form.addEventListener('submit', async (event) => {
