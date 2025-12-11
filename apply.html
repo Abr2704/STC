@@ -336,21 +336,10 @@
               process your application. Fields marked with <span
                 style="color:#c00">*</span> are required. </p>
             <p style="margin-top:8px;font-size:13px;color:#555;"> This
-              form no longer uses FormSubmit (it cannot keep your file
-              uploads or start a Paysera payment). Everything is now
-              handled on our own secure PHP server instead. </p>
-            <p style="margin-top:4px;font-size:13px;color:#555;"> Step 1
-              securely uploads your documents. After you submit, Step 2
-              redirects you to Paysera to pay the €250 application fee.
-              We match your payment automatically—no manual reference or
-              separate Paysera form is needed. </p>
-              form submits directly to our admissions server. You can
-              upload your ID and qualification documents in Step 1, then
-              complete payment in Step 2. </p>
-            <p style="margin-top:4px;font-size:13px;color:#555;"> After
-              you submit, you'll be redirected to Paysera to pay the
-              €250 application fee. We match your payment automatically—no
-              manual reference needed. </p>
+              form submits directly to our secure admissions server and
+              then redirects you to Paysera to pay the €250 application
+              fee. We match your payment automatically—no manual
+              reference or separate Paysera form is needed. </p>
           </div>
           <style>
       /* Apply Now form styling (page-specific) */
@@ -489,18 +478,16 @@
         }
       }
     </style>
-          <div class="box">
-            <p class="section-note">Submitting this form will securely upload your documents to our server and then redirect you to the Paysera payment step.</p>
-            <form class="apply-form"
-              action="/libwebtopay/apply-submit.php"
-            <!-- The application now posts to the PaySera-enabled PHP handler -->
-            <form class="apply-form"
-              action="https://yourserver.com/libwebtopay/apply-submit.php"
-              method="POST" enctype="multipart/form-data">
+            <div class="box">
+              <p class="section-note">Submitting this form will send your
+                application to our server and then redirect you to the
+                Paysera payment step.</p>
+              <form class="apply-form" action="/libwebtopay/apply-submit.php"
+                method="POST">
               <div class="step-indicator"> Step <strong><span
                     id="step-current">1</span></strong> of <strong><span
                     id="step-total">2</span></strong> </div>
-              <!-- STEP 1: COURSE INFORMATION, UPLOADS + PERSONAL DETAILS -->
+              <!-- STEP 1: COURSE INFORMATION + PERSONAL DETAILS -->
               <fieldset class="form-step active" data-step="1"> <legend>Course
                   Information</legend>
                 <div class="form-row">
@@ -541,28 +528,6 @@
                     </select>
                   </div>
                 </div>
-                <legend style="margin-top:15px;">Upload Documents</legend>
-                <p class="section-note"> Please upload clear scans or
-                  photos of your identification and any relevant
-                  qualifications. </p>
-                <div class="form-row">
-                  <div class="form-group"> <label for="id_document">Photo
-                      ID (passport, driving licence, ID card) <span
-                        style="color:#c00">*</span></label> <input
-                      id="id_document" name="id_document"
-                      accept=".pdf,.jpg,.jpeg,.png" required=""
-                      type="file"> <small>PDF or image files only.</small>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="qualification_files">Qualification
-                      Certificates (GCSEs, A-Levels, Diplomas)</label> <input
-                      id="qualification_files"
-                      name="qualification_files[]" multiple=""
-                      accept=".pdf,.jpg,.jpeg,.png" type="file"> <small>You
-                      can select more than one file.</small> </div>
-                </div>
                 <legend style="margin-top:15px;">Applicant Details</legend>
                 <div class="form-row">
                   <div class="form-group"> <label for="full_name">Full
@@ -600,7 +565,7 @@
                   <button type="button" class="btn btn-primary"
                     data-next="">Next »</button> </div>
               </fieldset>
-                <!-- STEP 2: PAYMENT + DECLARATION -->
+                <!-- STEP 2: PAYMENT -->
                 <fieldset class="form-step" data-step="2"> <legend>Payment</legend>
                   <p class="section-note"> A €250 application payment is
                     required and will be offset against your tuition fee.
@@ -608,23 +573,6 @@
                     complete the payment securely. You won't need to copy
                     or paste any payment reference—we'll match it
                     automatically. </p>
-                <legend style="margin-top:15px;">Declaration</legend>
-                <div class="form-row">
-                  <div class="form-group"> <label
-                      for="applicant_signature">Applicant’s Signature
-                      (type full name) <span style="color:#c00">*</span></label>
-                    <input id="applicant_signature"
-                      name="applicant_signature" required="" type="text">
-                  </div>
-                  <div class="form-group"> <label for="applicant_date">Date
-                      <span style="color:#c00">*</span></label> <input
-                      id="applicant_date" name="applicant_date"
-                      required="" type="date"> </div>
-                </div>
-                <p class="section-note"> By submitting this form you
-                  confirm that, to the best of your knowledge, the
-                  information you have provided is accurate and
-                  complete. </p>
                 <div class="step-controls">
                   <div class="step-controls-left"> <button
                       type="button" class="btn btn-secondary"
@@ -649,11 +597,12 @@
           </div>
           <div class="box">
             <h2>Before You Apply</h2>
-            <ul>
-              <li>Check the entry requirements for your chosen course.</li>
-              <li>Have your previous qualifications and ID ready.</li>
-              <li>Make sure your contact details are correct.</li>
-            </ul>
+              <ul>
+                <li>Check the entry requirements for your chosen course.</li>
+                <li>Keep your previous qualifications and ID handy for
+                  verification.</li>
+                <li>Make sure your contact details are correct.</li>
+              </ul>
           </div>
         </div>
       </div>
