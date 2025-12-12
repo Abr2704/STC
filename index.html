@@ -1,488 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Home - Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+---
+layout: default
+title: Home
+---
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #e4e8f0;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    a { color: #0057a3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .page-wrapper {
-      max-width: 1080px;
-      margin: 20px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
-
-    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
-    .site-header {
-      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
-      color: #ffffff;
-      padding: 15px 20px;
-      text-align: left;     /* << ABSOLUTE FIX */
-    }
-
-    .site-header-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;  /* << FORCE LEFT ALIGN */
-      gap: 8px;
-    }
-
-    .site-logo {
-      height: 75px;
-      width: auto;
-      max-width: 100%;
-    }
-
-    .site-subtitle {
-      font-size: 14px;
-      opacity: 0.95;
-      color: #ffffff;
-      text-align: left;   /* ensure subtitle stays left */
-    }
-
-    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
-    .main-nav {
-      background: #0c3f74;
-      border-bottom: 3px solid #f7c948;
-      position: relative;
-    }
-
-    .main-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      transition: max-height 0.3s ease;
-    }
-
-    .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 14px;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    .main-nav a:hover,
-    .main-nav a.active {
-      background: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 16px;
-      background: transparent;
-      border: 0;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .nav-toggle:focus {
-      outline: 2px solid #f7c948;
-      outline-offset: 2px;
-    }
-
-    .nav-toggle .hamburger {
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      position: relative;
-    }
-
-    .nav-toggle .hamburger::before,
-    .nav-toggle .hamburger::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 22px;
-      height: 2px;
-      background: #ffffff;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-toggle .hamburger::before { top: -6px; }
-    .nav-toggle .hamburger::after { top: 6px; }
-
-    /* CONTENT AREA */
-    .content-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .main-content {
-      flex: 1 1 60%;
-      min-width: 260px;
-    }
-
-    .sidebar {
-      flex: 1 1 30%;
-      min-width: 220px;
-    }
-
-    .box {
-      background: #f7f9fc;
-      border: 1px solid #d4dce8;
-      border-radius: 6px;
-      padding: 18px 20px;
-      margin-bottom: 15px;
-    }
-
-    .box h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #0c3f74;
-    }
-
-    .box h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #0c3f74;
-    }
-
-    .box ul {
-      list-style: disc;
-      padding-left: 20px;
-      margin-top: 5px;
-    }
-
-    .highlight {
-      background: #fffbe6;
-      border-color: #f7c948;
-    }
-
-    .subject-links a {
-      display: inline-block;
-      margin: 3px 4px 3px 0;
-      padding: 6px 10px;
-      border-radius: 3px;
-      border: 1px solid #d4dce8;
-      background: #ffffff;
-      font-size: 13px;
-    }
-
-    .subject-links a:hover {
-      background: #f7c948;
-      border-color: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: #0c3f74;
-      color: #ffffff;
-      border-color: #0c3f74;
-    }
-
-    .btn-primary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: #ffffff;
-      color: #0c3f74;
-      border-color: #d4dce8;
-    }
-
-    .btn-secondary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    .site-footer {
-      background: #f4f4f4;
-      border-top: 1px solid #d9d9d9;
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 840px) {
-      .page-wrapper {
-        margin: 12px;
-        border-radius: 8px;
-      }
-
-      .site-header {
-        padding: 12px 16px;
-        text-align: center;
-      }
-
-      .site-header-inner {
-        align-items: center;
-      }
-
-      .site-logo {
-        height: auto;
-        max-height: 78px;
-        max-width: min(360px, 100%);
-      }
-
-      .content-wrapper {
-        flex-direction: column;
-        padding: 16px;
-      }
-
-      .sidebar {
-        min-width: 0;
-      }
-
-      .main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .main-nav ul.collapsed {
-        display: none;
-      }
-
-      .main-nav ul.open {
-        display: flex;
-      }
-
-      .main-nav li {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .main-nav a {
-        padding: 12px 16px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-    }
-
-  </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav"> <button class="nav-toggle"
-          aria-expanded="false" aria-controls="main-menu"> Menu <span
-            class="hamburger" aria-hidden="true"></span> </button>
-        <ul id="main-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- MAIN PAGE CONTENT -->
-      <div class="content-wrapper">
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-          <!-- HERO / WELCOME -->
-          <div class="box highlight">
-            <h2>Welcome to STC<br>
-            </h2>
-            Specialist Technical College is a British technical
-            institution operating in the United Kingdom and Kosovo. STC
-            offers university-level computing qualifications. <br>
-            <br>
-            Our programmes provide the skills needed for the IT industry
-            but with much needed globally recognised routes that allow
-            students to progress directly into British and Irish
-            universities.<br>
-          </div>
-          <!-- ACADEMIC FOCUS -->
-          <div class="box">
-            <h2>British-Standard Programmes at Level 3, Level 4 and
-              Level 5<br>
-            </h2>
-            <p data-start="127" data-end="374">Our curriculum follows
-              recognised UK vocational frameworks across Levels 3, 4 and
-              5, providing structured progression from foundational
-              knowledge to advanced technical capability.</p>
-            <ul data-start="375" data-end="723">
-              <li data-start="375" data-end="476">
-                <p data-start="377" data-end="476"><strong
-                    data-start="377" data-end="410">Level 3 (A-Level
-                    Equivalent):</strong> Builds core computing
-                  understanding and essential study skills.</p>
-              </li>
-              <li data-start="477" data-end="580">
-                <p data-start="479" data-end="580"><strong
-                    data-start="479" data-end="518">Level 4 (First Year
-                    of University):</strong> Strengthens technical
-                  competence and professional practice.</p>
-              </li>
-              <li data-start="581" data-end="723">
-                <p data-start="583" data-end="723"><strong
-                    data-start="583" data-end="623">Level 5 (Second Year
-                    of University):</strong> Develops advanced
-                  specialist skills and prepares learners for entry into
-                  final-year BSc programmes.</p>
-              </li>
-            </ul>
-            <h3><br>
-            </h3>
-            <h3>Teaching and Assessment</h3>
-            <p>Teaching is delivered through a blend of classroom
-              sessions, practical workshops and guided independent
-              study. Assessment typically includes assignments, projects
-              and practical tasks, reflecting British vocational
-              approaches and encouraging learners to apply their skills
-              in realistic scenarios.<br>
-            </p>
-            <p><br>
-            </p>
-          </div>
-          <!-- NEWS -->
-          <div class="box">
-            <h2>Partnerships and Collaboration</h2>
-            <h3 data-start="111" data-end="144">University Partnerships</h3>
-            <p data-start="145" data-end="465">We are actively
-              developing partnerships with British universities to bring
-              selected degree programmes <strong data-start="247"
-                data-end="277">directly on-site in Kosovo</strong>.
-              These collaborations will allow students to complete
-              internationally recognised UK degrees locally, making
-              high-quality university education significantly more
-              accessible and affordable.<br>
-              <br>
-            </p>
-            <h3 data-start="472" data-end="506">Exam Board Collaboration</h3>
-            <p data-start="507" data-end="801">We work closely with
-              recognised UK awarding bodies to adapt and refine
-              qualifications in line with employer demand and industry
-              trends. This collaborative approach ensures our computing
-              curriculum remains relevant, up-to-date and aligned with
-              the evolving needs of the global technology sector.</p>
-          </div>
-        </main>
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-          <!-- WHY STUDY WITH US -->
-          <div class="box">
-            <div class="box"> <img src="/GIF.gif" alt="" width="292"
-                height="162"> </div>
-            <h2>Why Study with Us?</h2>
-            <ul>
-              <li data-start="82" data-end="143">
-                <p data-start="84" data-end="143"><strong
-                    data-start="84" data-end="141">British technical
-                    qualifications delivered in Kosovo, globally
-                    recognised.<br>
-                  </strong></p>
-              </li>
-            </ul>
-            <ul>
-              <li data-start="144" data-end="193">
-                <p data-start="146" data-end="193"><strong
-                    data-start="146" data-end="191">Up to 70% more
-                    affordable than RIT Kosovo</strong></p>
-              </li>
-              <li data-start="194" data-end="280">
-                <p data-start="196" data-end="280"><strong
-                    data-start="196" data-end="278">Flexible modular
-                    study, including weekend options for professionals
-                    and expats</strong></p>
-              </li>
-              <li data-start="281" data-end="345">
-                <p data-start="283" data-end="345"><strong
-                    data-start="283" data-end="343">Smaller class sizes
-                    with personalised, supportive teaching</strong></p>
-              </li>
-            </ul>
-          </div>
-          <div class="box"> </div>
-          <!-- HIGHLIGHT: ELECTRONICS -->
-          <div class="box">
-            <h2>Updates</h2>
-            <ul>
-              <li>Introduction to electronic components and circuits.</li>
-              <li>Practical lab sessions and project work.</li>
-              <li>Foundation in digital and analogue electronics.</li>
-              <li>Preparation for further study and technical roles.</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+<div class="content-wrapper">
+  <main class="main-content">
+    <div class="box highlight">
+      <h2>Welcome to STC</h2>
+      Specialist Technical College is a British technical institution operating in the United Kingdom and Kosovo. STC offers university-level computing qualifications.
+      <br /><br />
+      Our programmes provide the skills needed for the IT industry but with much needed globally recognised routes that allow students to progress directly into British and Irish universities.
     </div>
-    <script>
-      (function() {
-        const navToggle = document.querySelector('.nav-toggle');
-        const navList = document.querySelector('.main-nav ul');
 
-        if (navToggle && navList) {
-          const updateMenu = (expanded) => {
-            navList.classList.toggle('collapsed', !expanded);
-            navList.classList.toggle('open', expanded);
-            navToggle.setAttribute('aria-expanded', String(expanded));
-          };
+    <div class="box">
+      <h2>British-Standard Programmes at Level 3, Level 4 and Level 5</h2>
+      <p>Our curriculum follows recognised UK vocational frameworks across Levels 3, 4 and 5, providing structured progression from foundational knowledge to advanced technical capability.</p>
+      <ul>
+        <li>
+          <p><strong>Level 3 (A-Level Equivalent):</strong> Builds core computing understanding and essential study skills.</p>
+        </li>
+        <li>
+          <p><strong>Level 4 (First Year of University):</strong> Strengthens technical competence and professional practice.</p>
+        </li>
+        <li>
+          <p><strong>Level 5 (Second Year of University):</strong> Develops advanced specialist skills and prepares learners for entry into final-year BSc programmes.</p>
+        </li>
+      </ul>
 
-          updateMenu(false);
+      <h3>Teaching and Assessment</h3>
+      <p>Teaching is delivered through a blend of classroom sessions, practical workshops and guided independent study. Assessment typically includes assignments, projects and practical tasks, reflecting British vocational approaches and encouraging learners to apply their skills in realistic scenarios.</p>
+    </div>
 
-          navToggle.addEventListener('click', () => {
-            const shouldExpand = navList.classList.contains('collapsed');
-            updateMenu(shouldExpand);
-          });
-        }
-      })();
-    </script>
-  </body>
-</html>
+    <div class="box">
+      <h2>Partnerships and Collaboration</h2>
+      <h3>University Partnerships</h3>
+      <p>We are actively developing partnerships with British universities to bring selected degree programmes <strong>directly on-site in Kosovo</strong>. These collaborations will allow students to complete internationally recognised UK degrees locally, making high-quality university education significantly more accessible and affordable.</p>
+
+      <h3>Exam Board Collaboration</h3>
+      <p>We work closely with recognised UK awarding bodies to adapt and refine qualifications in line with employer demand and industry trends. This collaborative approach ensures our computing curriculum remains relevant, up-to-date and aligned with the evolving needs of the global technology sector.</p>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="box">
+      <div class="box">
+        <img src="/GIF.gif" alt="" width="292" height="162" />
+      </div>
+      <h2>Why Study with Us?</h2>
+      <ul>
+        <li>
+          <p><strong>British technical qualifications delivered in Kosovo, globally recognised.</strong></p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <p><strong>Up to 70% more affordable than RIT Kosovo</strong></p>
+        </li>
+        <li>
+          <p><strong>Flexible modular study, including weekend options for professionals and expats</strong></p>
+        </li>
+        <li>
+          <p><strong>Smaller class sizes with personalised, supportive teaching</strong></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Updates</h2>
+      <ul>
+        <li>Introduction to electronic components and circuits.</li>
+        <li>Practical lab sessions and project work.</li>
+        <li>Foundation in digital and analogue electronics.</li>
+        <li>Preparation for further study and technical roles.</li>
+      </ul>
+    </div>
+  </aside>
+</div>
