@@ -196,6 +196,115 @@
       text-decoration: none;
     }
 
+    /* Contact page styles */
+    .contact-card {
+      position: relative;
+      padding: 22px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f7f9fc 0%, #eef3fa 100%);
+      border: 1px solid rgba(12, 63, 116, 0.14);
+      box-shadow: 0 12px 26px rgba(12, 63, 116, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 95, 167, 0.08), rgba(247, 201, 72, 0.08));
+      pointer-events: none;
+    }
+
+    .contact-card h1,
+    .contact-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-form {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px 16px;
+    }
+
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-form label {
+      font-weight: 700;
+      color: #0c3f74;
+      font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid #c8d4e4;
+      background: linear-gradient(180deg, #ffffff, #f5f8fd);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px rgba(12, 63, 116, 0.08);
+      font-size: 14px;
+      color: #1f2d3d;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #1a5fa7;
+      box-shadow: 0 0 0 3px rgba(26, 95, 167, 0.15), 0 8px 18px rgba(26, 95, 167, 0.14);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 140px; }
+
+    .contact-form .form-group.full { grid-column: 1 / -1; }
+
+    .contact-form .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(12, 63, 116, 0.18), 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(12, 63, 116, 0.22), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 16px rgba(12, 63, 116, 0.18);
+    }
+
+    .meta-list { list-style: none; padding: 0; }
+    .meta-list li { margin-bottom: 6px; }
+
     .btn {
       display: inline-block;
       padding: 8px 14px;
@@ -231,6 +340,110 @@
       border-color: #f7c948;
       text-decoration: none;
     }
+
+    /* INLINE APPLICATION FORM (COURSE PAGES) */
+    .course-apply {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 38, 82, 0.08);
+    }
+
+    .course-apply.hidden { display: none; }
+
+    .apply-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .apply-form .form-stage {
+      border: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      opacity: 1;
+    }
+
+    .apply-form .form-stage.is-hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    .apply-form .form-stage.is-visible {
+      display: block;
+      animation: fadeInUp 0.35s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .apply-form legend {
+      font-weight: bold;
+      font-size: 16px;
+      color: #0c3f74;
+      margin-bottom: 6px;
+    }
+
+    .apply-form .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .apply-form .form-group {
+      flex: 1 1 200px;
+      min-width: 170px;
+      margin-bottom: 2px;
+    }
+
+    .apply-form label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+      color: #0c3f74;
+      letter-spacing: 0.1px;
+    }
+
+    .apply-form input,
+    .apply-form select,
+    .apply-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #c8d2e5;
+      font-size: 14px;
+      background: linear-gradient(180deg, #f9fbff 0%, #f4f7fb 100%);
+      box-shadow: inset 0 1px 2px rgba(12, 63, 116, 0.08);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus,
+    .apply-form textarea:focus {
+      outline: none;
+      border-color: #0c3f74;
+      box-shadow: 0 0 0 3px rgba(12, 63, 116, 0.12);
+      background: #ffffff;
+    }
+
+    .apply-form input[readonly] { background: #eef2f8; }
+
+    .apply-form .section-note {
+      font-size: 13px;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .form-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .form-actions .btn { min-width: 140px; text-align: center; }
 
     /* FOOTER */
     .site-footer {
@@ -329,11 +542,15 @@
       </button>
       <ul id="main-menu">
         <li><a href="/index.html">Home</a></li>
-        <li><a href="/about.html">About the College</a></li>
         <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
         <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
         <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+<<<<<<< HEAD
+        <li><a href="/bsc.html">More Courses</a></li>
+
+=======
         <li><a href="/more.html">More</a></li>
+>>>>>>> ad3e71671f4388c7d931b3c2e8dd1a8f535fc7d8
         <li><a href="/contact.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -395,7 +612,50 @@
       </p>
       <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
       <div class="cta">
-        <a href="/contact.html" class="btn btn-primary"> Apply Now </a>
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-level4">Apply Now</button>
+      </div>
+      <div id="apply-level4" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-level4">Course</label>
+                <input id="course-level4" name="first_choice" type="text" value="ATHE Level 4 – Extended Diploma in Computing (Cyber Security Route)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_level4">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_level4" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_level4">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_level4" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_level4">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_level4" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">A €250 application payment is required and will be offset against your tuition fee. After submitting the form, you'll be redirected to our payment page to complete the secure Paysera checkout.</p>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
+          </div>
+        </form>
       </div>
       <h3 style="margin-top:14px;">Example Core Units</h3>
       <ul>
@@ -434,7 +694,50 @@
       </p>
       <!-- APPLY BUTTON DIRECTLY AFTER INTRO -->
       <div class="cta">
-        <a href="/contact.html" class="btn btn-primary"> Apply Now </a>
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-level5">Apply Now</button>
+      </div>
+      <div id="apply-level5" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-level5">Course</label>
+                <input id="course-level5" name="first_choice" type="text" value="ATHE Level 5 – Extended Diploma in Computing (Cyber Security Route)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_level5">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_level5" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_level5">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_level5" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_level5">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_level5" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">A €250 application payment is required and will be offset against your tuition fee. After submitting the form, you'll be redirected to our payment page to complete the secure Paysera checkout.</p>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
+          </div>
+        </form>
       </div>
       <h3 style="margin-top:14px;">Example Core Units</h3>
       <ul>
@@ -507,6 +810,62 @@
           updateMenu(shouldExpand);
         });
       }
+
+      const applyButtons = document.querySelectorAll('[data-apply-target]');
+
+      applyButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.dataset.applyTarget);
+
+          if (!target) return;
+
+          target.classList.toggle('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const courseForms = document.querySelectorAll('.course-apply .apply-form');
+
+      const stageIsComplete = (stage) => {
+        const fields = stage.querySelectorAll('input, select, textarea');
+
+        for (const field of fields) {
+          if (field.required && !field.value.trim()) {
+            return false;
+          }
+
+          if (field.type === 'email' && field.value && !field.validity.valid) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      const refreshStages = (form) => {
+        const stages = Array.from(form.querySelectorAll('.form-stage'));
+        let unlocked = true;
+
+        stages.forEach((stage) => {
+          if (unlocked) {
+            stage.classList.add('is-visible');
+            stage.classList.remove('is-hidden');
+          } else {
+            stage.classList.add('is-hidden');
+            stage.classList.remove('is-visible');
+          }
+
+          if (!stageIsComplete(stage)) {
+            unlocked = false;
+          }
+        });
+      };
+
+      courseForms.forEach((form) => {
+        refreshStages(form);
+        form.addEventListener('input', () => refreshStages(form));
+        form.addEventListener('change', () => refreshStages(form));
+      });
     })();
   </script>
 </body>

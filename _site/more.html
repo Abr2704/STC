@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+  <meta charset="UTF-8" />
+  <title>More - Specialist Technical College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>More - Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+  <style>
     /* RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,10 +20,10 @@
     a:hover { text-decoration: underline; }
 
     .page-wrapper {
-      max-width: 980px;
+      max-width: 1080px;
       margin: 20px auto;
       background: #ffffff;
-      border-radius: 6px;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
@@ -47,6 +46,7 @@
     .site-logo {
       height: 75px;
       width: auto;
+      max-width: 100%;
     }
 
     .site-subtitle {
@@ -60,12 +60,14 @@
     .main-nav {
       background: #0c3f74;
       border-bottom: 3px solid #f7c948;
+      position: relative;
     }
 
     .main-nav ul {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
+      transition: max-height 0.3s ease;
     }
 
     .main-nav li {
@@ -86,6 +88,47 @@
       color: #0c3f74;
       text-decoration: none;
     }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 16px;
+      background: transparent;
+      border: 0;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-toggle:focus {
+      outline: 2px solid #f7c948;
+      outline-offset: 2px;
+    }
+
+    .nav-toggle .hamburger {
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      background: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle .hamburger::before { top: -6px; }
+    .nav-toggle .hamburger::after { top: 6px; }
 
     /* CONTENT AREA */
     .content-wrapper {
@@ -108,8 +151,8 @@
     .box {
       background: #f7f9fc;
       border: 1px solid #d4dce8;
-      border-radius: 4px;
-      padding: 15px 20px;
+      border-radius: 6px;
+      padding: 18px 20px;
       margin-bottom: 15px;
     }
 
@@ -153,6 +196,115 @@
       text-decoration: none;
     }
 
+    /* Contact page styles */
+    .contact-card {
+      position: relative;
+      padding: 22px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f7f9fc 0%, #eef3fa 100%);
+      border: 1px solid rgba(12, 63, 116, 0.14);
+      box-shadow: 0 12px 26px rgba(12, 63, 116, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 95, 167, 0.08), rgba(247, 201, 72, 0.08));
+      pointer-events: none;
+    }
+
+    .contact-card h1,
+    .contact-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-form {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px 16px;
+    }
+
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-form label {
+      font-weight: 700;
+      color: #0c3f74;
+      font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid #c8d4e4;
+      background: linear-gradient(180deg, #ffffff, #f5f8fd);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px rgba(12, 63, 116, 0.08);
+      font-size: 14px;
+      color: #1f2d3d;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #1a5fa7;
+      box-shadow: 0 0 0 3px rgba(26, 95, 167, 0.15), 0 8px 18px rgba(26, 95, 167, 0.14);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 140px; }
+
+    .contact-form .form-group.full { grid-column: 1 / -1; }
+
+    .contact-form .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(12, 63, 116, 0.18), 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(12, 63, 116, 0.22), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 16px rgba(12, 63, 116, 0.18);
+    }
+
+    .meta-list { list-style: none; padding: 0; }
+    .meta-list li { margin-bottom: 6px; }
+
     .btn {
       display: inline-block;
       padding: 8px 14px;
@@ -189,6 +341,110 @@
       text-decoration: none;
     }
 
+    /* INLINE APPLICATION FORM (COURSE PAGES) */
+    .course-apply {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 38, 82, 0.08);
+    }
+
+    .course-apply.hidden { display: none; }
+
+    .apply-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .apply-form .form-stage {
+      border: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      opacity: 1;
+    }
+
+    .apply-form .form-stage.is-hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    .apply-form .form-stage.is-visible {
+      display: block;
+      animation: fadeInUp 0.35s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .apply-form legend {
+      font-weight: bold;
+      font-size: 16px;
+      color: #0c3f74;
+      margin-bottom: 6px;
+    }
+
+    .apply-form .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .apply-form .form-group {
+      flex: 1 1 200px;
+      min-width: 170px;
+      margin-bottom: 2px;
+    }
+
+    .apply-form label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+      color: #0c3f74;
+      letter-spacing: 0.1px;
+    }
+
+    .apply-form input,
+    .apply-form select,
+    .apply-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #c8d2e5;
+      font-size: 14px;
+      background: linear-gradient(180deg, #f9fbff 0%, #f4f7fb 100%);
+      box-shadow: inset 0 1px 2px rgba(12, 63, 116, 0.08);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus,
+    .apply-form textarea:focus {
+      outline: none;
+      border-color: #0c3f74;
+      box-shadow: 0 0 0 3px rgba(12, 63, 116, 0.12);
+      background: #ffffff;
+    }
+
+    .apply-form input[readonly] { background: #eef2f8; }
+
+    .apply-form .section-note {
+      font-size: 13px;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .form-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .form-actions .btn { min-width: 140px; text-align: center; }
+
     /* FOOTER */
     .site-footer {
       background: #f4f4f4;
@@ -203,70 +459,217 @@
     }
 
     /* MOBILE */
-    @media (max-width: 640px) {
-      .content-wrapper {
-        flex-direction: column;
-        padding: 15px;
+    @media (max-width: 840px) {
+      .page-wrapper {
+        margin: 12px;
+        border-radius: 8px;
+      }
+
+      .site-header {
+        padding: 12px 16px;
+        text-align: center;
+      }
+
+      .site-header-inner {
+        align-items: center;
       }
 
       .site-logo {
-        height: 65px;
+        height: auto;
+        max-height: 78px;
+        max-width: min(360px, 100%);
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .sidebar {
+        min-width: 0;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .main-nav ul.collapsed {
+        display: none;
+      }
+
+      .main-nav ul.open {
+        display: flex;
+      }
+
+      .main-nav li {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .main-nav a {
+        padding: 12px 16px;
+      }
+
+      .nav-toggle {
+        display: flex;
       }
     }
 
   </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav">
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-        <li><a href="/more.html">More</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- MAIN PAGE CONTENT -->
-      <div class="content-wrapper">
-        <main class="main-content">
-          <div class="box highlight">
-            <h1>More Information</h1>
-            <p>
-              Explore additional resources, policies, and information about Specialist Technical College.
-              Use the links below to learn more about our programmes, support services, and campus life.
-            </p>
-          </div>
-          <div class="box">
-            <h2>Resources</h2>
-            <ul>
-              <li>Student handbook and academic policies</li>
-              <li>Campus facilities and support services overview</li>
-              <li>Upcoming events and important dates</li>
-            </ul>
-          </div>
-        </main>
-        <aside class="sidebar">
-          <div class="box">
-            <h2>Need Assistance?</h2>
-            <p>Contact our student services team for guidance on programmes, admissions, and support.</p>
-            <p><a href="/contact.html">Get in touch</a></p>
-          </div>
-        </aside>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+    <header class="site-header">
+      <div class="site-header-inner">
+
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
       </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">
+        Menu
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <ul id="main-menu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
+        <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
+        <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+<<<<<<< HEAD
+        <li><a href="/bsc.html">More Courses</a></li>
+
+=======
+        <li><a href="/more.html">More</a></li>
+>>>>>>> ad3e71671f4388c7d931b3c2e8dd1a8f535fc7d8
+        <li><a href="/contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div class="content-wrapper">
+  <div class="main-content">
+    <div class="box highlight">
+      <h1>More Information</h1>
+      <p>
+        Explore additional resources, policies, and information about Specialist Technical College.
+        Use the links below to learn more about our programmes, support services, and campus life.
+      </p>
     </div>
-  </body>
+
+    <div class="box">
+      <h2>Resources</h2>
+      <ul>
+        <li>Student handbook and academic policies</li>
+        <li>Campus facilities and support services overview</li>
+        <li>Upcoming events and important dates</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="box">
+      <h2>Need Assistance?</h2>
+      <p>Contact our student services team for guidance on programmes, admissions, and support.</p>
+      <p><a href="/contact.html">Get in touch</a></p>
+    </div>
+  </aside>
+</div>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.main-nav ul');
+
+      if (navToggle && navList) {
+        const updateMenu = (expanded) => {
+          navList.classList.toggle('collapsed', !expanded);
+          navList.classList.toggle('open', expanded);
+          navToggle.setAttribute('aria-expanded', String(expanded));
+        };
+
+        updateMenu(false);
+
+        navToggle.addEventListener('click', () => {
+          const shouldExpand = navList.classList.contains('collapsed');
+          updateMenu(shouldExpand);
+        });
+      }
+
+      const applyButtons = document.querySelectorAll('[data-apply-target]');
+
+      applyButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.dataset.applyTarget);
+
+          if (!target) return;
+
+          target.classList.toggle('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const courseForms = document.querySelectorAll('.course-apply .apply-form');
+
+      const stageIsComplete = (stage) => {
+        const fields = stage.querySelectorAll('input, select, textarea');
+
+        for (const field of fields) {
+          if (field.required && !field.value.trim()) {
+            return false;
+          }
+
+          if (field.type === 'email' && field.value && !field.validity.valid) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      const refreshStages = (form) => {
+        const stages = Array.from(form.querySelectorAll('.form-stage'));
+        let unlocked = true;
+
+        stages.forEach((stage) => {
+          if (unlocked) {
+            stage.classList.add('is-visible');
+            stage.classList.remove('is-hidden');
+          } else {
+            stage.classList.add('is-hidden');
+            stage.classList.remove('is-visible');
+          }
+
+          if (!stageIsComplete(stage)) {
+            unlocked = false;
+          }
+        });
+      };
+
+      courseForms.forEach((form) => {
+        refreshStages(form);
+        form.addEventListener('input', () => refreshStages(form));
+        form.addEventListener('change', () => refreshStages(form));
+      });
+    })();
+  </script>
+</body>
 </html>

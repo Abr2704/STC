@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Level 3 (A-Level Equivalent) - Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+<head>
+  <meta charset="UTF-8" />
+  <title>Level 3 (A-Level Equivalent) - Specialist Technical College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
     /* RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -33,13 +33,13 @@
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
       padding: 15px 20px;
-      text-align: left;
+      text-align: left;     /* << ABSOLUTE FIX */
     }
 
     .site-header-inner {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-start;  /* << FORCE LEFT ALIGN */
       gap: 8px;
     }
 
@@ -53,7 +53,7 @@
       font-size: 14px;
       opacity: 0.95;
       color: #ffffff;
-      text-align: left;
+      text-align: left;   /* ensure subtitle stays left */
     }
 
     /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
@@ -138,15 +138,14 @@
       gap: 20px;
     }
 
-    /* Make the two columns evenly spread (50/50) */
     .main-content {
-      flex: 1 1 50%;
+      flex: 1 1 60%;
       min-width: 260px;
     }
 
     .sidebar {
-      flex: 1 1 50%;
-      min-width: 260px;
+      flex: 1 1 30%;
+      min-width: 220px;
     }
 
     .box {
@@ -154,7 +153,7 @@
       border: 1px solid #d4dce8;
       border-radius: 6px;
       padding: 18px 20px;
-      margin-bottom: 10px; /* slightly reduced to bring sections closer */
+      margin-bottom: 15px;
     }
 
     .box h2 {
@@ -197,6 +196,115 @@
       text-decoration: none;
     }
 
+    /* Contact page styles */
+    .contact-card {
+      position: relative;
+      padding: 22px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f7f9fc 0%, #eef3fa 100%);
+      border: 1px solid rgba(12, 63, 116, 0.14);
+      box-shadow: 0 12px 26px rgba(12, 63, 116, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 95, 167, 0.08), rgba(247, 201, 72, 0.08));
+      pointer-events: none;
+    }
+
+    .contact-card h1,
+    .contact-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-form {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px 16px;
+    }
+
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-form label {
+      font-weight: 700;
+      color: #0c3f74;
+      font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid #c8d4e4;
+      background: linear-gradient(180deg, #ffffff, #f5f8fd);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px rgba(12, 63, 116, 0.08);
+      font-size: 14px;
+      color: #1f2d3d;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #1a5fa7;
+      box-shadow: 0 0 0 3px rgba(26, 95, 167, 0.15), 0 8px 18px rgba(26, 95, 167, 0.14);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 140px; }
+
+    .contact-form .form-group.full { grid-column: 1 / -1; }
+
+    .contact-form .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #1a5fa7, #0c3f74);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(12, 63, 116, 0.18), 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(12, 63, 116, 0.22), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 16px rgba(12, 63, 116, 0.18);
+    }
+
+    .meta-list { list-style: none; padding: 0; }
+    .meta-list li { margin-bottom: 6px; }
+
     .btn {
       display: inline-block;
       padding: 8px 14px;
@@ -232,6 +340,110 @@
       border-color: #f7c948;
       text-decoration: none;
     }
+
+    /* INLINE APPLICATION FORM (COURSE PAGES) */
+    .course-apply {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 38, 82, 0.08);
+    }
+
+    .course-apply.hidden { display: none; }
+
+    .apply-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .apply-form .form-stage {
+      border: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      opacity: 1;
+    }
+
+    .apply-form .form-stage.is-hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    .apply-form .form-stage.is-visible {
+      display: block;
+      animation: fadeInUp 0.35s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .apply-form legend {
+      font-weight: bold;
+      font-size: 16px;
+      color: #0c3f74;
+      margin-bottom: 6px;
+    }
+
+    .apply-form .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .apply-form .form-group {
+      flex: 1 1 200px;
+      min-width: 170px;
+      margin-bottom: 2px;
+    }
+
+    .apply-form label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+      color: #0c3f74;
+      letter-spacing: 0.1px;
+    }
+
+    .apply-form input,
+    .apply-form select,
+    .apply-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #c8d2e5;
+      font-size: 14px;
+      background: linear-gradient(180deg, #f9fbff 0%, #f4f7fb 100%);
+      box-shadow: inset 0 1px 2px rgba(12, 63, 116, 0.08);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus,
+    .apply-form textarea:focus {
+      outline: none;
+      border-color: #0c3f74;
+      box-shadow: 0 0 0 3px rgba(12, 63, 116, 0.12);
+      background: #ffffff;
+    }
+
+    .apply-form input[readonly] { background: #eef2f8; }
+
+    .apply-form .section-note {
+      font-size: 13px;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .form-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .form-actions .btn { min-width: 140px; text-align: center; }
 
     /* FOOTER */
     .site-footer {
@@ -306,117 +518,219 @@
     }
 
   </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav"> <button class="nav-toggle"
-          aria-expanded="false" aria-controls="main-menu"> Menu <span
-            class="hamburger" aria-hidden="true"></span> </button>
-        <ul id="main-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+    <header class="site-header">
+      <div class="site-header-inner">
+
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">
+        Menu
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <ul id="main-menu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
+        <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
+        <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+<<<<<<< HEAD
+        <li><a href="/bsc.html">More Courses</a></li>
+
+=======
         <li><a href="/more.html">More</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- FULL-WIDTH INTRO BOX (CLOSER TO COURSES) -->
-      <div class="box highlight" style="margin:15px 20px 10px 20px;">
-        <h2>Level 3 Certificate and Diploma – A-Level Equivalents</h2>
-        <p> Successful completion of Level 3 can lead directly into our
-          Level 4 &amp; 5 university-level programmes in Computing and
-          Cyber Security, and then on to a final year BSc (Top-Up) with
-          partner universities. They are designed for learners who want
-          to build strong foundations in Computing (Cyber Security)
-          before progressing to higher-level study. </p>
+>>>>>>> ad3e71671f4388c7d931b3c2e8dd1a8f535fc7d8
+        <li><a href="/contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN PAGE CONTENT -->
+    <!-- FULL-WIDTH INTRO BOX -->
+<div class="box highlight" style="margin:20px;">
+  <h1>Level 3 (A-Level Equivalent)</h1>
+  <p>
+    Successful completion of Level 3 can lead directly into our Level 4 &amp; 5 university-level programmes in Computing and
+    Cyber Security, and then on to a final year BSc (Top-Up) with partner universities. They are designed for learners who want
+    to build strong foundations in Computing (Cyber Security) before progressing to higher-level study.
+  </p>
+</div>
+
+<!-- TWO-COLUMN LAYOUT -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <!-- LEFT COLUMN -->
+  <main class="main-content">
+    <div class="box">
+      <h2>ATHE Level 3 Certificate (Intro to Cyber Security)</h2>
+      <p>
+        This Level 3 qualification introduces the core ideas of cyber security: how online systems can be attacked, how
+        information can be protected, and how to keep yourself and others safe when working online.
+      </p>
+      <div class="cta">
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-l3-cyber">Apply Now</button>
       </div>
-      <!-- TWO-COLUMN LAYOUT (CLOSER TO INTRO BOX) -->
-      <div class="content-wrapper" style="padding:10px 20px 10px 20px;">
-        <!-- LEFT COLUMN -->
-        <main class="main-content">
-          <!-- ATHE L3 INTRO TO CYBER SECURITY -->
-          <div class="box">
-            <h2>ATHE Level 3 Certificate (Intro to Cyber Security)</h2>
-            <p> This Level 3 qualification introduces the core ideas of
-              cyber security: how online systems can be attacked, how
-              information can be protected, and how to keep yourself and
-              others safe when working online. </p>
-            <!-- APPLY BUTTON MOVED DIRECTLY AFTER INTRO PARAGRAPH -->
-            <div style="margin:10px 0 12px 0;"> <a href="/contact.html"
-                class="btn btn-primary"> Apply Now</a> </div>
-            <h3>Topics</h3>
-            <ul>
-              <li>Cyber threats, attacks &amp; vulnerabilities.</li>
-              <li>Safe online behaviour &amp; authentication.</li>
-              <li>Basic security on devices &amp; networks.</li>
-              <li>Risk management in daily digital use.</li>
-            </ul>
-            <h3><br>
-            </h3>
-            <h3>Tuition Fee: €400</h3>
-          </div>
-        </main>
-        <!-- RIGHT COLUMN -->
-        <aside class="sidebar">
-          <!-- BCS LEVEL 3 IT -->
-          <div class="box">
-            <h2>BCS Level 3 IT (Diploma)</h2>
-            <p> This Level 3 IT programme builds strong digital and
-              technical skills including IT systems and networks. It is
-              assessed by multiple choice test, coursework and a
-              practical.<br>
-              <br>
+      <div id="apply-l3-cyber" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-l3-cyber">Course</label>
+                <input id="course-l3-cyber" name="first_choice" type="text" value="ATHE Level 3 Certificate (Intro to Cyber Security)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_l3_cyber">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_l3_cyber" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_l3_cyber">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_l3_cyber" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_l3_cyber">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_l3_cyber" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">
+              A €250 application payment is required and will be offset against your tuition fee. After submitting the form,
+              you'll be redirected to our payment page to complete the secure Paysera checkout.
             </p>
-            <!-- APPLY BUTTON MOVED DIRECTLY AFTER INTRO PARAGRAPH -->
-            <div style="margin:10px 0 12px 0;"> <a href="/contact.html"
-                class="btn btn-primary"> Apply Now</a> </div>
-            <h3>Modules</h3>
-            <ul>
-              <li>Optimise IT Systems Performance</li>
-              <li>IT Security for Users</li>
-              <li>Improving Productivity Using IT</li>
-              <li>Set Up An IT System</li>
-              <li>Understanding the Potential of IT</li>
-            </ul>
-            <h3><br>
-            </h3>
-            <h3>Tuition Fee: €600</h3>
-            <ul>
-            </ul>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
           </div>
-        </aside>
+        </form>
       </div>
-      <!-- ENTRY REQUIREMENTS AT BOTTOM, CLOSER TO COURSES -->
-      <div class="content-wrapper" style="padding:10px 20px 20px 20px;">
-        <div class="box" style="width:100%;">
-          <h2>Entry Requirements for Level 3</h2>
-          <ul>
-            <li>Normally aged 16+ or an adult learner.</li>
-            <li>Completion of compulsory secondary education.</li>
-            <li>Interest in Computing, IT or Cyber Security.</li>
-            <li>Basic computer skills.</li>
-            <li>English GCSE and Maths GCSE or equivalent (support
-              available).</li>
-          </ul>
-          <a href="/contact.html" class="btn btn-secondary"
-            style="margin-top:8px;"> Contact to discuss further for
-            Entry Requirements </a> </div>
-      </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+      <h3 style="margin-top:14px;">Topics</h3>
+      <ul>
+        <li>Cyber threats, attacks &amp; vulnerabilities.</li>
+        <li>Safe online behaviour &amp; authentication.</li>
+        <li>Basic security on devices &amp; networks.</li>
+        <li>Risk management in daily digital use.</li>
+      </ul>
+      <h3>Tuition Fee: €400</h3>
     </div>
-    <script>
+  </main>
+
+  <!-- RIGHT COLUMN -->
+  <aside class="sidebar">
+    <div class="box">
+      <h2>BCS Level 3 IT (Diploma)</h2>
+      <p>
+        This Level 3 IT programme builds strong digital and technical skills including IT systems and networks. It is assessed
+        by multiple choice test, coursework and a practical.
+      </p>
+      <div class="cta">
+        <button type="button" class="btn btn-primary" data-apply-target="#apply-l3-bcs">Apply Now</button>
+      </div>
+      <div id="apply-l3-bcs" class="course-apply hidden">
+        <form class="apply-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+          <input type="hidden" name="_next" value="https://www.paysera.com/pay/individual-order/application-fee">
+          <input type="hidden" name="_subject" value="New STC application submission">
+          <input type="hidden" name="_captcha" value="false">
+          <fieldset class="form-stage">
+            <legend>Course Information</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course-l3-bcs">Course</label>
+                <input id="course-l3-bcs" name="first_choice" type="text" value="BCS Level 3 IT (Diploma)" readonly>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Applicant Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full_name_l3_bcs">Full Name <span style="color:#c00">*</span></label>
+                <input id="full_name_l3_bcs" name="full_name" type="text" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact_number_l3_bcs">Contact Number (including country code) <span style="color:#c00">*</span></label>
+                <input id="contact_number_l3_bcs" name="contact_number" type="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="email_l3_bcs">Email Address <span style="color:#c00">*</span></label>
+                <input id="email_l3_bcs" name="email" type="email" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-stage">
+            <legend>Payment</legend>
+            <p class="section-note">
+              A €250 application payment is required and will be offset against your tuition fee. After submitting the form,
+              you'll be redirected to our payment page to complete the secure Paysera checkout.
+            </p>
+          </fieldset>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear All</button>
+            <button type="submit" class="btn btn-primary">Submit Application &amp; Pay €250</button>
+          </div>
+        </form>
+      </div>
+      <h3 style="margin-top:14px;">Modules</h3>
+      <ul>
+        <li>Optimise IT Systems Performance</li>
+        <li>IT Security for Users</li>
+        <li>Improving Productivity Using IT</li>
+        <li>Set Up An IT System</li>
+        <li>Understanding the Potential of IT</li>
+      </ul>
+      <h3>Tuition Fee: €600</h3>
+    </div>
+  </aside>
+</div>
+
+<!-- ENTRY REQUIREMENTS -->
+<div class="content-wrapper" style="padding-top:10px;">
+  <div class="box" style="width:100%;">
+    <h2>Entry Requirements for Level 3</h2>
+    <ul>
+      <li>Normally aged 16+ or an adult learner.</li>
+      <li>Completion of compulsory secondary education.</li>
+      <li>Interest in Computing, IT or Cyber Security.</li>
+      <li>Basic computer skills.</li>
+      <li>English GCSE and Maths GCSE or equivalent (support available).</li>
+    </ul>
+    <a href="/contact.html" class="btn btn-secondary" style="margin-top:8px;">Contact to discuss further for Entry Requirements</a>
+  </div>
+</div>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>&copy; Specialist Technical College. All rights reserved.</div>
+      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+    </footer>
+
+  </div>
+
+  <script>
     (function() {
       const navToggle = document.querySelector('.nav-toggle');
       const navList = document.querySelector('.main-nav ul');
@@ -435,7 +749,63 @@
           updateMenu(shouldExpand);
         });
       }
+
+      const applyButtons = document.querySelectorAll('[data-apply-target]');
+
+      applyButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.dataset.applyTarget);
+
+          if (!target) return;
+
+          target.classList.toggle('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const courseForms = document.querySelectorAll('.course-apply .apply-form');
+
+      const stageIsComplete = (stage) => {
+        const fields = stage.querySelectorAll('input, select, textarea');
+
+        for (const field of fields) {
+          if (field.required && !field.value.trim()) {
+            return false;
+          }
+
+          if (field.type === 'email' && field.value && !field.validity.valid) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      const refreshStages = (form) => {
+        const stages = Array.from(form.querySelectorAll('.form-stage'));
+        let unlocked = true;
+
+        stages.forEach((stage) => {
+          if (unlocked) {
+            stage.classList.add('is-visible');
+            stage.classList.remove('is-hidden');
+          } else {
+            stage.classList.add('is-hidden');
+            stage.classList.remove('is-visible');
+          }
+
+          if (!stageIsComplete(stage)) {
+            unlocked = false;
+          }
+        });
+      };
+
+      courseForms.forEach((form) => {
+        refreshStages(form);
+        form.addEventListener('input', () => refreshStages(form));
+        form.addEventListener('change', () => refreshStages(form));
+      });
     })();
-    </script>
-  </body>
+  </script>
+</body>
 </html>
