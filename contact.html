@@ -1,429 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Contact Us - Specialist Technical College</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+---
+layout: default
+title: Contact Us
+---
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #e4e8f0;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    a { color: #0057a3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .page-wrapper {
-      max-width: 980px;
-      margin: 20px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      overflow: hidden;
-    }
-
-    /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
-    .site-header {
-      background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
-      color: #ffffff;
-      padding: 15px 20px;
-      text-align: left;     /* << ABSOLUTE FIX */
-    }
-
-    .site-header-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;  /* << FORCE LEFT ALIGN */
-      gap: 8px;
-    }
-
-    .site-logo {
-      height: 75px;
-      width: auto;
-    }
-
-    .site-subtitle {
-      font-size: 14px;
-      opacity: 0.95;
-      color: #ffffff;
-      text-align: left;   /* ensure subtitle stays left */
-    }
-
-    /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
-    .main-nav {
-      background: #0c3f74;
-      border-bottom: 3px solid #f7c948;
-    }
-
-    .main-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-    }
-
-    .main-nav li {
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 14px;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    .main-nav a:hover,
-    .main-nav a.active {
-      background: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    /* CONTENT AREA */
-    .content-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .main-content {
-      flex: 1 1 60%;
-      min-width: 260px;
-    }
-
-    .sidebar {
-      flex: 1 1 30%;
-      min-width: 220px;
-    }
-
-    .box {
-      background: #f7f9fc;
-      border: 1px solid #d4dce8;
-      border-radius: 6px;
-      padding: 18px 20px;
-      margin-bottom: 15px;
-    }
-
-    .box h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #0c3f74;
-    }
-
-    .box h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #0c3f74;
-    }
-
-    .box ul {
-      list-style: disc;
-      padding-left: 20px;
-      margin-top: 5px;
-    }
-
-    .highlight {
-      background: #fffbe6;
-      border-color: #f7c948;
-    }
-
-    .subject-links a {
-      display: inline-block;
-      margin: 3px 4px 3px 0;
-      padding: 6px 10px;
-      border-radius: 3px;
-      border: 1px solid #d4dce8;
-      background: #ffffff;
-      font-size: 13px;
-    }
-
-    .subject-links a:hover {
-      background: #f7c948;
-      border-color: #f7c948;
-      color: #0c3f74;
-      text-decoration: none;
-    }
-
-    /* Sleek contact form styling (aligned with Apply page) */
-    .contact-card {
-      position: relative;
-      padding: 22px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #f7f9fc 0%, #eef3fa 100%);
-      border: 1px solid rgba(12, 63, 116, 0.14);
-      box-shadow: 0 12px 26px rgba(12, 63, 116, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(26, 95, 167, 0.08), rgba(247, 201, 72, 0.08));
-      pointer-events: none;
-    }
-
-    .contact-card h2,
-    .contact-card p { position: relative; z-index: 1; }
-
-    .contact-form {
-      position: relative;
-      z-index: 1;
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .contact-form .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 14px 16px;
-    }
-
-    .contact-form .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .contact-form label {
-      font-weight: 700;
-      color: #0c3f74;
-      font-size: 14px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 12px 12px;
-      border-radius: 10px;
-      border: 1px solid #c8d4e4;
-      background: linear-gradient(180deg, #ffffff, #f5f8fd);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px rgba(12, 63, 116, 0.08);
-      font-size: 14px;
-      color: #1f2d3d;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: #1a5fa7;
-      box-shadow: 0 0 0 3px rgba(26, 95, 167, 0.15), 0 8px 18px rgba(26, 95, 167, 0.14);
-      background: #ffffff;
-      transform: translateY(-1px);
-    }
-
-    .contact-form textarea { resize: vertical; min-height: 140px; }
-
-    .contact-form .form-group.full { grid-column: 1 / -1; }
-
-    .contact-form .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .contact-form button {
-      background: linear-gradient(135deg, #1a5fa7, #0c3f74);
-      color: #ffffff;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 18px;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(12, 63, 116, 0.18), 0 4px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .contact-form button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 24px rgba(12, 63, 116, 0.22), 0 6px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .contact-form button:active {
-      transform: translateY(0);
-      box-shadow: 0 8px 16px rgba(12, 63, 116, 0.18);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: #0c3f74;
-      color: #ffffff;
-      border-color: #0c3f74;
-    }
-
-    .btn-primary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: #ffffff;
-      color: #0c3f74;
-      border-color: #d4dce8;
-    }
-
-    .btn-secondary:hover {
-      background: #f7c948;
-      color: #0c3f74;
-      border-color: #f7c948;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    .site-footer {
-      background: #f4f4f4;
-      border-top: 1px solid #d9d9d9;
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 640px) {
-      .content-wrapper {
-        flex-direction: column;
-        padding: 15px;
-      }
-
-      .site-logo {
-        height: 65px;
-      }
-    }
-
-  </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav">
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About the College</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- MAIN PAGE CONTENT -->
-      <div class="content-wrapper">
-        <!-- MAIN CONTENT: INTRO + FORM -->
-        <main class="main-content">
-          <div class="box contact-card">
-            <h1>Contact Us</h1>
-            <p> If you have any questions about our programmes,
-              admissions or partnerships, please get in touch using the
-              enquiry form below or the contact details on this page. </p>
-            <form class="contact-form"
-              action="https://formsubmit.co/info@specialist.college"
-              method="POST">
-              <!-- Disable captcha (optional) --> <input
-                name="_captcha" value="false" type="hidden">
-              <!-- Optional redirect page after submit -->
-              <!-- <input type="hidden" name="_next" value="https://specialist.college/thank-you.html" /> -->
-              <div class="form-grid">
-                <div class="form-group"> <label for="name">Full Name</label>
-                  <input id="name" name="name" required="" type="text"></div>
-                <div class="form-group"> <label for="email">Email Address</label>
-                  <input id="email" name="email" required="" type="email"></div>
-                <div class="form-group"> <label for="subject">Subject</label>
-                  <input id="subject" name="subject" type="text"></div>
-                <div class="form-group full"> <label for="message">Message</label>
-                  <textarea id="message" name="message" rows="6" required=""></textarea></div>
-              </div>
-              <div class="form-actions">
-                <button type="submit">Send Enquiry</button>
-              </div>
-            </form>
+<div class="content-wrapper">
+  <main class="main-content">
+    <div class="box contact-card">
+      <h1>Contact Us</h1>
+      <p>If you have any questions about our programmes, admissions or partnerships, please get in touch using the enquiry form below or the contact details on this page.</p>
+      <form class="contact-form" action="https://formsubmit.co/info@specialist.college" method="POST">
+        <input name="_captcha" value="false" type="hidden" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" required type="text" />
           </div>
-        </main>
-        <!-- SIDEBAR: CONTACT DETAILS -->
-        <aside class="sidebar">
-          <div class="box">
-            <h2>Contact Details</h2>
-            <div class="contact-details">
-              <p> <strong>Email:</strong> <a
-                  href="mailto:info@specialist.college">info@specialist.college</a>
-              </p>
-              <p> <strong><br>
-                  United Kingdom Campus: </strong><br>
-                <strong><a href="https://wa.me/38345398558">+441213640000</a><br>
-                  Kosovo Campus WhatsApp:</strong> <br>
-                <a href="https://wa.me/38345398558">+383 45 398 558</a>
-              </p>
-              <strong></strong><strong></strong>
-              <p><strong>Kosovo Landline:</strong> <br>
-                <a href="tel:+38338600535">+383 386 00 535</a> </p>
-              <p> <strong><br>
-                </strong></p>
-              <p data-start="195" data-end="231"><strong>Address:</strong></p>
-              <blockquote data-start="233" data-end="302">
-                <p data-start="235" data-end="302"><strong
-                    data-start="235" data-end="260">United Kingdom
-                    Campus</strong><br data-start="260" data-end="263">
-                  STC Specialist Technical College (UK)</p>
-                <p data-start="235" data-end="302">Wardens Retreat<br>
-                  Bordesley Green Road</p>
-                <p data-start="235" data-end="302">Birmingham<br>
-                  B9 4TJ<br>
-                  <br>
-                </p>
-              </blockquote>
-              <p><strong data-start="235" data-end="260">Kosovo Campus</strong><br>
-                STC Specialist Technical College (Kosova)<br>
-                Agim Ramadani<br>
-                Pristina<br>
-                Kosovo </p>
-            </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" required type="email" />
           </div>
-          <div class="box">
-            <h2>Office Hours</h2>
-            <ul class="meta-list">
-              <li><strong>Monday – Friday:</strong> 09:00 – 17:00</li>
-              <li><strong>Saturday:</strong> By appointment</li>
-              <li><strong>Sunday:</strong> Closed</li>
-            </ul>
-            <p style="margin-top:6px;"> Messages received outside office
-              hours will be answered as soon as possible. </p>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" />
           </div>
-        </aside>
-      </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
+          <div class="form-group full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Send Enquiry</button>
+        </div>
+      </form>
     </div>
-  </body>
-</html>
+  </main>
+
+  <aside class="sidebar">
+    <div class="box">
+      <h2>Contact Details</h2>
+      <div class="contact-details">
+        <p><strong>Email:</strong> <a href="mailto:info@specialist.college">info@specialist.college</a></p>
+        <p>
+          <strong><br />
+            United Kingdom Campus: </strong><br />
+          <strong><a href="https://wa.me/38345398558">+441213640000</a><br />
+            Kosovo Campus WhatsApp:</strong> <br />
+          <a href="https://wa.me/38345398558">+383 45 398 558</a>
+        </p>
+        <p><strong>Kosovo Landline:</strong> <br />
+          <a href="tel:+38338600535">+383 386 00 535</a></p>
+        <p><strong>Address:</strong></p>
+        <blockquote>
+          <p><strong>United Kingdom Campus</strong><br />
+            STC Specialist Technical College (UK)</p>
+          <p>Wardens Retreat<br />
+            Bordesley Green Road</p>
+          <p>Birmingham<br />
+            B9 4TJ<br /><br />
+          </p>
+        </blockquote>
+        <p><strong>Kosovo Campus</strong><br />
+          STC Specialist Technical College (Kosova)<br />
+          Agim Ramadani<br />
+          Pristina<br />
+          Kosovo</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Office Hours</h2>
+      <ul class="meta-list">
+        <li><strong>Monday – Friday:</strong> 09:00 – 17:00</li>
+        <li><strong>Saturday:</strong> By appointment</li>
+        <li><strong>Sunday:</strong> Closed</li>
+      </ul>
+      <p style="margin-top:6px;">Messages received outside office hours will be answered as soon as possible.</p>
+    </div>
+  </aside>
+</div>
