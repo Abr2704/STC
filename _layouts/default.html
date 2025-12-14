@@ -30,9 +30,10 @@
 
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
+      position: relative;
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 15px 20px;
+      padding: 15px 20px 18px;
       text-align: left;     /* << ABSOLUTE FIX */
     }
 
@@ -54,6 +55,30 @@
       opacity: 0.95;
       color: #ffffff;
       text-align: left;   /* ensure subtitle stays left */
+    }
+
+    .whatsapp-btn {
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #25d366;
+      color: #0c3f74;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .whatsapp-btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
     }
 
     /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
@@ -474,6 +499,13 @@
         align-items: center;
       }
 
+      .whatsapp-btn {
+        position: static;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
       .site-logo {
         height: auto;
         max-height: 78px;
@@ -525,6 +557,9 @@
 
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
+      <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
+        Enquire via WhatsApp
+      </a>
       <div class="site-header-inner">
 
         <img src="/stc.png"
