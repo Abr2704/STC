@@ -525,6 +525,17 @@
       .content-wrapper {
         flex-direction: column;
         padding: 16px;
+        gap: 14px;
+      }
+
+      .main-content,
+      .sidebar,
+      .box {
+        width: 100%;
+      }
+
+      .box {
+        padding: 14px 16px;
       }
 
       .sidebar {
@@ -552,10 +563,31 @@
 
       .main-nav a {
         padding: 12px 16px;
+        white-space: normal;
+        line-height: 1.3;
       }
 
       .nav-toggle {
         display: flex;
+      }
+
+      .contact-form .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        padding: 10px 14px;
+      }
+
+      .whatsapp-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .main-nav a {
+        padding: 11px 14px;
       }
     }
 
