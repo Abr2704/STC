@@ -1,7 +1,7 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Home - Specialist Technical College</title>
@@ -557,9 +557,15 @@
           <div class="box">
             <h2>Why Study with Us? </h2>
             <ul>
-              <li><strong>Globally recognised qualifications with routes
-                  into British and Irish universities.</strong></li>
-              <li><strong>Flexible modular study, including weekend
+              <li>
+                <blockquote data-start="1003" data-end="1077">
+                  <p data-start="1005" data-end="1077"><strong
+                      data-start="1005" data-end="1077">A UK-regulated
+                      pathway to a BSc (Hons) degree, delivered locally,
+                      at a fair price.</strong></p>
+                </blockquote>
+              </li>
+              <li><strong>Flexible modular study, including evening
                   options for professionals and expats.</strong></li>
               <li><strong>Smaller class sizes with personalised,
                   supportive teaching.</strong></li>
@@ -644,83 +650,96 @@
         <div>© Specialist Technical College. All rights reserved.</div>
         <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
       </footer>
+=======
+---
+layout: default
+title: Home
+---
+
+<div class="content-wrapper">
+  <main class="main-content">
+    <div class="box highlight">
+      <h2>Welcome to Specialist Technical College</h2>
+      <p>
+        Specialist Technical College is a British technical institution operating in the United Kingdom and Kosovo.
+        We offer university-level computing qualifications that blend applied learning with recognised pathways so
+        students can progress directly into British and Irish universities.
+      </p>
+      <p>
+        Our focus is simple: provide accessible, high-quality technical education that prepares confident, work-ready
+        graduates for an international labour market.
+      </p>
+>>>>>>> 1348f3384dd39014ff7658c4433733aed844ebb0
     </div>
-    <script>
-    (function() {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navList = document.querySelector('.main-nav ul');
 
-      if (navToggle && navList) {
-        const updateMenu = (expanded) => {
-          navList.classList.toggle('collapsed', !expanded);
-          navList.classList.toggle('open', expanded);
-          navToggle.setAttribute('aria-expanded', String(expanded));
-        };
+    <div class="box">
+      <h2>Why Study with Us?</h2>
+      <ul>
+        <li><strong>Globally recognised qualifications with routes into British and Irish universities.</strong></li>
+        <li><strong>Flexible modular study, including weekend options for professionals and expats.</strong></li>
+        <li><strong>Smaller class sizes with personalised, supportive teaching.</strong></li>
+      </ul>
+    </div>
 
-        updateMenu(false);
+    <div class="box">
+      <h2>Levels and Progression</h2>
+      <ul>
+        <li>
+          <p><strong>Level 3 (A-Level Equivalent):</strong> Builds core computing understanding and essential study skills.</p>
+        </li>
+        <li>
+          <p><strong>Level 4 (First Year of University):</strong> Strengthens technical competence and professional practice.</p>
+        </li>
+        <li>
+          <p><strong>Level 5 (Second Year of University):</strong> Develops advanced specialist skills and prepares learners for entry into final-year BSc programmes.</p>
+        </li>
+      </ul>
 
-        navToggle.addEventListener('click', () => {
-          const shouldExpand = navList.classList.contains('collapsed');
-          updateMenu(shouldExpand);
-        });
-      }
+      <h3>Teaching and Assessment</h3>
+      <p>
+        Teaching blends classroom sessions, practical workshops, and guided independent study. Assessment includes
+        assignments, projects, and practical tasks, reflecting British vocational approaches and encouraging learners to
+        apply their skills in realistic scenarios.
+      </p>
+    </div>
 
-      const applyButtons = document.querySelectorAll('[data-apply-target]');
+    <div class="box">
+      <h2>Diplomas / Degrees We Offer</h2>
+      <p>The college is building a portfolio of technical pathways, initially focused on:</p>
+      <ul>
+        <li><strong>Computing &amp; IT</strong> – digital skills, networking, software, and systems.</li>
+        <li><strong>Cyber Security</strong> – specialist pathways in protecting systems and data.</li>
+        <li><strong>English Language GCSE</strong></li>
+        <li><strong>Mathematics GCSE</strong></li>
+      </ul>
+      <p>Programmes are reviewed regularly to ensure they remain relevant and up to date.</p>
+    </div>
+  </main>
 
-      applyButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const target = document.querySelector(btn.dataset.applyTarget);
+  <aside class="sidebar">
+    <div class="box">
+      <div class="box"><img src="/GIF.gif" alt="" width="292" height="162" /></div>
+      <h2>About Specialist Technical College</h2>
+      <p>
+        Our mission is to provide accessible, high-quality technical and vocational education that supports individual
+        progression and regional development.
+      </p>
+      <ul>
+        <li>Deliver programmes that reflect British standards of quality and rigour.</li>
+        <li>Prepare learners for employment, further study, or international pathways.</li>
+        <li>Work in partnership with employers and education providers.</li>
+        <li>Promote professional attitudes, ethical practice, and lifelong learning.</li>
+      </ul>
+    </div>
 
-          if (!target) return;
-
-          target.classList.toggle('hidden');
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      });
-
-      const courseForms = document.querySelectorAll('.course-apply .apply-form');
-
-      const stageIsComplete = (stage) => {
-        const fields = stage.querySelectorAll('input, select, textarea');
-
-        for (const field of fields) {
-          if (field.required && !field.value.trim()) {
-            return false;
-          }
-
-          if (field.type === 'email' && field.value && !field.validity.valid) {
-            return false;
-          }
-        }
-
-        return true;
-      };
-
-      const refreshStages = (form) => {
-        const stages = Array.from(form.querySelectorAll('.form-stage'));
-        let unlocked = true;
-
-        stages.forEach((stage) => {
-          if (unlocked) {
-            stage.classList.add('is-visible');
-            stage.classList.remove('is-hidden');
-          } else {
-            stage.classList.add('is-hidden');
-            stage.classList.remove('is-visible');
-          }
-
-          if (!stageIsComplete(stage)) {
-            unlocked = false;
-          }
-        });
-      };
-
-      courseForms.forEach((form) => {
-        refreshStages(form);
-        form.addEventListener('input', () => refreshStages(form));
-        form.addEventListener('change', () => refreshStages(form));
-      });
-    })();
-  </script>
-  </body>
-</html>
+    <div class="box">
+      <h2>Updates</h2>
+      <ul>
+        <li>Introduction to electronic components and circuits.</li>
+        <li>Practical lab sessions and project work.</li>
+        <li>Foundation in digital and analogue electronics.</li>
+        <li>Preparation for further study and technical roles.</li>
+      </ul>
+    </div>
+  </aside>
+</div>
