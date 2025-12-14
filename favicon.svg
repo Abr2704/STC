@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+  <title id="title">Specialist Technical College favicon</title>
+  <desc id="desc">Stylised layered blue triangles on a white background.</desc>
+  <rect width="500" height="500" fill="#ffffff" />
+  <polygon fill="#0d5aa5" points="250,30 40,420 250,320" />
+  <polygon fill="#2c77c3" points="250,30 460,420 250,320" />
+  <polygon fill="#2a6fb6" points="250,70 90,380 250,300" />
+  <polygon fill="#15569b" points="250,70 410,380 250,300" />
+  <polygon fill="#3480cf" points="250,120 150,350 250,280" />
+  <polygon fill="#194c89" points="250,120 350,350 250,280" />
+  <polygon fill="#215fa7" points="250,170 200,330 250,260" />
+</svg>
