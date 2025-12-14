@@ -30,9 +30,10 @@
 
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
+      position: relative;
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 15px 20px;
+      padding: 15px 20px 18px;
       text-align: left;     /* << ABSOLUTE FIX */
     }
 
@@ -54,6 +55,39 @@
       opacity: 0.95;
       color: #ffffff;
       text-align: left;   /* ensure subtitle stays left */
+    }
+
+    .whatsapp-btn {
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: #25d366;
+      color: #ffffff;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .whatsapp-btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+      filter: brightness(0.96);
+    }
+
+    .whatsapp-btn .whatsapp-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
     }
 
     /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
@@ -474,6 +508,13 @@
         align-items: center;
       }
 
+      .whatsapp-btn {
+        position: static;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
       .site-logo {
         height: auto;
         max-height: 78px;
@@ -525,6 +566,15 @@
 
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
+      <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
+        <span class="whatsapp-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22" role="presentation" focusable="false">
+            <path fill="#25D366" d="M27.262 4.738C24.305 1.78 20.29 0 16 0 7.164 0 0 7.164 0 16c0 2.823.738 5.57 2.137 7.989L0 32l8.21-2.13A15.902 15.902 0 0 0 16 32h.001C24.837 32 32 24.837 32 16c0-4.29-1.78-8.304-4.738-11.262Z" />
+            <path fill="#FFF" d="M16.001 29.042h-.001a12.985 12.985 0 0 1-6.609-1.805l-.474-.28-4.912 1.275 1.312-4.829-.309-.498A12.96 12.96 0 0 1 3.029 16c0-7.15 5.82-12.97 12.971-12.97 3.464 0 6.72 1.35 9.163 3.793A12.913 12.913 0 0 1 29.97 16c0 7.15-5.819 12.97-12.968 12.97Zm7.127-9.71c-.39-.195-2.305-1.139-2.663-1.268-.358-.13-.618-.195-.878.195-.26.39-1.007 1.268-1.236 1.523-.228.26-.456.293-.846.098-.39-.195-1.656-.612-3.135-1.948-1.16-1.038-1.942-2.321-2.165-2.712-.228-.39-.024-.6.171-.793.172-.172.39-.45.585-.675.195-.228.26-.39.39-.65.13-.26.065-.49-.033-.687-.098-.195-.879-2.13-1.204-2.909-.316-.764-.639-.658-.878-.67-.228-.012-.49-.016-.751-.016-.26 0-.686.098-1.044.49-.358.39-1.368 1.336-1.368 3.261 0 1.925 1.403 3.786 1.6 4.047.195.26 2.767 4.225 6.701 5.7.939.406 1.672.65 2.241.832.94.299 1.791.256 2.47.155.754-.111 2.328-.95 2.656-1.868.327-.918.327-1.701.23-1.867-.098-.166-.39-.26-.816-.463Z" />
+          </svg>
+        </span>
+        <span>Enquire on WhatsApp</span>
+      </a>
       <div class="site-header-inner">
 
         <img src="/stc.png"
@@ -545,13 +595,14 @@
         <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
         <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
         <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-        <li><a href="/more.html">More</a></li>
+        <li><a href="/more.html">More Courses</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
       </ul>
     </nav>
 
     <!-- MAIN PAGE CONTENT -->
-    <div class="content-wrapper">
+    
+<div class="content-wrapper">
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
