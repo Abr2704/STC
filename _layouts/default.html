@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>{% if page.title %}{{ page.title }} - {% endif %}Specialist Technical College</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <style>
     /* RESET */
@@ -79,6 +80,16 @@
       text-decoration: none;
       transform: translateY(-1px);
       box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .whatsapp-icon {
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
+    }
+
+    .whatsapp-icon svg {
+      display: block;
     }
 
     /* NAVIGATION — BOTTOM YELLOW LINE ONLY */
@@ -515,6 +526,17 @@
       .content-wrapper {
         flex-direction: column;
         padding: 16px;
+        gap: 14px;
+      }
+
+      .main-content,
+      .sidebar,
+      .box {
+        width: 100%;
+      }
+
+      .box {
+        padding: 14px 16px;
       }
 
       .sidebar {
@@ -542,10 +564,31 @@
 
       .main-nav a {
         padding: 12px 16px;
+        white-space: normal;
+        line-height: 1.3;
       }
 
       .nav-toggle {
         display: flex;
+      }
+
+      .contact-form .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        padding: 10px 14px;
+      }
+
+      .whatsapp-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .main-nav a {
+        padding: 11px 14px;
       }
     }
 
@@ -558,7 +601,15 @@
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
       <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
-        Enquire via WhatsApp
+        <span class="whatsapp-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="14" fill="#25D366" stroke="white" stroke-width="2" />
+            <path
+              d="M24.54 19.52c-.235-.118-1.392-.69-1.606-.77-.215-.08-.372-.118-.527.118-.156.235-.606.77-.742.92-.136.156-.27.178-.5.059-.235-.118-.976-.513-1.893-1.636-.696-.853-1.168-1.85-1.304-2.126-.136-.276-.014-.344.104-.471.11-.114.235-.299.352-.448.118-.15.156-.258.235-.43.079-.173.039-.323-.02-.452-.059-.13-.53-1.396-.725-1.918-.191-.501-.385-.422-.527-.429-.136-.008-.292-.01-.448-.01-.156 0-.413.059-.63.322-.216.263-.88.905-.88 2.116 0 1.212.903 2.379 1.031 2.549.128.173 1.786 2.565 4.32 3.811.585.201 1.042.376 1.395.483.585.176 1.117.152 1.536.092.468-.069 1.392-.61 1.59-1.198.196-.588.196-1.091.136-1.198-.059-.105-.216-.173-.44-.282z"
+              fill="white" />
+          </svg>
+        </span>
+        <span class="whatsapp-text">Enquire via WhatsApp</span>
       </a>
       <div class="site-header-inner">
 
