@@ -643,6 +643,11 @@
 <body>
   <div class="page-wrapper">
 
+    <div class="language-switcher" aria-label="Language switcher">
+      <a class="lang-link{% if current_lang != 'sq' %} active{% endif %}" href="{{ page.en_url | default: page.url | default: '/' }}">EN</a>
+      <a class="lang-link{% if current_lang == 'sq' %} active{% endif %}" href="{{ page.sq_url | default: '/sq/' }}">SQ</a>
+    </div>
+
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
       <div class="header-actions">
