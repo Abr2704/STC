@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% assign current_lang = page.lang | default: "en" %}
+<html lang="{{ current_lang }}">
 <head>
   <meta charset="UTF-8" />
   <title>{% if page.title %}{{ page.title }} - {% endif %}Specialist Technical College</title>
@@ -27,6 +28,42 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #f7f9fc;
+      border-bottom: 1px solid #d4dce8;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
     }
 
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
@@ -597,6 +634,11 @@
 
 <body>
   <div class="page-wrapper">
+
+    <div class="language-switcher" aria-label="Language switcher">
+      <a class="lang-link{% if current_lang != 'sq' %} active{% endif %}" href="{{ page.en_url | default: page.url | default: '/' }}">EN</a>
+      <a class="lang-link{% if current_lang == 'sq' %} active{% endif %}" href="{{ page.sq_url | default: '/sq/' }}">SQ</a>
+    </div>
 
     <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
     <header class="site-header">
