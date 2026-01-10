@@ -139,9 +139,48 @@
       color: #ffffff;
     }
 
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
       padding: 15px 20px 18px;
@@ -168,10 +207,7 @@
       text-align: left;   /* ensure subtitle stays left */
     }
 
-    .header-actions {
-      position: absolute;
-      right: 20px;
-      top: 16px;
+    .whatsapp-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -630,6 +666,8 @@
       .site-header {
         padding: 12px 16px;
         text-align: center;
+        flex-direction: column;
+        gap: 10px;
       }
 
       .site-header-inner {
@@ -642,6 +680,7 @@
       }
 
       .whatsapp-btn {
+        margin-top: 10px;
         width: 100%;
         justify-content: center;
       }
@@ -735,6 +774,13 @@
 
       <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
       <header class="site-header">
+      <div class="site-header-inner">
+
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
+      </div>
       <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
         <span class="whatsapp-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -746,13 +792,6 @@
         </span>
         <span class="whatsapp-text">Enquire via WhatsApp</span>
       </a>
-      <div class="site-header-inner">
-
-        <img src="/stc.png"
-             alt="Specialist Technical College Logo"
-             class="site-logo" />
-
-      </div>
     </header>
 
       <!-- NAVIGATION -->
