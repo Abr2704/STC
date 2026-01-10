@@ -32,6 +32,75 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      position: relative;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -84px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      display: flex;
+      gap: 8px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
     }
 
     .language-switcher {
@@ -99,10 +168,17 @@
       text-align: left;   /* ensure subtitle stays left */
     }
 
-    .whatsapp-btn {
+    .header-actions {
       position: absolute;
       right: 20px;
       top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+
+    .whatsapp-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -560,9 +636,12 @@
         align-items: center;
       }
 
+      .header-actions {
+        right: 16px;
+        top: 12px;
+      }
+
       .whatsapp-btn {
-        position: static;
-        margin-top: 10px;
         width: 100%;
         justify-content: center;
       }
