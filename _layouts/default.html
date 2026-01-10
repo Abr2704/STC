@@ -21,9 +21,13 @@
     a { color: #0057a3; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .page-wrapper {
+    .page-shell {
       max-width: 1080px;
       margin: 20px auto;
+      position: relative;
+    }
+
+    .page-wrapper {
       background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -70,6 +74,42 @@
     .language-switcher {
       display: flex;
       gap: 8px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .language-switcher .lang-link {
@@ -573,8 +613,11 @@
 
     /* MOBILE */
     @media (max-width: 840px) {
-      .page-wrapper {
+      .page-shell {
         margin: 12px;
+      }
+
+      .page-wrapper {
         border-radius: 8px;
       }
 
@@ -682,32 +725,27 @@
 </head>
 
 <body>
-  <div class="page-wrapper">
-
+  <div class="page-shell">
     <div class="language-switcher" aria-label="Language switcher">
       <a class="lang-link{% if current_lang != 'sq' %} active{% endif %}" href="{{ page.en_url | default: page.url | default: '/' }}">EN</a>
       <a class="lang-link{% if current_lang == 'sq' %} active{% endif %}" href="{{ page.sq_url | default: '/sq/' }}">SQ</a>
     </div>
 
-    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-    <header class="site-header">
-      <div class="header-actions">
-        <div class="language-switcher" aria-label="Language switcher">
-          <a class="lang-link{% if current_lang != 'sq' %} active{% endif %}" href="{{ page.en_url | default: page.url | default: '/' }}">EN</a>
-          <a class="lang-link{% if current_lang == 'sq' %} active{% endif %}" href="{{ page.sq_url | default: '/sq/' }}">SQ</a>
-        </div>
-        <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
-          <span class="whatsapp-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" fill="#25D366" stroke="white" stroke-width="2" />
-              <path
-                d="M24.54 19.52c-.235-.118-1.392-.69-1.606-.77-.215-.08-.372-.118-.527.118-.156.235-.606.77-.742.92-.136.156-.27.178-.5.059-.235-.118-.976-.513-1.893-1.636-.696-.853-1.168-1.85-1.304-2.126-.136-.276-.014-.344.104-.471.11-.114.235-.299.352-.448.118-.15.156-.258.235-.43.079-.173.039-.323-.02-.452-.059-.13-.53-1.396-.725-1.918-.191-.501-.385-.422-.527-.429-.136-.008-.292-.01-.448-.01-.156 0-.413.059-.63.322-.216.263-.88.905-.88 2.116 0 1.212.903 2.379 1.031 2.549.128.173 1.786 2.565 4.32 3.811.585.201 1.042.376 1.395.483.585.176 1.117.152 1.536.092.468-.069 1.392-.61 1.59-1.198.196-.588.196-1.091.136-1.198-.059-.105-.216-.173-.44-.282z"
-                fill="white" />
-            </svg>
-          </span>
-          <span class="whatsapp-text">Enquire via WhatsApp</span>
-        </a>
-      </div>
+    <div class="page-wrapper">
+
+      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+      <header class="site-header">
+      <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
+        <span class="whatsapp-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="14" fill="#25D366" stroke="white" stroke-width="2" />
+            <path
+              d="M24.54 19.52c-.235-.118-1.392-.69-1.606-.77-.215-.08-.372-.118-.527.118-.156.235-.606.77-.742.92-.136.156-.27.178-.5.059-.235-.118-.976-.513-1.893-1.636-.696-.853-1.168-1.85-1.304-2.126-.136-.276-.014-.344.104-.471.11-.114.235-.299.352-.448.118-.15.156-.258.235-.43.079-.173.039-.323-.02-.452-.059-.13-.53-1.396-.725-1.918-.191-.501-.385-.422-.527-.429-.136-.008-.292-.01-.448-.01-.156 0-.413.059-.63.322-.216.263-.88.905-.88 2.116 0 1.212.903 2.379 1.031 2.549.128.173 1.786 2.565 4.32 3.811.585.201 1.042.376 1.395.483.585.176 1.117.152 1.536.092.468-.069 1.392-.61 1.59-1.198.196-.588.196-1.091.136-1.198-.059-.105-.216-.173-.44-.282z"
+              fill="white" />
+          </svg>
+        </span>
+        <span class="whatsapp-text">Enquire via WhatsApp</span>
+      </a>
       <div class="site-header-inner">
 
         <img src="/stc.png"
@@ -717,8 +755,8 @@
       </div>
     </header>
 
-    <!-- NAVIGATION -->
-    <nav class="main-nav">
+      <!-- NAVIGATION -->
+      <nav class="main-nav">
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">
         Menu
         <span class="hamburger" aria-hidden="true"></span>
@@ -733,15 +771,16 @@
       </ul>
     </nav>
 
-    <!-- MAIN PAGE CONTENT -->
-    {{ content }}
+      <!-- MAIN PAGE CONTENT -->
+      {{ content }}
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div>&copy; Specialist Technical College. All rights reserved.</div>
-      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-    </footer>
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div>&copy; Specialist Technical College. All rights reserved.</div>
+        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+      </footer>
 
+    </div>
   </div>
 
   <script>
