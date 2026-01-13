@@ -1,11 +1,12 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Home - Specialist Technical College</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
     /* RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,20 +21,169 @@
     a { color: #0057a3; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .page-wrapper {
+    .page-shell {
       max-width: 1080px;
       margin: 20px auto;
+      position: relative;
+    }
+
+    .page-wrapper {
       background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      position: relative;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -84px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      display: flex;
+      gap: 8px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
     }
 
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 15px 20px;
+      padding: 15px 20px 18px;
       text-align: left;     /* << ABSOLUTE FIX */
     }
 
@@ -58,9 +208,13 @@
     }
 
     .whatsapp-btn {
-      position: absolute;
-      right: 20px;
-      top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+
+    .whatsapp-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -495,22 +649,37 @@
 
     /* MOBILE */
     @media (max-width: 840px) {
-      .page-wrapper {
+      .page-shell {
         margin: 12px;
+      }
+
+      .page-wrapper {
         border-radius: 8px;
+      }
+
+      .language-switcher {
+        position: static;
+        margin: 10px 16px 0 auto;
+        align-items: flex-end;
       }
 
       .site-header {
         padding: 12px 16px;
         text-align: center;
+        flex-direction: column;
+        gap: 10px;
       }
 
       .site-header-inner {
         align-items: center;
       }
 
+      .header-actions {
+        right: 16px;
+        top: 12px;
+      }
+
       .whatsapp-btn {
-        position: static;
         margin-top: 10px;
         width: 100%;
         justify-content: center;
@@ -525,6 +694,17 @@
       .content-wrapper {
         flex-direction: column;
         padding: 16px;
+        gap: 14px;
+      }
+
+      .main-content,
+      .sidebar,
+      .box {
+        width: 100%;
+      }
+
+      .box {
+        padding: 14px 16px;
       }
 
       .sidebar {
@@ -552,225 +732,230 @@
 
       .main-nav a {
         padding: 12px 16px;
+        white-space: normal;
+        line-height: 1.3;
       }
 
       .nav-toggle {
         display: flex;
+      }
+
+      .contact-form .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        padding: 10px 14px;
+      }
+
+      .whatsapp-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .main-nav a {
+        padding: 11px 14px;
       }
     }
 
   </style>
   </head>
   <body>
-    <div class="page-wrapper">
-      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-      <header class="site-header">
-        <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener"> <span
-            class="whatsapp-icon" aria-hidden="true"> <svg width="20" height="20" viewBox="0 0 32 32" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="14" fill="#25D366" stroke="white" stroke-width="2" />
-                <path
-                  d="M24.54 19.52c-.235-.118-1.392-.69-1.606-.77-.215-.08-.372-.118-.527.118-.156.235-.606.77-.742.92-.136.156-.27.178-.5.059-.235-.118-.976-.513-1.893-1.636-.696-.853-1.168-1.85-1.304-2.126-.136-.276-.014-.344.104-.471.11-.114.235-.299.352-.448.118-.15.156-.258.235-.43.079-.173.039-.323-.02-.452-.059-.13-.53-1.396-.725-1.918-.191-.501-.385-.422-.527-.429-.136-.008-.292-.01-.448-.01-.156 0-.413.059-.63.322-.216.263-.88.905-.88 2.116 0 1.212.903 2.379 1.031 2.549.128.173 1.786 2.565 4.32 3.811.585.201 1.042.376 1.395.483.585.176 1.117.152 1.536.092.468-.069 1.392-.61 1.59-1.198.196-.588.196-1.091.136-1.198-.059-.105-.216-.173-.44-.282z"
-                  fill="white" />
-              </svg> </span> <span class="whatsapp-text">Enquire via WhatsApp</span> </a>
-        <div class="site-header-inner"> <img src="/stc.png"
-            alt="Specialist Technical College Logo" class="site-logo"> </div>
-      </header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav"> <button class="nav-toggle"
-          aria-expanded="false" aria-controls="main-menu"> Menu <span
-            class="hamburger" aria-hidden="true"></span> </button>
-        <ul id="main-menu">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
-          <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
-          <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
-          <li><a href="/more.html">More</a></li>
-          <li><a href="/contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- MAIN PAGE CONTENT -->
-      <div class="content-wrapper">
-        <main class="main-content">
-          <div class="box highlight">
-            <h2>Welcome to Specialist Technical College</h2>
-            <p> Specialist Technical College is a British technical
-              institution operating in the United Kingdom and Kosovo. We
-              offer university-level computing qualifications that blend
-              applied learning with recognised pathways so students can
-              progress directly into British and Irish universities. </p>
-            <p> Our focus is simple: provide accessible, high-quality
-              technical education that prepares confident, work-ready
-              graduates for an international labour market. </p>
+    <div class="page-shell">
+      <div class="language-switcher" aria-label="Language switcher"> <a
+          class="lang-link active" href="/">EN</a> <a class="lang-link"
+          href="/sq/">SQ</a> </div>
+      <div class="page-wrapper">
+        <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+        <header class="site-header">
+          <div class="site-header-inner"> <img src="/stc.png"
+              alt="Specialist Technical College Logo" class="site-logo">
           </div>
-          <div class="box">
-            <h2>Why Study with Us? </h2>
-            <ul>
-              <li>
-                <blockquote data-start="1003" data-end="1077">
-                  <p data-start="1005" data-end="1077"><strong
-                      data-start="1005" data-end="1077">A UK-regulated
-                      pathway to a BSc (Hons) degree, delivered locally,
-                      at a fair price.</strong></p>
-                </blockquote>
-              </li>
-              <li><strong>Flexible modular study, including evening
-                  options for professionals and expats.</strong></li>
-              <li><strong>Smaller class sizes with personalised,
-                  supportive teaching.</strong></li>
-            </ul>
-          </div>
-          <div class="box">
-            <h2>Levels and Progression</h2>
-            <ul>
-              <li>
-                <p><strong>Level 3 (A-Level Equivalent):</strong> Builds
-                  core computing understanding and essential study
-                  skills.</p>
-              </li>
-              <li>
-                <p><strong>Level 4 (First Year of University):</strong>
-                  Strengthens technical competence and professional
-                  practice.</p>
-              </li>
-              <li>
-                <p><strong>Level 5 (Second Year of University):</strong>
-                  Develops advanced specialist skills and prepares
-                  learners for entry into final-year BSc programmes.</p>
-              </li>
-            </ul>
-            <h3>Teaching and Assessment</h3>
-            <p> Teaching blends classroom sessions, practical workshops,
-              and guided independent study. Assessment includes
-              assignments, projects, and practical tasks, reflecting
-              British vocational approaches and encouraging learners to
-              apply their skills in realistic scenarios. </p>
-          </div>
-          <div class="box">
-            <h2>Diplomas / Degrees We Offer</h2>
-            <p>The college is building a portfolio of technical
-              pathways, initially focused on:</p>
-            <ul>
-              <li><strong>Computing &amp; IT</strong> – digital skills,
-                networking, software, and systems.</li>
-              <li><strong>Cyber Security</strong> – specialist pathways
-                in protecting systems and data.</li>
-              <li><b>English Language GCSE</b></li>
-              <li><b>Mathematics GCSE</b><br>
-              </li>
-            </ul>
-            <p><br>
-              Programmes are reviewed regularly to ensure they remain
-              relevant and up to date.</p>
-          </div>
-        </main>
-        <aside class="sidebar">
-          <div class="box">
-            <div class="box"> <img src="/GIF.gif" alt="" width="292"
-                height="162"> </div>
-            <h2>About Specialist Technical College</h2>
-            <p>Our mission is to provide accessible, high-quality
-              technical and vocational education that supports
-              individual progression and regional development.</p>
-            <ul>
-              <li>Deliver programmes that reflect British standards of
-                quality and rigour.</li>
-              <li>Prepare learners for employment, further study, or
-                international pathways.</li>
-              <li>Work in partnership with employers and education
-                providers.</li>
-              <li>Promote professional attitudes, ethical practice, and
-                lifelong learning.</li>
-            </ul>
-          </div>
-        </aside>
+          <a class="whatsapp-btn" href="https://wa.me/38345398558"
+            target="_blank" rel="noopener"> <span class="whatsapp-icon"
+              aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 32 32"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="14" fill="#25D366"
+                  stroke="white" stroke-width="2"></circle>
+                <path d="M24.54
+                  19.52c-.235-.118-1.392-.69-1.606-.77-.215-.08-.372-.118-.527.118-.156.235-.606.77-.742.92-.136.156-.27.178-.5.059-.235-.118-.976-.513-1.893-1.636-.696-.853-1.168-1.85-1.304-2.126-.136-.276-.014-.344.104-.471.11-.114.235-.299.352-.448.118-.15.156-.258.235-.43.079-.173.039-.323-.02-.452-.059-.13-.53-1.396-.725-1.918-.191-.501-.385-.422-.527-.429-.136-.008-.292-.01-.448-.01-.156
+                  0-.413.059-.63.322-.216.263-.88.905-.88 2.116 0
+                  1.212.903 2.379 1.031 2.549.128.173 1.786 2.565 4.32
+                  3.811.585.201 1.042.376 1.395.483.585.176 1.117.152
+                  1.536.092.468-.069 1.392-.61
+                  1.59-1.198.196-.588.196-1.091.136-1.198-.059-.105-.216-.173-.44-.282z"
+                  fill="white"></path> </svg> </span> <span
+              class="whatsapp-text">Enquire via WhatsApp</span> </a> </header>
+        <!-- NAVIGATION -->
+        <nav class="main-nav"> <button class="nav-toggle"
+            aria-expanded="false" aria-controls="main-menu"> Menu <span
+              class="hamburger" aria-hidden="true"></span> </button>
+          <ul id="main-menu">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/l3.html">Level 3 (A-Level Equivalent)</a></li>
+            <li><a href="/hnd.html">Level 4 &amp; 5 (University Level)</a></li>
+            <li><a href="/bsc.html">Final Year BSc (Top-Up)</a></li>
+            <li><a href="/more.html">More Courses</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <!-- MAIN PAGE CONTENT -->
+        <div class="content-wrapper">
+          <main class="main-content">
+            <!-- HERO -->
+            <div class="box highlight">
+              <h1>The choice is clear.</h1>
+              <p><strong>Local studies in the early years.<br>
+                  International degree at the end.</strong></p>
+              <p> Why pay high fees from the start when you can begin
+                your university studies locally at a more affordable
+                cost and finish with a <strong>Bachelor of Science (BSc
+                  Honours)</strong> awarded by UK or Irish universities.
+              </p>
+              <p> <a class="btn btn-primary" href="/bsc.html">View
+                  study pathway</a> <a class="btn btn-secondary"
+                  href="/contact.html">Contact us</a> </p>
+            </div>
+            <!-- KEY VALUE POINTS -->
+            <div class="box">
+              <h2>What does the student gain?</h2>
+              <h3>🎓 Structured studies</h3>
+              <p>The early years of study take place locally, following
+                UK higher education standards.</p>
+              <h3>💶 More affordable cost</h3>
+              <p>Start your studies with lower fees and save thousands
+                of euros overall.</p>
+              <h3>🌍 International progression</h3>
+              <p>Progress to the final year at a UK or Irish university
+                to complete the BSc (Hons).</p>
+              <h3>🧭 One-Day per week Intensive Teaching<br>
+              </h3>
+              <p>Our small classes take place every Saturday allowing
+                students to work alongside study.<br>
+                <strong data-start="2479" data-end="2495"></strong><br>
+              </p>
+            </div>
+            <!-- PATHWAY SNAPSHOT -->
+            <div class="box">
+              <h2>Study pathway</h2>
+              <p><strong>Level 3 → Level 4 → Level 5 → BSc (Hons) Top-Up</strong></p>
+              <p>Local studies in Prishtina → Final year in the UK or
+                Ireland</p>
+            </div>
+            <!-- COMPLIANCE LINE -->
+            <div class="box" style="font-size:12px;color:#555;">
+              Progression and fees depend on meeting academic criteria
+              and agreements with partner universities. </div>
+          </main>
+          <!-- SIDEBAR (UNCHANGED FROM YOUR CURRENT HOMEPAGE) -->
+          <aside class="sidebar">
+            <div class="box">
+              <div class="box"> <img src="/GIF.gif" alt="" width="292"
+                  height="162"> </div>
+              <h2>Facebook Updates from STC</h2>
+              <div id="fb-root"></div>
+              <div class="fb-page"
+data-href="https://www.facebook.com/p/Specialist-Technical-College-STC-61575712853323/"
+                data-tabs="timeline" data-width="292" data-height=""
+                data-small-header="false"
+                data-adapt-container-width="true"
+                data-hide-cover="false" data-show-facepile="true">
+                <blockquote
+cite="https://www.facebook.com/p/Specialist-Technical-College-STC-61575712853323/"
+                  class="fb-xfbml-parse-ignore"> <a
+href="https://www.facebook.com/p/Specialist-Technical-College-STC-61575712853323/">Specialist
+                    Technical College - STC</a> </blockquote>
+              </div>
+              <script async="" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v21.0"></script>
+            </div>
+          </aside>
+        </div>
+        <!-- FOOTER -->
+        <footer class="site-footer">
+          <div>© Specialist Technical College. All rights reserved.</div>
+          <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+        </footer>
       </div>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div>© Specialist Technical College. All rights reserved.</div>
-        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-      </footer>
-=======
----
-layout: default
-title: Home
----
-
-<div class="content-wrapper">
-  <main class="main-content">
-    <div class="box highlight">
-      <h2>Welcome to Specialist Technical College</h2>
-      <p>
-        Specialist Technical College is a British technical institution operating in the United Kingdom and Kosovo.
-        We offer university-level computing qualifications that blend applied learning with recognised pathways so
-        students can progress directly into British and Irish universities.
-      </p>
-      <p>
-        Our focus is simple: provide accessible, high-quality technical education that prepares confident, work-ready
-        graduates for an international labour market.
-      </p>
->>>>>>> 1348f3384dd39014ff7658c4433733aed844ebb0
     </div>
+    <script>
+    (function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.main-nav ul');
 
-    <div class="box">
-      <h2>Why Study with Us?</h2>
-      <ul>
-        <li><strong>Globally recognised qualifications with routes into British and Irish universities.</strong></li>
-        <li><strong>Flexible modular study, including weekend options for professionals and expats.</strong></li>
-        <li><strong>Smaller class sizes with personalised, supportive teaching.</strong></li>
-      </ul>
-    </div>
+      if (navToggle && navList) {
+        const updateMenu = (expanded) => {
+          navList.classList.toggle('collapsed', !expanded);
+          navList.classList.toggle('open', expanded);
+          navToggle.setAttribute('aria-expanded', String(expanded));
+        };
 
-    <div class="box">
-      <h2>Levels and Progression</h2>
-      <ul>
-        <li>
-          <p><strong>Level 3 (A-Level Equivalent):</strong> Builds core computing understanding and essential study skills.</p>
-        </li>
-        <li>
-          <p><strong>Level 4 (First Year of University):</strong> Strengthens technical competence and professional practice.</p>
-        </li>
-        <li>
-          <p><strong>Level 5 (Second Year of University):</strong> Develops advanced specialist skills and prepares learners for entry into final-year BSc programmes.</p>
-        </li>
-      </ul>
+        updateMenu(false);
 
-      <h3>Teaching and Assessment</h3>
-      <p>
-        Teaching blends classroom sessions, practical workshops, and guided independent study. Assessment includes
-        assignments, projects, and practical tasks, reflecting British vocational approaches and encouraging learners to
-        apply their skills in realistic scenarios.
-      </p>
-    </div>
+        navToggle.addEventListener('click', () => {
+          const shouldExpand = navList.classList.contains('collapsed');
+          updateMenu(shouldExpand);
+        });
+      }
 
-    <div class="box">
-      <h2>Diplomas / Degrees We Offer</h2>
-      <p>The college is building a portfolio of technical pathways, initially focused on:</p>
-      <ul>
-        <li><strong>Computing &amp; IT</strong> – digital skills, networking, software, and systems.</li>
-        <li><strong>Cyber Security</strong> – specialist pathways in protecting systems and data.</li>
-        <li><strong>English Language GCSE</strong></li>
-        <li><strong>Mathematics GCSE</strong></li>
-      </ul>
-      <p>Programmes are reviewed regularly to ensure they remain relevant and up to date.</p>
-    </div>
-  </main>
+      const applyButtons = document.querySelectorAll('[data-apply-target]');
 
-  <aside class="sidebar">
-    <div class="box">
-      <div class="box"><img src="/GIF.gif" alt="" width="292" height="162" /></div>
-      <h2>About Specialist Technical College</h2>
-      <p>
-        Our mission is to provide accessible, high-quality technical and vocational education that supports individual
-        progression and regional development.
-      </p>
-      <ul>
-        <li>Deliver programmes that reflect British standards of quality and rigour.</li>
-        <li>Prepare learners for employment, further study, or international pathways.</li>
-        <li>Work in partnership with employers and education providers.</li>
-        <li>Promote professional attitudes, ethical practice, and lifelong learning.</li>
-      </ul>
-    </div>
+      applyButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.dataset.applyTarget);
 
-  </aside>
-</div>
+          if (!target) return;
+
+          target.classList.toggle('hidden');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const courseForms = document.querySelectorAll('.course-apply .apply-form');
+
+      const stageIsComplete = (stage) => {
+        const fields = stage.querySelectorAll('input, select, textarea');
+
+        for (const field of fields) {
+          if (field.required && !field.value.trim()) {
+            return false;
+          }
+
+          if (field.type === 'email' && field.value && !field.validity.valid) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      const refreshStages = (form) => {
+        const stages = Array.from(form.querySelectorAll('.form-stage'));
+        let unlocked = true;
+
+        stages.forEach((stage) => {
+          if (unlocked) {
+            stage.classList.add('is-visible');
+            stage.classList.remove('is-hidden');
+          } else {
+            stage.classList.add('is-hidden');
+            stage.classList.remove('is-visible');
+          }
+
+          if (!stageIsComplete(stage)) {
+            unlocked = false;
+          }
+        });
+      };
+
+      courseForms.forEach((form) => {
+        refreshStages(form);
+        form.addEventListener('input', () => refreshStages(form));
+        form.addEventListener('change', () => refreshStages(form));
+      });
+    })();
+  </script>
+  </body>
+</html>

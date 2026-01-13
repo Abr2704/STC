@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Level 4 & 5 – University Level Computing - Specialist Technical College</title>
+  <title>BSc (Hons) Progression Routes - Specialist Technical College</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <style>
     /* RESET */
@@ -19,20 +21,169 @@
     a { color: #0057a3; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .page-wrapper {
+    .page-shell {
       max-width: 1080px;
       margin: 20px auto;
+      position: relative;
+    }
+
+    .page-wrapper {
       background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      position: relative;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -84px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      display: flex;
+      gap: 8px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: -72px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-switcher .lang-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4dce8;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0c3f74;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .language-switcher .lang-link:hover {
+      text-decoration: none;
+      border-color: #1a5fa7;
+      color: #1a5fa7;
+    }
+
+    .language-switcher .lang-link.active {
+      background: #1a5fa7;
+      border-color: #1a5fa7;
+      color: #ffffff;
     }
 
     /* HEADER — LOGO + TAGLINE LEFT ALIGNED */
     .site-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: linear-gradient(to bottom, #1a5fa7, #0c3f74);
       color: #ffffff;
-      padding: 15px 20px;
+      padding: 15px 20px 18px;
       text-align: left;     /* << ABSOLUTE FIX */
     }
 
@@ -57,9 +208,13 @@
     }
 
     .whatsapp-btn {
-      position: absolute;
-      right: 20px;
-      top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+
+    .whatsapp-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -494,22 +649,37 @@
 
     /* MOBILE */
     @media (max-width: 840px) {
-      .page-wrapper {
+      .page-shell {
         margin: 12px;
+      }
+
+      .page-wrapper {
         border-radius: 8px;
+      }
+
+      .language-switcher {
+        position: static;
+        margin: 10px 16px 0 auto;
+        align-items: flex-end;
       }
 
       .site-header {
         padding: 12px 16px;
         text-align: center;
+        flex-direction: column;
+        gap: 10px;
       }
 
       .site-header-inner {
         align-items: center;
       }
 
+      .header-actions {
+        right: 16px;
+        top: 12px;
+      }
+
       .whatsapp-btn {
-        position: static;
         margin-top: 10px;
         width: 100%;
         justify-content: center;
@@ -524,6 +694,17 @@
       .content-wrapper {
         flex-direction: column;
         padding: 16px;
+        gap: 14px;
+      }
+
+      .main-content,
+      .sidebar,
+      .box {
+        width: 100%;
+      }
+
+      .box {
+        padding: 14px 16px;
       }
 
       .sidebar {
@@ -551,10 +732,31 @@
 
       .main-nav a {
         padding: 12px 16px;
+        white-space: normal;
+        line-height: 1.3;
       }
 
       .nav-toggle {
         display: flex;
+      }
+
+      .contact-form .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        padding: 10px 14px;
+      }
+
+      .whatsapp-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .main-nav a {
+        padding: 11px 14px;
       }
     }
 
@@ -562,10 +764,23 @@
 </head>
 
 <body>
-  <div class="page-wrapper">
+  <div class="page-shell">
+    <div class="language-switcher" aria-label="Language switcher">
+      <a class="lang-link active" href="/bsc.html">EN</a>
+      <a class="lang-link" href="/sq/">SQ</a>
+    </div>
 
-    <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
-    <header class="site-header">
+    <div class="page-wrapper">
+
+      <!-- HEADER WITH LEFT-ALIGNED LOGO + TAGLINE -->
+      <header class="site-header">
+      <div class="site-header-inner">
+
+        <img src="/stc.png"
+             alt="Specialist Technical College Logo"
+             class="site-logo" />
+
+      </div>
       <a class="whatsapp-btn" href="https://wa.me/38345398558" target="_blank" rel="noopener">
         <span class="whatsapp-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -577,17 +792,10 @@
         </span>
         <span class="whatsapp-text">Enquire via WhatsApp</span>
       </a>
-      <div class="site-header-inner">
-
-        <img src="/stc.png"
-             alt="Specialist Technical College Logo"
-             class="site-logo" />
-
-      </div>
     </header>
 
-    <!-- NAVIGATION -->
-    <nav class="main-nav">
+      <!-- NAVIGATION -->
+      <nav class="main-nav">
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-menu">
         Menu
         <span class="hamburger" aria-hidden="true"></span>
@@ -602,130 +810,100 @@
       </ul>
     </nav>
 
-    <!-- MAIN PAGE CONTENT -->
-    <div class="content-wrapper">
+      <!-- MAIN PAGE CONTENT -->
+      <div class="content-wrapper">
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
 
     <div class="box highlight">
-      <h1>Level 4 &amp; 5 – University Level Computing (Cyber Security Pathway)</h1>
+      <h1>BSc (Hons) Progression Routes</h1>
       <p>
-        Our Level 4 and Level 5 programmes in Computing provide a university-level pathway,
-        equivalent to the first two years of a UK Bachelor’s degree in a computing discipline.
-        The Cyber Security pathway develops technical and professional skills for roles in
-        cyber defence, security operations and related fields.
-      </p>
-      <p class="fee">
-        Typical tuition fee: €1,400 for Level 4 and €1,400 for Level 5.
+        Graduates of the Specialist Technical College Level 5 Diploma have clear progression
+        opportunities into recognised BSc (Hons) degrees at leading UK and Irish universities.
+        These routes help bridge college study and university-level qualification, subject to
+        each institution’s entry requirements.
       </p>
     </div>
 
-    <!-- LEVEL 4 SECTION -->
     <div class="box">
-      <h2>ATHE Level 4 – Extended Diploma in Computing (Cyber Security Route)</h2>
-      <span class="tag">Awarding Body: ATHE</span>
-      <span class="tag">Level 4</span>
-      <span class="tag">Year 1 University-Level</span>
+      <h2>Direct Progression Routes</h2>
 
-      <p style="margin-top:8px;">
-        Level 4 develops core computing knowledge and skills alongside specialist study in
-        cyber security. Learners build a strong foundation in computer systems, networking
-        and software, before focusing on security concepts and controls.
-      </p>
-
-      <h3>Example Core Units (Cyber Security Pathway)</h3>
+      <h3>United Kingdom — Bangor University (Wales)</h3>
+      <p>Students may progress to relevant BSc (Hons) computing and technology degrees at Bangor University, including:</p>
       <ul>
-        <li><strong>Computer Systems, Networks and Security</strong> – hardware, operating systems, networking principles and risks to systems and data.</li>
-        <li><strong>Programming and Software Development</strong> – fundamental programming constructs and software design techniques.</li>
-        <li><strong>Database Design and Development</strong> – designing and implementing relational databases for realistic scenarios.</li>
-        <li><strong>Web Technologies</strong> – client- and server-side concepts for delivering secure web applications.</li>
-        <li><strong>Cyber Security Concepts</strong> – threats, vulnerabilities, risk assessment and incident response at an introductory level.</li>
+        <li><strong>BSc (Hons) Computer Science</strong> (with foundations in programming, cybersecurity, algorithms, and systems)</li>
+        <li><strong>BSc (Hons) Computer Information Systems</strong></li>
       </ul>
+      <p>Explore undergraduate options: <a href="https://www.bangor.ac.uk/courses/undergraduate" target="_blank" rel="noopener">Bangor University undergraduate courses</a> (select Computing &amp; IT)</p>
 
-      <h3>Programme Information</h3>
-      <ul class="meta-list">
-        <li><strong>Level:</strong> 4 – approximately equivalent to the first year of a UK degree.</li>
-        <li><strong>Mode:</strong> Classroom-based with lab work and guided independent study.</li>
-        <li><strong>Assessment:</strong> Assignments, practical projects and case-study work.</li>
-        <li><strong>Typical Tuition Fee:</strong> €1,400</li>
-      </ul>
+      <h3>Ireland — Technological University Dublin (TU Dublin)</h3>
+      <p>
+        Our Level 5 Diploma offers a pathway into TU Dublin’s Bachelor of Science (Honours) in Computing – Digital Forensics and Cyber Security, a specialised cyber degree designed to develop practical skills in cybersecurity, digital forensics, secure systems, and network protection.
+      </p>
+      <p>Course details: <a href="https://www.tudublin.ie/study/undergraduate/courses/computing-dig-forensics-and-cyber-sec-tu863/" target="_blank" rel="noopener">TU Dublin – Computing (Digital Forensics and Cyber Security)</a></p>
+
+      <h3>Ireland — Atlantic Technological University (ATU)</h3>
+      <p>
+        Students can also progress to ATU’s Bachelor of Science in Computing with Cybersecurity and Digital Forensics, combining core computing knowledge with specialised cyber skills.
+      </p>
+      <p>Programme info: <a href="https://www.atu.ie/courses/bachelor-of-science-computing-with-cybersecurity-and-digital-forensics" target="_blank" rel="noopener">ATU – Computing with Cybersecurity and Digital Forensics</a></p>
+
+      <p><em>Progression to these degrees is subject to standard entry criteria and availability at the receiving university. Students are encouraged to check specific requirements and application deadlines.</em></p>
     </div>
 
-    <!-- LEVEL 5 SECTION -->
-    <div class="box">
-      <h2>ATHE Level 5 – Extended Diploma in Computing (Cyber Security Route)</h2>
-      <span class="tag">Awarding Body: ATHE</span>
-      <span class="tag">Level 5</span>
-      <span class="tag">Year 2 University-Level</span>
+    <div class="box" style="overflow-x:auto;">
+      <h2>Typical Progression Pathway</h2>
+      <div style="text-align:center; font-family:Arial, sans-serif; margin-top:20px;">
+        <svg width="600" height="240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progression pathway from Level 5 Diploma to Bangor University, TU Dublin, and ATU">
+          <rect x="0" y="0" width="600" height="240" fill="none"/>
+          <rect x="50" y="20" width="220" height="60" rx="8" fill="#0057a3" />
+          <text x="160" y="55" font-size="16" fill="#ffffff" text-anchor="middle">Level 5 Diploma</text>
+          <line x1="160" y1="80" x2="160" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+          <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#333"/>
+          </marker></defs>
 
-      <p style="margin-top:8px;">
-        Level 5 builds on the foundations from Level 4 and focuses on more advanced topics
-        such as network security, cyber defence, penetration testing and secure systems
-        development, preparing learners for direct entry to the final year of a degree or
-        for specialist technical roles.
-      </p>
+          <rect x="30" y="120" width="160" height="60" rx="8" fill="#0c3f74" />
+          <text x="110" y="155" font-size="14" fill="#ffffff" text-anchor="middle">Bangor University</text>
+          <text x="110" y="175" font-size="12" fill="#ffffff">BSc Computing</text>
 
-      <h3>Example Core Units (Cyber Security Pathway)</h3>
-      <ul>
-        <li><strong>Cyber Security</strong> – organisational security, industry standards and recommending improvements to secure networks and systems.</li>
-        <li><strong>Network Security and Cryptography</strong> – securing network infrastructures and applying encryption principles.</li>
-        <li><strong>Penetration Testing and Ethical Hacking</strong> – concepts, tools and methods used to test system defences in a controlled way.</li>
-        <li><strong>Secure Software Development</strong> – designing and building applications with security in mind from the outset.</li>
-        <li><strong>Incident Response and Digital Forensics</strong> – responding to security incidents and gathering digital evidence appropriately.</li>
-      </ul>
+          <rect x="220" y="120" width="160" height="60" rx="8" fill="#0c3f74" />
+          <text x="300" y="155" font-size="14" fill="#ffffff" text-anchor="middle">TU Dublin</text>
+          <text x="300" y="175" font-size="12" fill="#ffffff">BSc Digital Forensics</text>
 
-      <h3>Programme Information</h3>
-      <ul class="meta-list">
-        <li><strong>Level:</strong> 5 – approximately equivalent to the second year of a UK degree.</li>
-        <li><strong>Mode:</strong> Classroom teaching, labs and project-based learning.</li>
-        <li><strong>Assessment:</strong> Larger projects, technical reports and scenario-based tasks.</li>
-        <li><strong>Typical Tuition Fee:</strong> €1,400</li>
-      </ul>
-
-      <div class="cta">
-        <a href="/contact.html" class="btn btn-primary">Enquire about Level 4 &amp; 5 Cyber Security</a>
-        <a href="/l3.html" class="btn btn-secondary">See Level 3 Options</a>
+          <rect x="410" y="120" width="160" height="60" rx="8" fill="#0c3f74" />
+          <text x="490" y="155" font-size="14" fill="#ffffff" text-anchor="middle">ATU</text>
+          <text x="490" y="175" font-size="12" fill="#ffffff" text-anchor="middle">BSc Cybersecurity</text>
+        </svg>
       </div>
+    </div>
+
+    <div class="box">
+      <h2>Why These Progression Routes Matter</h2>
+      <ul>
+        <li>Build on your Level 5 foundation with university-level study.</li>
+        <li>Access internationally recognised degrees in computing and cyber security.</li>
+        <li>Enhance employment prospects in a growing tech and security job market.</li>
+      </ul>
+      <p>
+        Each progression route supports students in moving confidently from college into a full BSc (Hons) degree,
+        preparing you for advanced study and professional opportunities.
+      </p>
     </div>
 
   </main>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-
-    <div class="box">
-      <h2>Progression Route</h2>
-      <ul>
-        <li>Complete Level 4 (Computing – Cyber Security route).</li>
-        <li>Progress to Level 5 (advanced Cyber Security and Networking).</li>
-        <li>Progression to final-year BSc (Hons) with partner universities, subject to entry requirements.</li>
-        <li>Preparation for roles such as junior security analyst, network technician or support engineer.</li>
-      </ul>
-    </div>
-
-    <div class="box">
-      <h2>Admissions Overview</h2>
-      <ul class="meta-list">
-        <li><strong>Entry to Level 4:</strong> Normally Level 3 qualification in a related subject or equivalent experience.</li>
-        <li><strong>Entry to Level 5:</strong> Completion of a suitable Level 4 Computing qualification.</li>
-        <li><strong>Language:</strong> Teaching mainly in English; support available for local learners.</li>
-      </ul>
-      <div class="cta" style="margin-top:8px;">
-        <a href="/contact.html" class="btn btn-secondary">Discuss your entry profile</a>
-      </div>
-    </div>
-
-  </aside>
 </div>
 
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div>&copy; Specialist Technical College. All rights reserved.</div>
-      <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
-    </footer>
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div>&copy; Specialist Technical College. All rights reserved.</div>
+        <div>Email: <a href="mailto:info@specialist.college">info@specialist.college</a></div>
+      </footer>
 
+    </div>
   </div>
 
   <script>
